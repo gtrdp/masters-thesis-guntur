@@ -23,11 +23,13 @@ September #1
 	- Thesis meeting with Prof. Kas, Prof. Aiello, and Niels Jongs.
 
 
-**Start Literature Review**
-September #2
-------------
+September #2 [Start Lit. Review]
+--------------------------------
 - **Mon Sep  5 16:37:08 CEST 2016**
 	- Getting the master's template.
+- **Tue Sep  6 09:38:10 CEST 2016**
+	- Formatting the thesis template.
+	- 
 
 October #1
 ----------
