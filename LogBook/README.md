@@ -29,7 +29,25 @@ September #2 [Start Lit. Review]
 	- Getting the master's template.
 - **Tue Sep  6 09:38:10 CEST 2016**
 	- Formatting the thesis template.
-	- 
+	- Start reviewing.
+	- Creating excel file for the review summary.
+	- Refactoring pdf references so that it has reference code.
+- **Wed Sep  7 10:01:43 CEST 2016**
+	- Reviewing thesis 008, 014, 012, 011, 017, 016.
+	- **Question:** Is it possible to scan for probe requests in android device? It is possible in laptops.
+	- For checking MAC address and manufacturer: Organizationally Unique Identifier.
+	- Probably insert OUI graph in the report.
+- **Thu Sep  8 11:16:42 CEST 2016**
+	- Reading 016, 019, 015
+
+September #3
+--------------------------------
+
+September #4
+--------------------------------
+
+September #5
+--------------------------------
 
 October #1
 ----------
