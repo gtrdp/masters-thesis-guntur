@@ -39,6 +39,8 @@ September #2 [Start Lit. Review]
 	- Probably insert OUI graph in the report.
 - **Thu Sep  8 11:16:42 CEST 2016**
 	- Reading 016, 019, 015
+- **Fri Sep  9 21:32:18 CEST 2016**
+	- Printing lots of literatures.
 
 September #3
 --------------------------------
