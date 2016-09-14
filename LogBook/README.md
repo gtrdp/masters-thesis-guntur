@@ -51,7 +51,10 @@ September #3
 	- Working on SME TA.
 - **Wed Sep 14 10:16:12 CEST 2016**
 	- Working on SME TA, in the morning.
-	- Reading 026
+	- Reading 026, 031, 030, 028, 020
+	- http://ohmage.org/ would be interesting to see. -> Looks like it is not updated anymore.
+	- 031 seems to be very similar in methods. It reveals several interesting methods.
+	- More WiFi literatures are needed.
 	
 September #4
 --------------------------------
