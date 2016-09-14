@@ -44,7 +44,15 @@ September #2 [Start Lit. Review]
 
 September #3
 --------------------------------
-
+- **Mon Sep 12 12:04:21 CEST 2016**
+	- Literature review.
+	- Working on SME TA.
+- **Tue Sep 13 10:15:14 CEST 2016**
+	- Working on SME TA.
+- **Wed Sep 14 10:16:12 CEST 2016**
+	- Working on SME TA, in the morning.
+	- Reading 026
+	
 September #4
 --------------------------------
 
