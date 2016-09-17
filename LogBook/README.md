@@ -51,18 +51,48 @@ September #3
 	- Working on SME TA.
 - **Wed Sep 14 10:16:12 CEST 2016**
 	- Working on SME TA, in the morning.
-	- Reading 026, 031, 030, 028, 020
+	- Reading 026, 031, 030, 028, 020, 009
 	- http://ohmage.org/ would be interesting to see. -> Looks like it is not updated anymore.
 	- 031 seems to be very similar in methods. It reveals several interesting methods.
 	- More WiFi literatures are needed.
+	- Look for WiFi probe request in Android.
+- **Thu Sep 15 09:29:49 CEST 2016**
+	- Looking for and printing new literature.
+	- Continue literature review: 001, 006, 040, 041
+	- cannot find a literature that combines WiFi proxy and online signals (one uses probe request).
+- **Fri Sep 16 11:28:14 CEST 2016**
+	- Literature review: 041, 042, 043, 022
+	- Learn about confision matrix, because some of the work use that.
+	- I think it is hard to find a reliable source ground truth for our work.
 	
+- **Sat Sep 17 14:56:27 CEST 2016**
+	- Continue Literature: 022, 033, 045
+	- Getting `probe request` meaning makes the WiFi in monitoring mode (cannot be used as normal device for internet).
+	- The problem is:
+		- how to distinguish between people (represented by smartphone) and AP.
+		- how to know that the person is within the eyesight of the person, because the WiFi probe request might be received but no human is in eyesight.
+	- To be able to detect `probe request`, android must be set to `monitor mode`, which requires root privilege.
+		- It also depends on the chipset of the Android, not all device supports `monitor mode`.
+		- More read: http://stackoverflow.com/questions/2334244/is-there-any-way-to-put-android-wifi-droid-handset-into-promiscuous-monitoring
+	- A good example: https://www.kismetwireless.net/android-pcap/
+		- But it requires a USB NIC that supports `monitor mode`.
+	- Bluetooth is only possible to count crowd, or estimates. Because it is counting only within 10% of real people count.
+	- Rooting or jailbreaking is considered illegal in some countries: http://www.makeuseof.com/tag/illegal-root-android-jailbreak-iphone/
+	- Look for possible other work that use `wifi probe request` in `thesis014`.
+	- Look more about F-Measure.
+	- Got many papers which seem relevant with crowd counting using probe request in WiFi.
+	- Command to scan for probe request in Linux/Mac:
+
+			sudo tcpdump -In -i en0 -e -s 256 type mgt subtype probe-req
+
 September #4
 --------------------------------
-
+- **Thu**
+	- Make sure that you read the key literature (one which is similar) and make sure whether it contains proxy between social density and WiFi/BT signals.
+- **Fri Aug 26 10:30:00 CEST 2016**
+	- Literature Review Presentation.
 September #5
 --------------------------------
 
 October #1
 ----------
-- **Fri Aug 26 12:00:00 CEST 2016**
-	- Literature Review Presentation.
