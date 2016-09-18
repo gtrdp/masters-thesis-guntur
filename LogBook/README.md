@@ -19,7 +19,7 @@ August #4
 
 September #1
 ------------
-- **Mon Sep  2 13:00:00 CEST 2016**
+- **Fri Sep  2 13:00:00 CEST 2016**
 	- Thesis meeting with Prof. Kas, Prof. Aiello, and Niels Jongs.
 
 
@@ -85,8 +85,35 @@ September #3
 
 			sudo tcpdump -In -i en0 -e -s 256 type mgt subtype probe-req
 
+- **Sun Sep 18 17:10:56 CEST 2016**
+	- Continue literature: 047, 057
+	- Look for how to calculate accuracy:
+		- F-measure
+		- R value (?)
+		- correlation
+	- Challenges, how to define the time of scanning. and figure out where to perform the scanning, which has a good spot (good point of view) for counting. Possible option:
+		- Grotemarkt
+		- Vismarkt
+		- Academy gebouw
+		- Bernoulliborg
+		- Noorder plantsoen (with walking and recording video).
+	- Another challenges: (i) using direct people count, (ii) using quantized counting level as proposed in some papers.
+	- `[Possible problem]` A drawback of scanning WiFi probe request: people located in other room (not within the person's eyesight) is still detectable, thus, worsen the results.
+	- Look for how to do a thesis in a proper way.
+	- `[Possible novelty]` To filter the data, i.e., to remove laptops or other device, use known MAC address filter.
+	- A device that scans for Wi-Fi or Bluetooth devices is available: Meshlium http://www.libelium.com/products/meshlium/
+
 September #4
 --------------------------------
+- **Mon**
+	- Prepare list of questions.
+	- Check what to report for the SME TA.
+- **Tue**
+	- List of Questions:
+		- one 
+		- two
+		- three
+- **Wed**
 - **Thu**
 	- Make sure that you read the key literature (one which is similar) and make sure whether it contains proxy between social density and WiFi/BT signals.
 - **Fri Aug 26 10:30:00 CEST 2016**
