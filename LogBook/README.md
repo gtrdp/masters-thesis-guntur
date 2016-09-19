@@ -7,6 +7,10 @@ Master's Thesis Log Book
 - Duration: September - January 2016
 - Location: The University of Groningen, the Netherlands.
 
+Timeline
+--------
+TBD
+
 August #2
 ---------
 - **Tue Aug 9 13:00:00 CEST 2016**
