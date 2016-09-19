@@ -97,17 +97,41 @@ September #3
 		- Academy gebouw
 		- Bernoulliborg
 		- Noorder plantsoen (with walking and recording video).
+		- Duisenberg library
 	- Another challenges: (i) using direct people count, (ii) using quantized counting level as proposed in some papers.
 	- `[Possible problem]` A drawback of scanning WiFi probe request: people located in other room (not within the person's eyesight) is still detectable, thus, worsen the results.
+		- Combine with sound
+		- Combine with GPS location if there is no sound detected.
 	- Look for how to do a thesis in a proper way.
 	- `[Possible novelty]` To filter the data, i.e., to remove laptops or other device, use known MAC address filter.
 	- A device that scans for Wi-Fi or Bluetooth devices is available: Meshlium http://www.libelium.com/products/meshlium/
 
 September #4
 --------------------------------
-- **Mon**
+- **Mon Sep 19 09:41:44 CEST 2016**
 	- Prepare list of questions.
-	- Check what to report for the SME TA.
+	- Literature: 053, 060, 044, 051, 052, 058, 048
+	- Possibly look for official WiFi technical specification from wifi.org.
+	- `[Possible feature]` Filter based on RSSI. Find a literature that says the threshold of WiFi signal.
+	- `[Possible challenges]` MAC randomization in iOS8 devices.
+		- Possible ways, filtering: randomized MACs does not comply with IEEE standards [thesis053]
+	- What is CDF?
+	- Literature review searching:
+		- Using several keywords
+		- Getting the literature from bibliography of the paper
+		- From author name, for possible other publication
+	- `[Possible tips]` Please make sure that rooting an android phone is not breaking the law.
+		- http://www.makeuseof.com/tag/illegal-root-android-jailbreak-iphone/
+		- http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2009:111:0016:0022:EN:PDF
+	- Bluetooth, WiFi and ambient sound, might be good candidates for objective social density measurement. 
+	- `[Possible Method]` When measuring the WiFi packets (or any other source of data), please do that when the phone is
+		- Inside the pocket, or bag.
+		- Hold in the hand.
+	- `[Suggestion]` Test the method firstly, by conducting a short-timed experiment, before going to the real experiment.
+	- Also give graph of MAC address manufacturer.
+	- Random question: Why WiFI can improve accuracy in smartphone location (as often asked when opening google maps)?
+
+
 - **Tue**
 	- List of Questions:
 		- one 
