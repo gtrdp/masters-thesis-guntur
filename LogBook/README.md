@@ -136,16 +136,75 @@ September #4
 	- Random question: Why WiFI can improve accuracy in smartphone location (as often asked when opening google maps)?
 
 
-- **Tue**
+- **Tue Sep 20 09:46:59 CEST 2016**
+	- Literature: 046
+	- Attending Mas Tri's Seminar about Papua development.
+	- Start writing summary of the literature review.
+	- `[Possible idea]` Compare indoor and outdoor measurement.
 	- List of Questions:
-		- one 
-		- two
-		- three
-- **Wed**
-- **Thu**
+		- Is rooting an issue (illegal)? 
+		- Is it better to have direct crowd count or using quantization?
+		- Counting people using wifi has an issue: it can detect people through the walls, which people don't see. what do you think?
+		- 
+
+- **Wed Sep 21 10:10:26 CEST 2016**
+	- Skype call with Niels. Some insights:
+		- This work is going to be helpful for BeHapp app.
+		- Try to find a correlation between probe request (proxy of people count), which indicates unique device and number of access point [novelty] in a particular area.
+		- There is an issue with MAC address randomization, try to find a solution `probably solved in one of the paper`.
+			- Possibly use a RSSI as a measurement.
+		- If possible, also develop a model of wifi access point with the number of unique device.
+			- So, if we have the access point count in BeHapp, we could infer the social density.
+		- Got more literature.
+	- Create simple presentation.
+	- Devise a research proposal before meeting with Niels at 11.
+	- Wisuda Didin.
+	- Try to settle in one place until the end of the day. That way, you can save lot of time, rather than finding a place to stay.
+	- Please be on time, in the morning, otherwise you will get no place to work.
+	- Look for MAC address randomization.
+	- `[Notice]` Becareful with WiFi channels, please scann all channels.
+	- Interesing, for MAC address randomization in iOS.
+	- `[Suggestions for Research]` Try to filter out other devices, e.g., tablets, or laptops, and see what happens.
+	- `[Suggestions for Research]` Try to use different variable:
+		- Location (classified in: remote area, crowded place, city center)
+		- Duration of scanning (15 mins, 30 mins, 45 mins)
+		- Filter
+		- Phone manufacturer
+		- Operating System
+		- number of sent probes per device
+		- show the graph of scanned device (comparison between laptops, smartphones, and other)
+	- Literature: 061
+	- Both Android and iOS employ MAC address randomization.
+
+- **Thu Sep 22 10:40:12 CEST 2016**
 	- Make sure that you read the key literature (one which is similar) and make sure whether it contains proxy between social density and WiFi/BT signals.
+	- Find how complicated is the other masters thesis.
+		- Basically they have 1 to 3 research questions.
+		- One is the main question, while several others are the subquestions.
+	- Making the slides for tomorrow.
+	- Keyword used for literature study:
+		- `crowd counting wifi`
+		- `crowd counting bluetooth`
+		- `wifi probe request`
+		- `online database social density`
+		- `counting crowd`
+		- `android monitor mode`
+		- `probe request wifi people`
+		- `crowd density wifi bluetooth`
+		- `social density online data`
+		- `crowd sensing wifi`
+		- `objective social density wifi bluetooth`
+		- `social density data`
+		- `social density objective`
+	- creating summary table
+	- `[MAC Randomization]` Chekc whether the randomized MAC address is locally administered address: https://en.wikipedia.org/wiki/MAC_address
+
 - **Fri Aug 26 10:30:00 CEST 2016**
 	- Literature Review Presentation.
+	- Questions:
+		- Prof. Aiello is going to have a sabbatical leave in January, is that going to be a problem?
+		- When is the starting date of this thesis?
+		- Who is going to be the first and second supervisor?
 September #5
 --------------------------------
 
