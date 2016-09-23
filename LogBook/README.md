@@ -1,6 +1,6 @@
 Master's Thesis Log Book
 ============================
-- Title: TBD
+- Title: The Relation of Unique Number of Device and the Number of Available Access Points with the Validation of Ambient Noise
 - First Supervisor: Prof. Marco Aiello
 - Second Supervisor: Prof. Martien Kas
 - Daily Supervisor: Niels Jongs
@@ -9,7 +9,7 @@ Master's Thesis Log Book
 
 Timeline
 --------
-TBD
+![alt tag](master-thesis-timeline.png)
 
 August #2
 ---------
@@ -145,7 +145,6 @@ September #4
 		- Is rooting an issue (illegal)? 
 		- Is it better to have direct crowd count or using quantization?
 		- Counting people using wifi has an issue: it can detect people through the walls, which people don't see. what do you think?
-		- 
 
 - **Wed Sep 21 10:10:26 CEST 2016**
 	- Skype call with Niels. Some insights:
@@ -166,7 +165,7 @@ September #4
 	- Interesing, for MAC address randomization in iOS.
 	- `[Suggestions for Research]` Try to filter out other devices, e.g., tablets, or laptops, and see what happens.
 	- `[Suggestions for Research]` Try to use different variable:
-		- Location (classified in: remote area, crowded place, city center)
+		- Location (classified in: remote area, crowded place, city center, indoor, outdoor)
 		- Duration of scanning (15 mins, 30 mins, 45 mins)
 		- Filter
 		- Phone manufacturer
@@ -198,13 +197,28 @@ September #4
 		- `social density objective`
 	- creating summary table
 	- `[MAC Randomization]` Chekc whether the randomized MAC address is locally administered address: https://en.wikipedia.org/wiki/MAC_address
+	- Example of dedidated WiFi scanning device:
+		- CrossCompass by Acyclia
 
 - **Fri Aug 26 10:30:00 CEST 2016**
 	- Literature Review Presentation.
 	- Questions:
-		- Prof. Aiello is going to have a sabbatical leave in January, is that going to be a problem?
+		- Prof. Aiello is going to have a sabbatical leave starting in January, is that going to be a problem?
+		- Do 
 		- When is the starting date of this thesis?
 		- Who is going to be the first and second supervisor?
+		- Wifi Probes have an issue, it can detect people through the wall, while people can't.
+		- Smartphone can not scan for probe request, unless it is rooted or jailbreaked, which is rather illegal.
+	- Meeting with Prof Aiello, Prof Kas, and Niels.
+	- Next step !!!:
+		- Experimental Setup.
+		- Make sure that chapter 2 is finished by the next meeting.
+		- Read more literatures about
+			- MAC address randomization
+			- Sensing MAC address using probe request
+			- Ambient noise library
+	- Please plan the work for the next week.
+
 September #5
 --------------------------------
 
