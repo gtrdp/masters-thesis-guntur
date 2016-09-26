@@ -1,7 +1,7 @@
 # masters-thesis-guntur
 Master's Thesis of MSc Computing Science at the University of Groningen by Guntur DP.
 
-- Title: TBD
+- Title: The Relation of Unique Number of Device and the Number of Available Access Points with the Validation of Ambient Noise
 - First Supervisor: Prof. Marco Aiello
 - Second Supervisor: Prof. Martien Kas
 - Daily Supervisor: Niels Jongs

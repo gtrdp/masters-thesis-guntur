@@ -1,5 +1,6 @@
 \documentclass{article}
 % \usepackage{graphicx}
+\usepackage{url}
 
 \begin{document}
 
@@ -22,7 +23,100 @@
 
 \section{Introduction} % (fold)
 \label{sec:introduction}
-This document presents an experimental setup for Social density estimation.
+This document presents an experimental setup for Social density estimation using WiFi. The correlation between the number of unique device (sensed using WiFi probe-request) and available Access Point in a particular area is investigated. This document also describes the experimental setup for MAC address randomization experiment. Furthermore, availability of voice activity will also take into account.
+
+\section{Experimental Setup} % (fold)
+\label{sec:experimental_setup}
+The experimental setup is divided into two sections: WiFi sensing and MAC address randomization.
+
+\subsection{WiFi Sensing} % (fold)
+\label{sub:wifi_sensing}
+The objective of WiFi sensing is to capture WiFi probe-request packets and scan and count available Access Point. As a validation, Voice Activity Detection (VAD) technique is also implemented.
+
+\subsubsection*{Sensing setup} % (fold)
+The experimenter will basically capture the probe-request packets, scan available Access Point, and detect for voice activity level. Several setups are as follows:
+
+\label{ssub:sensing_setup}
+\begin{description}
+	\item[Static] The experimenter will remain still at a certain location. The instrument for this setup is:
+	\begin{itemize}
+		\item Laptop (with built-in microphone and network card)
+	\end{itemize}
+
+	\item[Dynamic] The experimenter will walk through the crowd. The instruments are:
+	\begin{itemize}
+		\item Raspberry Pi (with WiFi dongle and battery)
+		\item smartphone (with built-in microphone)
+	\end{itemize}
+\end{description}
+
+For dynamic sensing, the experimenter will try to put the instruments in a bag and carry the device.
+% subsubsection sensing_setup (end)
+
+\subsubsection*{Sensing Area} % (fold)
+\label{ssub:sensing_area}
+The area is classified to:
+\begin{itemize}
+	\item Outdoor\footnote{The density of crowd is determined by demographical data from the government.}
+	\begin{itemize}
+		\item High density of crowd (Vismarkt, Grotemarkt)
+		\item Medium density of crowd (Vismarkt, Grotemarkt)
+		\item Low density of crowd (Centrum in other village)
+	\end{itemize}
+	
+	\item Indoor
+	\begin{itemize}
+		\item Large-sized hall (Study room bernoulliborg, deuisenberg)
+		\item Small-sized hall (McD westerhaven)
+	\end{itemize}
+\end{itemize}
+
+\textbf{Note:}\\
+University complex will also considered as it has medium to high crowd density but only (possibly) one available Access Point (\texttt{eduroam}). For each sensing, we record the GPS coordinates. All WiFi channels will be measured.
+% subsubsection sensing_area (end)
+
+\subsubsection{Duration of Sensing} % (fold)
+\label{ssub:duration_of_sensing}
+The duration of sensing is classified to:
+\begin{itemize}
+	\item Short (15 to 20 minutes)
+	\item Medium (30 to 40 minutes)
+	\item Long (60 to 90 minutes)
+\end{itemize}
+% subsubsection time_and_duration_of_sensing (end)
+% subsection wifi_sensing (end)
+
+\subsection{MAC Address randomization} % (fold)
+\label{sub:mac_address_randomization}
+This research is trying to find a way to overcome MAC address randomization in Android. In order to do so, the experimenter will use laptop and scan for any MAC address changes in a location where no other WiFi probe-requests can be captured, i.e., remote areas.
+% subsection mac_address_randomization (end)
+
+\section{Data Processing and Analysis} % (fold)
+\label{sec:data_processing_and_analysis}
+Organizationally Unique Identifier\footnote{\url{https://en.wikipedia.org/wiki/Organizationally_unique_identifier}}
+
+\subsection{Data Preprocessing} % (fold)
+\label{sub:data_preprocessing}
+
+% subsection data_preprocessing (end)
+
+\subsection{Voice Activity Detection} % (fold)
+\label{sub:voice_activity_detection}
+In this analysis, we use library from bla bla.
+
+The voice activity is classified in several level (dB).
+% subsection voice_activity_detection (end)
+
+We are also going to present some graphs: .
+	- give graph of MAC address manufacturer.
+	- comparison between devices (Laptop, smartphone, etc).
+	- number of scanned probe per device.
+
+- Filter based on RSSI. Find a literature that says the threshold of WiFi signal.
+- To filter the data, i.e., to remove laptops or other device, use known MAC address filter.
+- Take into account people going in and out from the scanned area.
+
+% section data_processing_and_analysis (end)
 
 % \bibliography{bibliography}{}
 % \bibliographystyle{plain}
