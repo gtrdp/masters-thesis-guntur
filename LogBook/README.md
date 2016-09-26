@@ -219,8 +219,30 @@ September #4
 			- Ambient noise library
 	- Please plan the work for the next week.
 
+- **Sun Sep 25 14:37:42 CEST 2016**
+	- Explain experimental setup also by using images.
+	- Reading how to write a better thesis.
+	- `[Possible Research Ideas]` Take into account people moving in and out
+		- Mean of people per time window, i.e., 15 mins
+		- The number getting in and out
+
 September #5
 --------------------------------
+- **Mon Sep 26 09:57:10 CEST 2016**
+	- Looking for a library for sound ambience.
+		- Keyword: Voice Activity Detection (VAD)
+		- https://en.wikipedia.org/wiki/Voice_activity_detection
+		- https://en.wikipedia.org/wiki/Talkspurt
+		- https://en.wikipedia.org/wiki/Comfort_noise
+	- Detect voice activity and measure the intensity (dB).
+	- VAD is, I assume, used only when the voice is clearly heard. It is unknown whether the usage is also possible where crowd is present.
+	- `[Possible experiment]` Also try to do **moving** experiment, using Raspberry with WiFi monitor.
+	- Several libraries for voice activity detection:
+		- https://github.com/mvansegbroeck/vad
+		- https://github.com/pckben/vad
+		- https://github.com/shunsukeaihara/vad_for_voip
+		- https://github.com/kdavis-mozilla/vad.js
+	- Experimental setup: https://www.reference.com/science/experimental-setup-science-1e292d23676da70
 
 October #1
 ----------
