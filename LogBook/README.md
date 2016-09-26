@@ -243,6 +243,10 @@ September #5
 		- https://github.com/shunsukeaihara/vad_for_voip
 		- https://github.com/kdavis-mozilla/vad.js
 	- Experimental setup: https://www.reference.com/science/experimental-setup-science-1e292d23676da70
+	- Writing experimental setup draft.
+	- Good reading for correlation topic:
+		- https://en.wikipedia.org/wiki/Correlation_and_dependence
+		- https://en.wikipedia.org/wiki/Causality
 
 October #1
 ----------
