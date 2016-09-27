@@ -279,8 +279,10 @@ September #5
 		- count of unique Access point count
 		- validation of microphone sound
 		- Ground truth: actual number of people
+	- Working on example VAD matlab code, got stuck in the directory (unable to read the files).
+	- Working on the thesis draft again.
 
 - **Wed**
 	- Learn how TCP Dump works.
 		- Study the structure of TCP dump logs.
-	
+	- Read literature about counting crowd using microphone.
