@@ -248,3 +248,39 @@ September #5
 	- Install and test matlab with VAD code.
 	- Learn How VAD works.
 	- Bring Raspberry Pi and make it ready for sensing the WiFi probe request.
+	- The output of VAD is boolean, whether the voice is present or not.
+		- The technology we need is somewhat different, with the ability to count the number of crowd roughtly.
+	- A good tutorial about VAD: http://practicalcryptography.com/miscellaneous/machine-learning/voice-activity-detection-vad-tutorial/
+	- Learning about VAD, machine learning, and counting crowd using smartphone speaker.
+		- Using youtube videos.
+	- `[Notes]` Machine Learning is categorized to 3 categories:
+		- Supervised learning
+		- Unsupervised learning
+		- Re-inforcement learning
+	- `[Notes]` Machine Learning Notes:
+		- Features: the feature that we use to explain the data. usually received from the training data
+		- Classifiers: the algorithm to classify the training data
+			- ANN (Artificial Neural Network)
+			- Support Vecto Machine
+			- Decision Tree
+			- Nice image that explains several classifiers: http://scikit-learn.org/stable/_images/plot_classifier_comparison_001.png
+		- Iris: classic dataset for Machine learning problem, which is good for practice.
+		- Tips for ML: choose the best feature that describes your data best.
+		- Good Library for Machine Learning: http://scikit-learn.org/stable/
+	- **Possible research**: generate separate graph that explain one location with different time window: using scatter plot.
+		- http://mste.illinois.edu/courses/ci330ms/youtsey/scatterinfo.html
+	- **Possible explanation**: explain that the number of access point might increase in a crowd because of the ad hoc access point.
+		- also use https://wigle.net/ database of public WiFi
+		- explain that monitoring of probe request in smartphone is impossible due to the permission (root access).
+	- **Possible location**: scan also in other public crowd, where a lot of people are present
+	- **Possible features**: for estimating social density, the feature might be:
+		- count of unique MAC address WiFi device (only phone)
+		- count of unique MAC address Bluetooth device (only phone)
+		- count of unique Access point count
+		- validation of microphone sound
+		- Ground truth: actual number of people
+
+- **Wed**
+	- Learn how TCP Dump works.
+		- Study the structure of TCP dump logs.
+	
