@@ -3,7 +3,47 @@
 \chapter{Related Work}\label{ch:related-work}
 %*****************************************
 
+% The related work chapter should countain the following components:
+% [Why How]
+% Literature on Topic
+% Literature on Method
+% Theoretical Approach
+% Find a Hole
+% Look for debates
+
+In this chapter, several works that have been done with regard to estimating social density are presented. The approaches are also compared one another, focusing on the benefits, drawback, and challenges. The methods range from video monitoring, audio tone tracking, and RF signal sensing. Furthermore, more implementations of WiFi signal beyond crowd counting are also presented. In the end, a proposed work is portrayed, which is going to be the topic of this research.
 Some researches have been done with regard to estimating social density, especially more are focused on crowd density.
+
+\section{Video Based Crowd Counting} % (fold)
+\label{sec:video_based_crowd_counting}
+
+% section video_based_crowd_counting (end)
+
+
+
+\section{MAC Address based crowd counting} % (fold)
+\label{sec:mac_address_based_crowd_counting}
+
+\subsection{WiFi} % (fold)
+\label{sub:wifi}
+
+% subsection wifi (end)
+
+\subsection{Bluetooth} % (fold)
+\label{sub:bluetooth}
+
+% subsection bluetooth (end)
+% section mac_address_based_crowd_counting (end)
+
+\section{Other Crowd Counting Approach} % (fold)
+\label{sec:other_crowd_counting_approach}
+
+% section other_crowd_counting_approach (end)
+
+\section{Speaker Counting Method} % (fold)
+\label{sec:speaker_counting_method}
+
+% section speaker_counting_method (end)
 
 Video processing has limitations such as weather conditions, illumination changes, limited viewing angle, and density and brightness problem. 
 
@@ -11,52 +51,138 @@ GSM location has an issue with privacy\cite{thesis017}.
 
 MAC is only a proxy since it does not infer directly to personal information, such as name or contact.
 
-A research from \cite{thesis008} proposes a way to detect crowds using Bluetooth. The crowd density is quantized into 7 groups, ranging from nearly empty to extremely high (crowded). Several features were also devised in this research, ranging from bla bla. 
-The method was chosen due to bla bla.
-The experiments were set up for 3 times, with 4 hours of duration each. 10 students were recruited to carry out the experiments.
-The results show that bla bla.
 
-Furthermore, \cite{thesis014} alleges that the existence of social relationships is possible to be uncovered by using WiFi probe signals.
-
-Human queue is also possible to be monitored using WiFi, as demonstrated in \cite{thesis012}. It is based on RSSI that is measured by a single WiFi monitor.
-
-WiFi and Bluetooth were also used to estimate crowd densities and pedestrian flows in \cite{thesis011}.
-
-A research \cite{thesis017} utilizes MAC address data to determine spatio-temporal movement of human in terms of space utilization.
-
-Bluetooth data is also used to analyze spatio-temporal movements of visitors event in Belgium \cite{thesis016}.
-
-
-Also mention about noise.
 
 Mention about speaker count.
 
-[Why How]
-Literature on Topic
-Literature on Method
-Theoretical Approach
-Find a Hole
-Look for debates
+% wifi probe-request - main method================
+
+% wifi probe-request - crowd count and existence of social relationship
+Furthermore, \cite{thesis014} alleges that the existence of social relationships is possible to be uncovered by using WiFi probe signals.Laptops are used to sense the data. Could uncover social links between people. Two or more users sharing one or more SSIDs in the Preferred Network List (PNL) intuitively provide some information about the existence of social relationship between them, which might be family or house mate. Affiliation network is used to construct the graph. Adamic-adar similarity: if two users share same pub and office->social link. Same Home-> social link. Demographic factor is also investigated, especially in SSID languages. This method is possibly not applicable in mobile phone, as it uses \texttt{tshark} application in laptops. This method requires preinstalled method to be existed. This method works everywhere, as long as WiFi signals are possible to be captured. This method is already tested on large scale events, such as national events, international events, city-wide probes, train station, and university, within three months of experiment. The experiment results a large dataset of log files (11M probes from 160K different smartphones). Data is stored locally for further analysis.
+The authors combine the networks referred from the probes to location based data, such as wigle.net. However, this method is not really possible to be implemented in smartphone. It uses IEEE Public OUI. Wifi probes are used as a new lens to look at crowd and uncover important information.
+
+% wifi rssi =============
+
+% wifi rssi - crowd count, specifically human queue
+Human queue is also possible to be monitored using WiFi, as demonstrated in \cite{thesis012}. It is based on RSSI that is measured by a single WiFi monitor. This approach makes use of single WiFi monitor located at the queue head (service desk). The WIFi monitors collect signal traces indicated by RSSI. As the RSSI increases, the user is getting closer to the service desk. The phases are divided to 3: waiting, service period, and leaving. This method requires minimal infrastructure, which are WiFi monitors at the queue head. Existing queue monitoring approach relies on cameras or floor mats. This method works anywhere as long as a WiFi monitor exists. A laboratory experiment with 90 traces of persons has been conducted. A localized data log, i.e., data is stored locally, is used. This method has 10 secs of latency. Two fold cross validation with manually logged ground truth are used to evaluate this method. 10 secs time resolution is expected in this approach. Average error increases when the service time is 180s or more. Each queuing user is equipped with custom Android app that sends WiFi packets at 10pkt/sec.
+
+% wifi rssi
+WiFi and Bluetooth were also used to estimate crowd densities and pedestrian flows in \cite{thesis011}. WiFi and Bluetooth in laptops are used to sense the signals. This method could provide reliable source of ground truth for pedestrian flows with low cost of installation. The approach is divided into several methods, namely na\"{i}ve (only counting MAC addresses), time (include time information), RSSI (include signal strength), and Hybrid (RSSI+Time). No ground truth for density estimation (GT only for movements). Although Bluetooth is mentioned, it is not significant in terms of results, as this method has high number of false positive. This approach utilizes two identical and synchronized laptops. The method could run anywhere as long as a WiFi monitor exists. Single realistic scenario carried out in airport during 16 days period, resulting in 11M probe request, 6600 SSIDs (public), 8.5M probe request and 4k SSIDs (security area). The data is localized in laptops. Ground truth is provided by security check in german airports. Pearson correlation: 0.75 for average in hybrid approach. 0.93 in best case. Incorporating external data sources, eg, opening time of security gate. Testing it in different scenario (places)or Different positioning. It alleges that bluetooth estimation is less accurate: 0.53 r-test in best case. Bluetooth/WiFi ratio: 4\%.
+
+% wifi other ============
+
+% BT and Wifi MAC address
+A research \cite{thesis017} utilizes MAC address data to determine spatio-temporal movement of human in terms of space utilization. Specifically, this method leverages MAC address in Bluetooth and WiFi. This method alleges that it could track group gathering and behavioral pattern. CrossCompass by Acyclica Inc is used to capture MAC address from both BT and WiFi. Passing visitors are filtered (<4mins in 1 hr). Groups are determined when several MAC addresses enter and exit the lounge area in almost similar time. However, the assumption of groups is weak. A MAC address scanner (single) is required to perform the measurement. This method could run anywhere. Tested within three weeks, the resulting data consists of timestamp, MAC address, and RSSI, stored in 35K log lines and 418 unique devices. Centralized approach is a kind of proposed method. The central monitors MAC address spatio-temporal movements. The data is dump for 3 weeks. This approach does not a realtime result, as the analysis was carried out after 3 weeks data dump is created. The accuracy depends on how many devices are turned on. Future research is aimed to combine with camera or psychological future work: human socializing behavior assessment, human response to changes on environmental structure.
+
+% Bluetooth =============
+% bluetooth - crowd count
+A crowd density estimation is proposed in~\cite{thesis008}, which leverages Bluetooth in smartphone. The crowd density is quantized into 7 groups, ranging from nearly empty to extremely high (crowded), which will be the feature in the training phase. The experiments were set up for 3 times, with 4 hours of duration each. 10 students were recruited to carry out the experiments. Six features of scanning were developed to increase the accuracy of estimating the crowd. Volunteers are equipped with scanning mobile phone that scans nearby Bluetooth signals. This method is not suitable for single mobile phone implementation, as it requires n>10. No prior infrastructure is needed. Cameras are used for ground truth checking. This method works everywhere. An experiment is carried out to test the method on a final soccer match in a football stadium. The data stored locally for further processing. No real-time result. This method achieves 75\% accuracy.
+
+% Bluetooth MAC address
+Bluetooth data is also used to analyze spatio-temporal movements of visitors event in Belgium \cite{thesis016}. Large datasets were extracted during the experiments. This approach works with 22 Bluetooth scanners were placed around the festival area. Combination of class 1 (larger area) and class 2 (smaller area) were used. Data preprocessing used to compress the logs and to infer direction of visitors (in/out/pass). GisMo (geoggraphical movements) is also used. major and minor address are used to distinguish BT device type (phone or car handsfree, etc). This method lacks in the biased results between sensed BT and real people count. Only BT scanner installations are required to conduct this approach. Outdoor is the preferred location to run this method. Tested in Ghent festives, 10 days event with 1.5M visitors. Custom bluetooth scanner is used. Two bluetooth class (1 and 2) were used to capture the packets with different area. As this approach does not come with real time result, the analysis were carried out after the huge data dump (260M lines) is created. The ground truth is provided only by comparison with official visitors count. 11\% is the ratio of sensed MAC addresses and real populations. More behavioral analysis of the visitors. No technical future research direction.
+The detected MAC is a ratio with real values.
+
+% Bluetooth - user behavior tracking.
+Bluetooth, again is proven to be a potential source of tracking socially contextual behavior, as seen in~\cite{thesis028}. Using Bluetooth trace, Chen, et. al. have shown the result with 85.8\% accuracy.
+A BT feature based classification model is constructed, 6 representation are: working indoors, walking outdoors, taking subway, go shopping in the mall, dining in the restaurant, watching movie in cinema. A user ran the experiment during the day, and a questionnaire for ground truth are asked at the end of the day.
+C4.5 Decision Tree and 10-folds cross validation are utilized as evaluation.
+However, this approach have a drawback, because if the user set the Bluetooth  off, this approach would be useless.
+This method works on outdoor.
+This work involved 3 volunteers, with 1-2 weeks of BT traces.
+The data is logged in user's smartphone.
+This is a moving approach, as it is implemented in users phone.
+At the end of the day, the user recalls and labels their contextual behavior using questionnaire.
+The future work is directed to increasing the accuracy, especially when Bluetooth signals are detected sparsely. Furthermore, fusion of RF signals: GPS, GSM, WiFi as well.
+
+% other =================
+% images - movement patterns and landmark preferences
+Movements pattern and landmark preferences are possible to be extracted from publicly available photo repositories, such as Flicker and Panoramio, as presented in~\cite{thesis026}. Analyzing publicly available photos repository, such as Flicker and Panoramio, and extract geo-tagged photo information which provides coordinates of location and time of taking the photos.
+
+% WiFi and Bluetooth - Network analysis (wifi fingerprinting)
+A work~\cite{thesis009} alleges that WiFi prevails Bluetooth in several criteria. Firsly, Bluetooth requires longer time to discover. More than 90\% of detected MAC address were WiFi MAC address. MAC is unique address for most IEEE 802 technologies.
+
+% other implementation of wifi or bluetooth signals=====
+
+% WiFi signal - indoor localization
+A combination of WiFi fingeprinting and Pedestrian Dead Reckoning (PDR) are used to monitor Indoor environment by means of crowdsourcing~\cite{thesis020}. This method requires predeployed WiFi accesspoints in the area. This method, which works in indoor location, Ekahau mobile survey is used as the ground truth source. In the future, the works are aimed at evaluation with longer period and fusion with other RF signals. The result is similar result with state of the art WiFi survey tools.
+
+% similar research of passive behavioral monitoring====
+
+% Wifi and bluetooth - ambulatory monitoring.
+An interesting insight is found in~\cite{thesis031}, as this research goal and method are really similar with our research in passive behavioral monitoring.This method monitors social interaction using Wifi, Bluetooth, audio, and interactions on the phone for ambulatory monitoring. Audio, radio, and phone interaction data are processed differently. Unsupervised clustering is used to count the person in a conversation. Subjects location is determined using GPS and WiFi Mac address. Nearby Bluetooth devices and devices within the same WiFi network are used as indicators of social interaction. Subjects activity in messaging apps are monitored, notifications are logged. The data are aggregated in certain time interval, eg., a week, for later analysis. Unsupervised clustering on microphone data to count the person that participate in a conversation. Audio based monitoring is not yet completed, however. This method requires no prior installation on infrastructure and works both outdoor and indoor. The method is localized within the smartphone. No realtime analysis is performed, as the data is dumped, and latter analysis is performed. No reliable ground truth is mentioned in the paper. 76\% accuracy for phone interaction is achieved.
+
+% social well being
+A research~\cite{thesis030} is also a little bit similar with the Paul's research, which tries to determine social Well being. This method uses contacts, phone calls, text messages, GPS and WiFi (location), BT proximity, and social app usages from the monitored patients. Multimodal interaction is used, such as phone calls, SMS, location (GPS+WiFi), Bluetooth proximity, social app usages. The contacts are labeled on groups (friend, colleague, family, etc). In the other way, contact classification, place detection, proximity analysis, and application usage. Bluetooth is used only detecting the type of nearby device, salesman actively meets clients while developer tends to stay in the office with the team members nearby. Frequency and time are used for social application monitoring. Personal communication score is also devised. DBSCAN algorithm is used in this approach. This method does not require any pre installed infrastructure. This method works well in outdoor, as at indoor location GPS does not work. 106 mobile users, 107 days of data on average, 68, 529 phone calls, 20k SMS, nearly 10k labeled contacts No realtime result in this research, as the app saves log files, and periodically sent to server.
+The ground truth information is gained from labeling in user's contacts.
+The future works are directed to comparison of several social well being status of people in the same demography. Adding ambient noise detection (audio data).
 
 
-[Methodology]
-Research design
-Research procedures
-Kind of data
-collection procedures
-selection and access
-human subjects review
-ethics statement
-costs and funding
 
-[Statement of Limitations]
-Alternatives
-weaknesses
-what your research will do
 
-[Conclusion]
-Contributions
-Importance
+
+
+
+
+
+
+
+
+
+A work~\cite{thesis006} tried to count the crowd using CSI, which is proven to have a monotonic relation with the number of moving people. The result seems promising, although some errors are observed.
+
+A more energy efficient method to exploit sensor in smartphone is presented in~\cite{thesis040}. It makes use of, what they called, \textit{Smartphone App Opportunities}. The approach is named Piggyback Crowd Sensing (PCS).
+
+Bluetooth has again proven to be one reliable method to estimate crowd density~\cite{thesis041}. The work alleges that it could even reach 82\% accuracy in the best case.
+
+\cite{thesis042}~describes the possibility to use ZigBee to estimate crowd density by measuring the RSSI and LQI. This approach requires prior infrastructure.
+
+More approach on WSN is described in~\cite{thesis043}. With similar solution in~\cite{thesis042},~\cite{thesis043} employs more WSN. It has normal and large-scale experiment.
+
+\cite{thesis022}~explains the possibility of tracking people movement and contact by using bluetooth and wifi.
+
+Another point of view to track pedestrian flocks is presented in~\cite{thesis033}. It uses WiFi signals with 3 different features to infer the flocks.
+
+A paper~\cite{thesis045} presented a method that combine geo-fencing with coarse WiFi localization for building evacuation.
+
+An example of crowd monitoring is presented in~\cite{thesis050}, where it is implemented for Hajj in Mecca, Saudi Arabia. It utilizes RFID tags along with a specialized app for monitoring the pilgrims.
+
+A good experiment that tried to find the correlation with WiFi probe-request counts and real people counts is presented in~\cite{thesis047}. It employs wifi monitor mode and manual people counting by using tally counter.
+
+\cite{thesis057}~evaluates crowd counting using WiFi probe-request signal. The result showed that this is possible, although achieved not in really high accuracy.
+
+A combination with Drones for people counting is presented in~\cite{thesis053}. \cite{thesis060}~presents a brief explanation about the method in indoor measurement. However, no ground truth explanation is present.
+
+Audio tones are also proven to be a good potential method to infer crowd count~\cite{thesis044}. However, in this method every tracked phone must be pre-installed with the audio tone generating app. Thus, this method is unable to track phones which are not pre-installed with the app.
+
+\cite{thesis051}~presents crowd counting method that leverages single WiFi transmitter and receiver. This method does not require prior data training, which makes this method novel.
+
+RSSI is used to infer people count in a controlled environment, as presnted in~\cite{thesis052}. 
+
+Smartphone trajectories are tracked using captured WiFi signals in~\cite{thesis058}. The error is up to 70 meters compared to the GPS ground truth.
+
+\cite{thesis048}~has showed successfully how to implement WiFi RSSI as a way to track smartphone trajectories. The result showed that it is promising, having only 70 meters error from GPS ground truth.
+
+\cite{thesis046}~presents the method to detect occupancy and count the people using WiFi power only.
+
+% The rest of thesis should be structured as follows:
+% [Methodology]
+% Research design
+% Research procedures
+% Kind of data
+% collection procedures
+% selection and access
+% human subjects review
+% ethics statement
+% costs and funding
+
+% [Statement of Limitations]
+% Alternatives
+% weaknesses
+% what your research will do
+
+% [Conclusion]
+% Contributions
+% Importance
 %*****************************************
 %*****************************************
 %*****************************************

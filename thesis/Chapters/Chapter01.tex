@@ -2,18 +2,54 @@
 %************************************************
 \chapter{Introduction}\label{ch:introduction}
 %************************************************
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-[What How Why]
-Research question
-Summary of proposal
+% The introduction chapter should contain:
+% [What How Why]
+% Research question
+% Summary of proposal
 
-In this chapter, present some introduction from paper of Paul.
+% what is the general area you want to work in? why is it important?
+% what is the state of the art, what have people been doing so far (some references)?
+% why do you want to do something different and what? why is that new/cool/better/different/more elegant/more efficient/etc.?
+% what is the problem you want to solve? why does it solve the issues/problems? with the previous approaches/methods/solutions and how does it do that?
+% what is the methodology/steps that you want to use to approach the problem?
+% what is the plan for the timeframe of your project?
+
+% -> Explain something from psychological perspective
+% -> some highlights might come from paul's thesis?
+Sometimes, social density estimation is needed, especially in psychological monitoring of patients.
+
+Social density estimation, or sometimes referred as crowd counting, is the mechanism of estimating the number of people in certain area by means of a proxy, which could replace the manual counting method. Surveillance camera utilization is one of the method used, although it is limited by high deployment or computational cost. In recent years, some researches have proposed several method to estimate social density by means of RF signals, e.g., WiFi or Bluetooth, to get more low deployment or computational cost.
+
+Other than mentioned above, the social density estimation may come handy in life. It could help to achieve certain tasks in many fields, for instance, crowd surveillance~\cite{thesis050}, evacuation and rescue~\cite{thesis045}, retail store customer analysis, even infrastructure development and evaluation, or queue management~\cite{thesis012}.
+
+% -> introduction about probe request
+
+% -> explanation about mac address randomization
+
+
+Thus, the first research question is as follows:
+\begin{displayquote}\textit{
+Is there any correlation between number of unique devices and number of available Access Points in a certain area?}
+\end{displayquote}
+
+When the data is captured, several parameters are also used, such as location, time, duration, and so on. Here comes the second:
+\begin{displayquote}\textit{
+How do the parameters affect the correlation result?}
+\end{displayquote}
+
+As mentioned previously, MAC address randomization is one of the challenges of estimating nearby unique device using probe-request. The third research question is somewhat related to that:
+\begin{displayquote}\textit{
+Is there any method to overcome the MAC address randomization issue? Which affecting number of unique devices.}
+\end{displayquote}
+
+Furthermore, the validation using sound is also used and the last research question is asking about the effect of it.
+\begin{displayquote}\textit{
+How does validation using Voice Activity Detection help to achieve better result?}
+\end{displayquote}
+
+The rest of this thesis is structured as follows. Chapter \ref{ch:related-work} describes the related works, which are closely related to the social density estimation.
+
 
 %*****************************************
 %*****************************************
