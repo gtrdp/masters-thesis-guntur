@@ -290,7 +290,33 @@ September #5
 
 				Error -16 likely means your card was set back to station mode by something.
 
-				
+		- Complete error message:
+
+				Your kernel supports rfkill but you don't have rfkill installed.
+				To ensure devices are unblocked you must install rfkill.
+
+				Found 4 processes that could cause trouble.
+				If airodump-ng, aireplay-ng or airtun-ng stops working after
+				a short period of time, you may want to run 'airmon-ng check kill'
+
+				  PID Name
+				  387 dhcpcd
+				  393 avahi-daemon
+				  405 avahi-daemon
+				  469 wpa_supplicant
+
+				PHY	Interface	Driver		Chipset
+
+				phy0	wlan0		rt2800usb	Ralink Technology, Corp. RT5370
+
+				Failed to set wlan0mon up using ip
+
+				Error setting channel: command failed: Device or resource busy (-16)
+				Error -16 likely means your card was set back to station mode by something.
+				Removing non-monitor wlan0mon interface...
+
+				WARNING: unable to start monitor mode, please run "airmon-ng check kill"
+
 	- Learn how TCP Dump works.
 		- Study the structure of TCP dump logs.
 	- Read literature about counting crowd using microphone.
@@ -298,6 +324,7 @@ September #5
 	- Found the source code of Crowd++:
 		- https://github.com/lendlice/crowdpp
 		- https://github.com/gtrdp/crowdpp (forked)
+	- 
 
 - **Thu**
 	- Write a script to automate the experiment.
