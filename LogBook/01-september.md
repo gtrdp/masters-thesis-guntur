@@ -282,7 +282,24 @@ September #5
 	- Working on example VAD matlab code, got stuck in the directory (unable to read the files).
 	- Working on the thesis draft again.
 
-- **Wed**
+- **Wed Sep 28 08:53:39 CEST 2016**
+	- Preparing Raspberry Pi -> need DHCP enabled router and Internet connection: probably at home
+		- Setting up the Raspberry for remote connection.
+		- The monitoring mode using `tcpdump` or `iw dev` does not work, trying to switch to `aircrack-ng`.
+		- Unable to set the `wlan0` up, even when using `aircrack-ng`. According to `aircrack-ng` error possibly other process is causing this error.
+
+				Error -16 likely means your card was set back to station mode by something.
+
+				
 	- Learn how TCP Dump works.
 		- Study the structure of TCP dump logs.
 	- Read literature about counting crowd using microphone.
+	- Helping SME students (took some time).
+	- Found the source code of Crowd++:
+		- https://github.com/lendlice/crowdpp
+		- https://github.com/gtrdp/crowdpp (forked)
+
+- **Thu**
+	- Write a script to automate the experiment.
+		- Switching between counting APs and probe request
+		- Write the result to a log.
