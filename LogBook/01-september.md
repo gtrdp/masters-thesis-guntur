@@ -359,4 +359,18 @@ September #5
 		- The result far less in count compared with in Mac.
 
 - **Fri Sep 30 10:21:45 CEST 2016**
-	- 
+	- Setting up raspberry pi.
+		- Probably need a non-gui distro, as the gui might be using the wifi, thus causing troubles (resource not available).
+	- To scan for WiFi Accesspoint in Mac:
+		- Frist create link to bin folder:
+
+				sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
+
+		- Then run the command:
+
+				airport -s
+
+	- Create a script to automate the process.
+	- **Possible research** Use a time window to show the result. Different time window might have different result.
+	- Raspberry Pi not working with wifi. Even if using GUI, it does not work anymore. It used to work though.
+	
