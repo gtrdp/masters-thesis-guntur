@@ -23,8 +23,22 @@
 % - Better to use active voice, avoid passive voice as much as possible.
 % - Good conclusion brings an intro to the next chapter.
 
-% -> Explain something from psychological perspective
-The current method of questionnaire is sometimes biased, thus objective one is needed. That is where crowd counting comes.
+% ==============================================================================
+% How the intro should be
+% 1. explain about the conventional method of personal well being, which 
+%    has a problem in biased result, eg., are you always socializing? the person
+%    answer yes, in fact, he is not.
+%    also explain about socialization, the importance of social density
+%    if possible, cite prof. kas publication on social density
+% 2. here the objective social count comes in, as it can provide an objective
+%    measurement of social density. explain the approaches (including wifi, camera, etc)
+%    that have been proposed
+% 3. explain what it lacks of, such as it does not applicable to smartphone.
+% 4. explain where we try to come in. and more about randomization and VAD.
+
+% -> Explain something from psychological perspective.
+% -> better to use some psychological literature
+The current method of questionnaire is sometimes biased, thus objective one is needed. That is where crowd counting comes. Several works have addressed personal well-being applications to help this problem.
 
 % -> some highlights might come from paul's thesis?
 Sometimes, social density estimation is needed, especially in psychological monitoring of patients.
@@ -39,22 +53,27 @@ Other than mentioned above, the social density estimation may come handy in life
 
 % -> explanation about mac address randomization
 
+% -> summary of this work
 
-Thus, the first research question is as follows:
+% any relation of unique device and access point count?
+To uncover the relation between the number of unique devices and available access points, I formulated the first research question:
 \begin{displayquote}\textit{
 Is there any correlation between number of unique devices and number of available Access Points in a certain area?}
 \end{displayquote}
 
+% how do the parameters affect?
 When the data is captured, several parameters are also used, such as location, time, duration, and so on. Here comes the second:
 \begin{displayquote}\textit{
 How do the parameters affect the correlation result?}
 \end{displayquote}
 
+% how to resolve the randomization issue?
 As mentioned previously, MAC address randomization is one of the challenges of estimating nearby unique device using probe-request. The third research question is somewhat related to that:
 \begin{displayquote}\textit{
 Is there any method to overcome the MAC address randomization issue? Which affecting number of unique devices.}
 \end{displayquote}
 
+% is VAD useful?
 Furthermore, the validation using sound is also used and the last research question is asking about the effect of it.
 \begin{displayquote}\textit{
 How does validation using Voice Activity Detection help to achieve better result?}
