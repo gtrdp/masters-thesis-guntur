@@ -14,6 +14,8 @@
 In this chapter, several works that have been done with regard to estimating social density are presented. The approaches are also compared one another, focusing on the benefits, drawback, and challenges. The methods range from video monitoring, audio tone tracking, and RF signal sensing. Furthermore, more implementations of WiFi signal beyond crowd counting are also presented. In the end, a proposed work is portrayed, which is going to be the topic of this research.
 Some researches have been done with regard to estimating social density, especially more are focused on crowd density.
 
+Make sure to give conclusion in each section.
+
 \section{Video Based Crowd Counting} % (fold)
 \label{sec:video_based_crowd_counting}
 
@@ -42,7 +44,21 @@ Some researches have been done with regard to estimating social density, especia
 
 \section{Speaker Counting Method} % (fold)
 \label{sec:speaker_counting_method}
+The method of estimating social density is often referred as speaker counting. Speaker count estimates the number of people who participate in a conversation [cite].
+
 The authors also provide the source code for crowd detection\footnote{\url{https://github.com/lendlice/crowdpp}}
+
+Also explains about MFCC.
+
+The methods only work with speaker not more than 4, while in the real situation, the speaker would be more than just 4 people. Furthermore, the conversation is not a similar kind of telephony.
+
+This topic refers to speaker clustering topic.
+
+However, to the best of my knowledge, there is no optimal algorithm for counting number of people or speaker count. Thus, I implement different method of working.
+
+Mention about speaker count.
+
+Furthermore, no \textit{a priori} information of speakers available, making it impossible to apply this method.
 % section speaker_counting_method (end)
 
 Video processing has limitations such as weather conditions, illumination changes, limited viewing angle, and density and brightness problem. 
@@ -50,10 +66,6 @@ Video processing has limitations such as weather conditions, illumination change
 GSM location has an issue with privacy\cite{thesis017}.
 
 MAC is only a proxy since it does not infer directly to personal information, such as name or contact.
-
-
-
-Mention about speaker count.
 
 % wifi probe-request - main method================
 
