@@ -1,6 +1,7 @@
 \documentclass{article}
 % \usepackage{graphicx}
 \usepackage{url}
+\usepackage[inline]{enumitem}
 
 \begin{document}
 
@@ -72,7 +73,7 @@ The area is classified to:
 \end{itemize}
 
 \noindent\textbf{Note:}\\
-University complex will also be considered as it has medium to high crowd density but only (possibly) one available Access Point (\texttt{eduroam}). For each sensing, the experimenter records the GPS coordinates as well. All WiFi channels will be measured.
+University complex will also be considered as it has medium to high crowd density but only (possibly) one available Access Point (\texttt{eduroam}). For each sensing, the experimenter records the GPS coordinates as well. All WiFi channels will be measured. Furthermore, the experimenter will label each result with specific timestamp of the experiment.
 % subsubsection sensing_area (end)
 
 \subsubsection*{Duration of Sensing} % (fold)
@@ -98,16 +99,26 @@ This research is trying to find a way to overcome MAC address randomization in A
 
 \section{Data Analysis} % (fold)
 \label{sec:data_processing_and_analysis}
-The experimenter must carries out data analysis once the log seems adequate.
+The experimenter must carry out data analysis once the log seems to be adequate.
 
 \subsection{Data Preprocessing} % (fold)
 \label{sub:data_preprocessing}
-The log will be filtered from unidentified MAC addressed based on Organizationally Unique Identifier (OUI)\footnote{\url{https://en.wikipedia.org/wiki/Organizationally_unique_identifier}}. Data preprocessing also involves duplicates removal.
+The log will be filtered out from unidentified MAC addressed based on Organizationally Unique Identifier (OUI)\footnote{\url{https://en.wikipedia.org/wiki/Organizationally_unique_identifier}}. Data preprocessing also involves duplicates removal.\\
+
+\noindent
+\textbf{Note:}\\
+Please also take care of the removed MAC address, as it may have useful information.
 % subsection data_preprocessing (end)
 
 \subsection{Voice Activity Detection} % (fold)
 \label{sub:voice_activity_detection}
 In this analysis, we use library from~\cite{thesis070,thesis067}, which is available online. The voice activity is classified in several level (dB). The data is also filter out based on RSSI [citation]. To filter the data, i.e., to remove laptops or other device, use known MAC address filter.
+
+The best way to make use of VAD is to test available libraries and check whether it matches with the ground truth the most. In this scenario, the experimenter uses two available libraries:
+	\begin{enumerate*}[label={\alph*)}]
+		\item robust VAD\footnote{\url{https://github.com/mvansegbroeck/vad}} and 
+		\item Crowd++\footnote{\url{https://github.com/lendlice/crowdpp}}.
+	\end{enumerate*}
 % subsection voice_activity_detection (end)
 
 \subsection{Data Visualization} % (fold)
@@ -117,6 +128,10 @@ Some graph are intended:
 	\item give graph of MAC address manufacturer.
 	\item comparison between devices (Laptop, smartphone, etc).
 	\item number of scanned probe per device.
+	\item number of people entering and leaving the area.
+	\item time vs count of unique devices
+	\item time vs count of access points
+	\item unique devices vs access points
 \end{itemize}
 % subsection data_visualization (end)
 We are also taking into account people going in and out from the scanned area.

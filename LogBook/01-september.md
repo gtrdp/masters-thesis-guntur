@@ -186,6 +186,7 @@ September #4
 		- `objective social density wifi bluetooth`
 		- `social density data`
 		- `social density objective`
+		- `speaker count` -> filtered by year, >2012
 	- creating summary table
 	- `[MAC Randomization]` Chekc whether the randomized MAC address is locally administered address: https://en.wikipedia.org/wiki/MAC_address
 	- Example of dedidated WiFi scanning device:
@@ -324,9 +325,38 @@ September #5
 	- Found the source code of Crowd++:
 		- https://github.com/lendlice/crowdpp
 		- https://github.com/gtrdp/crowdpp (forked)
-	- 
 
-- **Thu**
+- **Thu Sep 29 09:35:53 CEST 2016**
 	- Write a script to automate the experiment.
 		- Switching between counting APs and probe request
 		- Write the result to a log.
+	- Reviewing speaker count papers: 069, 067, 071, 072, 073, 075, 074
+	- **Thesis writing notes**:
+		- In each chapter, write intro and conclusion explicitly. Preferably a paragraph for each.
+		- Good intro is:
+			- linking to prev. chapter (explicitly)
+			- explaining the aim of this chapter.
+			- explaining how to achieve the aim.
+		- Better to use active voice, avoid passive voice as much as possible.
+		- Good conclusion brings an intro to the next chapter.
+	- Some method to capture packets:
+		- Using `tcpdump` to save to `.pcap` file. Then converting it to `.txt` file.
+		- Using `tcpdump` and save the output directly to `.txt` file.
+	- Looking for a method to scan available AP.
+	- Testing robust VAD again.
+		- Successfully make the matlab program works.
+		- `mvansegbroeck/vad` requires `wav` input, which tends to be very big.
+		- Problem:
+			- how if the audio duration is so long
+			- how to refactor the graph to fit with the requirement graph.
+	- Still figuring out how to run the `crowdpp` app. The `.apk` file is found however, possibly can install that.
+	- Unable to run the `monitor mode` on raspberry with Tenda WiFi dongle. Possibly because the chipset is not supported.
+		- Probably should buy another WiFi dongle (with antenna preferably).
+	- Trying to install tenda in MacBook.
+		- Couldn't find a driver for Mac.
+		- Trying using virtual device.
+	- Successfully ran `monitoring mode` in macbook, in Linux (virtual), using `aircrack-ng`
+		- The result far less in count compared with in Mac.
+
+- **Fri Sep 30 10:21:45 CEST 2016**
+	- 
