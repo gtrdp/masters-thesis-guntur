@@ -375,4 +375,18 @@ September #5
 	- **Possible research** Use a time window to show the result. Different time window might have different result.
 	- Raspberry Pi not working with wifi. Even if using GUI, it does not work anymore. It used to work though.
 	- Tried to write something for thesis.
-	
+	- **Possible Research** Try to do the experiment in bus.
+
+- **Sat Oct  1 18:16:35 CEST 2016**
+	- Ran data collection at for around 30-50 mins:
+		- IKEA
+		- Kang Fajar's house
+		- Grotemarkt
+	- Learning which is better for data analysis.
+		- Decided to use python because:
+			- Python is good for developer, and I'm a developer.
+			- Python code is extendable and implementable to production environment, while R is not (it is intended to run in a single computer).
+			- Python has a broad library for data science and machine learning, which I may probably need in the future.
+		- Why not R:
+			- R has a steep learning curve especially for developer, so I must be able to learn that very easily.
+		- Good comparison: https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis

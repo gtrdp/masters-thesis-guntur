@@ -37,7 +37,7 @@ while true; do
 	tcpdump -In -i en0 -e -s 256 type mgt subtype probe-req >> $file_name & 
 
 	# wait for scan_duration
-	sleep 60
+	sleep 600 # every 10 minutes (600 sec)
 	# kill the previous process
 	echo ""
 	echo "Killing the capturing process..."
