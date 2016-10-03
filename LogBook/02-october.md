@@ -11,3 +11,26 @@ LogBook
 - [December](https://github.com/gtrdp/masters-thesis-guntur/blob/master/LogBook/04-december.md)
 - [January](https://github.com/gtrdp/masters-thesis-guntur/blob/master/LogBook/05-january.md)
 - [February](https://github.com/gtrdp/masters-thesis-guntur/blob/master/LogBook/06-february.md)
+
+October #1
+----------
+- **Mon Oct  3 11:00:43 CEST 2016**
+	- Try to analyze the data: doing preprocessing.
+		- Installing `SciPy`: http://www.lowindata.com/2013/installing-scientific-python-on-mac-os-x/
+		- use `pip install --user` to install the packages as current user.
+		- Good site to test regex: https://regex101.com/
+	- Tried to run the VAD on matlab, but got a problem on `sp2max` as it must be compiled from `c` source code.
+	- Fix the experimental setup according to doable scenario.
+
+
+October #2
+----------
+- **Fri**
+	- Meeting with Prof Aiello and Prof Kas.
+		- Prepare the schedule for the next meeting.
+
+October #3
+----------
+
+October #4
+----------

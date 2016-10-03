@@ -195,3 +195,6 @@ TSWLatexianTemp*
 
 # For Mac Finder
 .DS_Store
+
+# do not track experiment data
+script/data/
