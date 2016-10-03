@@ -31,7 +31,7 @@ while true; do
 	echo "===============Loop: "$loop"==============="
 	# capture probe request packets in background
 	# prepare the file name
-	file_name=$location_name-probe-request-$(date +%Y-%m-%d-%H.%M).txt
+	file_name=$location_name-pr-$(date +%Y%m%d-%H.%M).txt
 	echo ""
 	echo "Capturing WiFi probe-request packets..."
 	tcpdump -In -i en0 -e -s 256 type mgt subtype probe-req >> $file_name & 
@@ -45,7 +45,7 @@ while true; do
 
 	# logging available accesspoint
 	# prepare the file name
-	file_name=$location_name-access-point-$(date +%Y-%m-%d-%H.%M).txt
+	file_name=$location_name-ap-$(date +%Y%m%d-%H.%M).txt
 	echo ""
 	echo "Logging available Access Point..."
 	airport -s >> $file_name

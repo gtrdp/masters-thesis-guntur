@@ -390,3 +390,6 @@ September #5
 		- Why not R:
 			- R has a steep learning curve especially for developer, so I must be able to learn that very easily.
 		- Good comparison: https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis
+
+- **Sun Oct  2 13:58:42 CEST 2016**
+	- Try to write something in the thesis
