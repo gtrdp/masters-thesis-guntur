@@ -34,6 +34,8 @@ The experimental setup is divided into two sections: WiFi sensing and MAC addres
 \label{sub:wifi_sensing}
 The objective of WiFi sensing is to capture WiFi probe-request packets and scan and count available Access Point. The device will capture probe-request packets for 12 minutes, and then 3 minutes for scanning available WiFi access point. This cycle is repeated accordingly, depending on the scanning duration. As a validation, Voice Activity Detection (VAD) technique is also implemented. The process is automated using a bash script.
 
+This method senses the surrounding within WiFi range [citation].
+
 \subsubsection*{Sensing setup} % (fold)
 The experimenter captures the probe-request packets, scan available Access Point, and detect for voice activity level. Several setups are as follows:
 
@@ -108,6 +110,7 @@ The log will be filtered out from unidentified MAC addressed based on Organizati
 \noindent
 \textbf{Note:}\\
 Please also take care of the removed MAC address, as it may have useful information.
+Also mention how to handle passing by people, indicated by insufficient count of MAC address.
 % subsection data_preprocessing (end)
 
 \subsection{Voice Activity Detection} % (fold)
@@ -141,6 +144,17 @@ We are also taking into account people going in and out from the scanned area. T
 % - Explain about machine learning (possible future work)
 
 % section data_processing_and_analysis (end)
+
+\section{Result} % (fold)
+\label{sec:result}
+Show line graph.
+
+Show scatter graph of all.
+
+Show the graph before and after removal.
+
+Here, take into account people who only pass by, i.e., do not stay sufficiently.
+% section result (end)
 
 \bibliography{bibliography}{}
 \bibliographystyle{unsrt}

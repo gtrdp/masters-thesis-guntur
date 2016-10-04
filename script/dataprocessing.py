@@ -9,20 +9,16 @@ from collections import Counter
 from itertools import chain
 import pprint
 
-# plt.plot([1,2,3,4], [1,4,9,16])
-# plt.axis([0, 6, 0, 20])
-# plt.show()
-
 access_point = dict()
 probe_request = dict()
 
 # the access point file
 # split the columns using regex
 for filename in os.listdir("data/"):
-    if len(filename.split("-")) == 4:
-    	# print filename
-    	(location, scan_type, scan_date, scan_time) = filename.split("-")
-    	if scan_type == "ap" :
+	if len(filename.split("-")) == 4:
+		# print filename
+		(location, scan_type, scan_date, scan_time) = filename.split("-")
+		if scan_type == "ap" :
     		# access point
 			foo = []
 			scan_time = scan_time[:-4]
@@ -59,17 +55,66 @@ for filename in os.listdir("data/"):
 				access_point[location]['timely'].append(len(foo))
 
 			# print d
+		elif scan_type == "pr": # probe request log
+			foo = dict()
+			
+			scan_time = scan_time[:-4]
+
+			with open("data/" + filename) as f:
+			    for line in f:
+					macaddr = ""
+					regex = r'SA:[a-z|0-9]{2}:[a-z|0-9]{2}:[a-z|0-9]{2}:[a-z|0-9]{2}:[a-z|0-9]{2}:[a-z|0-9]{2}'
+					
+					# get the macaddr
+					matches = re.search(regex, line)
+					if matches:
+						macaddr = matches.group()
+
+					# append that to the dictionary
+					if macaddr:
+						if macaddr not in foo:
+							foo[macaddr] = 1
+						else:
+							foo[macaddr] = foo[macaddr] + 1
+			
+			# remove insignificant mac address
+			for row in list(foo) :
+				if foo[row] < 10:
+					foo.pop(row, None)
+
+			if location not in probe_request:
+				# new record
+				probe_request[location] = {'total': foo, 'timely': [len(foo)]}
+			else:
+				probe_request[location]['total'] = foo
+				probe_request[location]['timely'].append(len(foo))
+
+		# end if
 
 # show up the result
 pp = pprint.PrettyPrinter(indent=4)
 for location in access_point:
 	print location
 	pp.pprint(access_point[location]['timely'])
-	
-	plt.plot(access_point[location]['timely'])
-	# plt.axis([0, 6, 0, 20])
-	
-plt.show()
-# the probe request file
+	pp.pprint(probe_request[location]['timely'])
 
-# from the dictionary, generate the graph
+	plt.plot(access_point[location]['timely'])
+	plt.plot(probe_request[location]['timely'])
+	plt.axis([0, 3, 0, max(probe_request[location]['timely'])+10])
+	plt.show()
+
+# All result
+# grotemarkt
+# [27, 30, 25, 28]
+# [1263, 1404, 2679, 3951]
+# ikea
+# [48, 53, 52, 49]
+# [823, 928, 1567, 2098]
+
+# After removal
+# grotemarkt
+# [27, 30, 25, 28]
+# [39, 45, 64, 102]
+# ikea
+# [48, 53, 52, 49]
+# [229, 238, 363, 455]
