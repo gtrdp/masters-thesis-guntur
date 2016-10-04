@@ -2,12 +2,16 @@
 # Data preprocessing script for wifi probe-request and access point
 # These following packages are required:
 # - scipy
+# 
+# TODO
+# - Filter using OUI
 
 import matplotlib.pyplot as plt
 import re, os
 from collections import Counter
 from itertools import chain
 import pprint
+from matplotlib.backends.backend_pdf import PdfPages
 
 access_point = dict()
 probe_request = dict()
@@ -78,9 +82,9 @@ for filename in os.listdir("data/"):
 							foo[macaddr] = foo[macaddr] + 1
 			
 			# remove insignificant mac address
-			for row in list(foo) :
-				if foo[row] < 10:
-					foo.pop(row, None)
+			# for row in list(foo) :
+			# 	if foo[row] < 10:
+			# 		foo.pop(row, None)
 
 			if location not in probe_request:
 				# new record
@@ -98,10 +102,25 @@ for location in access_point:
 	pp.pprint(access_point[location]['timely'])
 	pp.pprint(probe_request[location]['timely'])
 
-	plt.plot(access_point[location]['timely'])
-	plt.plot(probe_request[location]['timely'])
-	plt.axis([0, 3, 0, max(probe_request[location]['timely'])+10])
-	plt.show()
+	plt.figure()
+	plt.plot(access_point[location]['timely'], label='Access Point count')
+	plt.plot(probe_request[location]['timely'], label='Unique devices')
+	plt.axis([0, 3.2, 0, max(probe_request[location]['timely'])+10])
+	plt.xlabel('Measurement')
+	plt.ylabel('Number of MAC address')
+	plt.title(location)
+	# annotate the points
+	for idx, value in enumerate(access_point[location]['timely']):
+		plt.annotate(str(value), xy=(idx,value))
+	for idx, value in enumerate(probe_request[location]['timely']):
+		plt.annotate(str(value), xy=(idx,value))
+	lgd = plt.legend(bbox_to_anchor=(1, 1), loc='upper left', ncol=1)
+    
+    # plt.xticks(1)
+	pdfgraph = PdfPages(location + '-before.pdf')
+	pdfgraph.savefig(plt.gcf())
+	pdfgraph.close()
+	# plt.show()
 
 # All result
 # grotemarkt

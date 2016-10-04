@@ -27,11 +27,17 @@ October #1
 	- Continue working on data processing.
 		- Finally got the working code.
 
+- **Wed**
+	- Call Niels.
+		- Turns out that multiple APs are using the same `eduroam` as their SSID, however, they have different MAC addresses.
+		- Is it possible for android to distinguish between APs with same SSID?
+
 October #2
 ----------
 - **Fri**
 	- Meeting with Prof Aiello and Prof Kas.
 		- Prepare the schedule for the next meeting.
+		- Possible ground truth is official document from stakeholders.
 	- Listing the lecturers for email.
 
 
