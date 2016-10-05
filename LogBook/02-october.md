@@ -23,14 +23,39 @@ October #1
 
 - **Tue Oct  4 10:28:45 CEST 2016**
 	- Fix the experimental setup according to doable scenario.
-	- Probably change the scanning period to 5 minutes.
+	- **Possible research** Probably change the scanning period to 5 minutes.
 	- Continue working on data processing.
 		- Finally got the working code.
 
-- **Wed**
-	- Call Niels.
+- **Wed Oct  5 10:00:37 CEST 2016**
+	- Call Niels:
 		- Turns out that multiple APs are using the same `eduroam` as their SSID, however, they have different MAC addresses.
 		- Is it possible for android to distinguish between APs with same SSID?
+			- Possible, using `getBSSID()` method: https://developer.android.com/reference/android/net/wifi/WifiInfo.html#getBSSID%28%29
+		- **Possible discussion** does weather affect wifi connection?
+		- experiment with randomization period, as mentioned in the paper. This is important to get the optimal scanning period of WiFi.
+		- Define the appropriate scanning time and place.
+	- Look for a WiFi dongle that support monitor mode.
+		- Built in RasPi 3 WiFi does not support monitor mode: https://www.reddit.com/r/raspberry_pi/comments/4ah4oi/psa_the_raspberry_pi_3s_embedded_wifi_card_does/
+		- `RTL8188EU` does not work on monitoring mode: http://raspberrypi.stackexchange.com/questions/8578/enable-monitor-mode-in-rtl8188cus-realtek-wifi-usb-dongle
+		- **ordered** This might be an option, although it has the same chipset with tenda micro: http://www.ebay.com/itm/150M-USB-WiFi-Wireless-Adapter-LAN-w-Antenna-Raspberry-Pi-2-B-ralink-rt5370Chip-/261561868698?hash=item3ce64d619a:g:hTMAAOxyP4dTdiDR
+	- **Learn** how to get the data from the VAD. As it draws an image, it should give a clear data.
+	- Learning and Getting the `crowdpp` code to work.
+		- Highlight: line `391` the `AsyncTask` for crowd counting.
+		- Highlight: line `252` when the event of recording start.
+		- What to get: feature extraction using MFCC and YIN; counting people using the unsupervised algorithm.
+
+- **Thu**
+	- Working on Crowd++.
+
+- **Fri**
+	- Revising thesis
+
+- **Sat**
+	- Experiment.
+
+- **Sun**
+	- Deadline Chapter 2.
 
 October #2
 ----------
