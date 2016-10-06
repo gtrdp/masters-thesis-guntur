@@ -1,0 +1,26 @@
+                            SSID BSSID             RSSI CHANNEL HT CC SECURITY (auth/unicast/group)
+                           Ziggo 6c:aa:b3:27:72:ac -86  140     Y  NL WPA2(802.1x/AES/AES) 
+                           Ziggo 6c:aa:b3:26:af:bc -88  140     Y  NL WPA2(802.1x/AES/AES) 
+                   island-26AFB0 6c:aa:b3:66:af:b7 -88  140     Y  NL WPA2(PSK/AES/AES) 
+                   Ziggo22211-5G 0c:54:a5:b8:25:e8 -83  136,-1  Y  -- WPA2(PSK/AES/AES) 
+                         eduroam c4:10:8a:60:d4:7c -82  132,+1  Y  NL WPA2(802.1x/AES/AES) 
+             Draadloos Groningen c4:10:8a:20:d4:7c -82  132,+1  Y  NL NONE
+                           Ziggo 6c:aa:b3:26:af:0c -90  116,+1  Y  NL WPA2(802.1x/AES/AES) 
+                   Ziggo6D637-5G 70:18:8b:56:90:9b -88  112,-1  Y  -- WPA2(PSK/AES/AES) 
+                         OneTeam e2:55:6d:20:30:96 -85  108,+1  Y  NL WPA2(PSK/AES/AES) 
+               WEEKDAY Free WiFi e2:55:6d:20:30:92 -85  108,+1  Y  NL NONE
+                      Ziggo52756 7c:05:07:cd:ce:88 -84  11      Y  -- WPA2(PSK/AES/AES) 
+                          BS-LOG 84:b8:02:ac:94:28 -77  11      Y  DE WPA2(PSK/AES/AES) 
+                   GroningenInfo 80:2a:a8:1a:25:1c -75  11      Y  -- WPA2(PSK/AES/AES) 
+                         eduroam c4:10:8a:60:d4:78 -75  9       Y  -- WPA2(802.1x/AES/AES) 
+             Draadloos Groningen c4:10:8a:20:d4:78 -75  9       Y  -- NONE
+                           Ziggo 72:18:8b:4e:71:21 -75  4       Y  -- WPA2(802.1x/AES/AES) 
+                      Ziggo6D637 70:18:8b:4e:71:20 -71  4       Y  -- WPA2(PSK/AES/AES) 
+                             HCG 68:72:51:1a:83:fb -52  2       Y  -- WPA2(PSK/AES/AES) 
+                  Indietpia 5ghz e0:3f:49:08:a6:a4 -91  44,+1   Y  EU WPA2(PSK/AES/AES) 
+                   gemgron_guest 3c:ce:73:49:a3:fe -75  44      Y  NL NONE
+                    GemGron_Open 3c:ce:73:49:a3:fd -75  44      N  NL WPA2(PSK/AES/AES) 
+                           oonet 3c:ce:73:49:a3:ff -75  44      N  NL WPA2(PSK/AES/AES) 
+                           oonet ec:c8:82:43:0f:af -85  36      N  NL WPA2(PSK/AES/AES) 
+                         eduroam c0:8a:de:77:35:8c -67  104     Y  NL WPA2(802.1x/AES/AES) 
+             Draadloos Groningen c0:8a:de:37:35:8c -66  104     Y  NL NONE
