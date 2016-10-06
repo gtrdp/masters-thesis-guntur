@@ -2,134 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f39238b-7771-4722-bfac-8c875e4e0829" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/hmm/Alignment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/exceptions/AlignmentException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/util/Arithmetics.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/AudioBuffer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/AudioCapture.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/AudioFileListReader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/AudioFileReader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/rutgers/winlab/crowdpp/audio/AudioFloatConverter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/rutgers/winlab/crowdpp/audio/AudioFloatInputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/AudioPlay.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/AudioSource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/AutoCorrelation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/BufferedFrameSource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/BufferedFrameSourceReader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/hmm/CState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/ChunkedDataSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/ChunkedTranscribedData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/exceptions/CodebookException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/ConstantGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/rutgers/winlab/crowdpp/util/Constants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/app/Convert.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/DCShiftRemover.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/DCT.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/DHT.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/hmm/DState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/exceptions/DataSetException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/Density.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/DensityDiagonal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/DensityFull.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/util/Distances.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/rutgers/winlab/crowdpp/util/Distances.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/DistributionTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/EnergyDetector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/exceptions/EvaluationException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/F0.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/FFT.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/FastACF.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/rutgers/winlab/crowdpp/util/FileProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/FilterBank.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/Formants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/FrameDestination.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/FrameInputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/FrameOutputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/FrameReader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/FrameSource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/FrameWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/app/GaussEM.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/HammingWindow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/HannWindow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/hmm/Hmm.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/IOUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/Initialization.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/app/Initializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/exceptions/InvalidFormatException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/trans/LDA.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/LPCSpectrum.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/LabelFrameInputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/util/LabelTranslator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/exceptions/LanguageModelException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/rutgers/winlab/crowdpp/audio/MFCC.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/app/MNAP.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/MVN.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/exceptions/MalformedParameterStringException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/app/Map.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/rutgers/winlab/crowdpp/util/Maths.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/app/Mfcc.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/MixerDescription.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/MixerUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/Mixture.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/MleDensityAccumulator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/MleMixtureAccumulator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/MmieAccumulator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/trans/NAP.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/exceptions/OutOfVocabularyException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/trans/PCA.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/util/Pair.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/ParallelEM.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/ParallelML.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/trans/Projection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/RawAudioFormat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/RawCapturer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/RawPlayer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/RectangularWindow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/hmm/SCState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/Sample.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/SampleDestination.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/SampleInputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/SampleOutputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/SampleReader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/SampleSource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/io/SampleWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/Samples.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/Segmenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/Selection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/ShiftedDeltaCoefficients.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/SimpleACF.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/SimulatedFrameSource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/SineGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/Slope.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/trans/SparseDataPCA.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/rutgers/winlab/crowdpp/audio/SpeakerCount.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/SpectralTransformation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/SpeexFileReader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/hmm/State.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/Synthesizer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/TeeInputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/TeeOutputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/ThreadedPlayer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/ThreadedRecorder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/stat/Trainer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/exceptions/TrainingException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/Traps.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/TriangularWindow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/VUVDetection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/VUVSmoothing.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/sampled/WaveFileWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/fau/cs/jstk/framed/Window.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/rutgers/winlab/crowdpp/audio/Yin.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/log4j_log4j_1_2_17.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_ejml_all_0_29.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/speakercount/id/guntur/Main.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.gitignore" afterPath="$PROJECT_DIR$/../../.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../LogBook/02-october.md" afterPath="$PROJECT_DIR$/../../LogBook/02-october.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/id/guntur/Main.java" afterPath="$PROJECT_DIR$/src/id/guntur/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../README.md" afterPath="$PROJECT_DIR$/../../README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speakercount.iml" afterPath="$PROJECT_DIR$/speakercount.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.txt" afterPath="$PROJECT_DIR$/log.txt" />
     </list>
     <ignored path="speakercount.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -154,8 +28,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/id/guntur/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.136">
-              <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.48">
+              <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -636,7 +510,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23919754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3295688" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295688" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -922,8 +796,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/id/guntur/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.136">
-          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.48">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

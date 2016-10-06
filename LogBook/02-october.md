@@ -57,6 +57,28 @@ October #1
 		- Most time spent on debugging the code.
 		- Crowdpp also uses YIN pitch tracking algorithm: http://recherche.ircam.fr/equipes/pcm/cheveign/ps/2002_JASA_YIN_proof.pdf
 		- Finally got the code to work, bug found in file format and feature extraction (delete the feature after completed, otherwise the next process will append it which will cause Exception)
+		- Result on IKEA (the audio must be converted to wav first), which may be wrong (no ground truth available):
+			```
+			SpeakerCountTask: Finish YIN
+			MFCC: audio/ikea.wav.mfcc.bin audio/ikea.wav.jstk.mfcc.txt
+			SpeakerCountTask: Finish MFCC
+			Speaker count: 2376
+			```
+		- Result on Grotemarkt:
+			```
+			SpeakerCountTask: Finish YIN
+			MFCC: audio/grotemarkt.wav.mfcc.bin audio/grotemarkt.wav.jstk.mfcc.txt
+			SpeakerCountTask: Finish MFCC
+			Speaker count: 1702
+			```
+
+	- **Argument**: picture based ground truth has a problem in very dymanic places, e.g., grotemarkt.
+	- Found SoX, an audio recorder (and even more) for sound recording: http://sox.sourceforge.net/sox.html
+		- To record an 5 minutes wav (32 bit PCM) audio (better to down sample the quality, e.g., 16 bit PCM):
+		```
+		sox -d coba.wav trim 0 05:00
+		```
+	- **For Presentation** Explain that scanning AP and probe request is impossible to be carried out simultaneously, due to the different WiFi mode.
 
 - **Fri**
 	- Revising thesis
@@ -69,6 +91,11 @@ October #1
 
 October #2
 ----------
+- **Wed**
+	- Call Niels.
+		- Explain about machine learning (with 3 features) approach.
+		- Make presentation, that will also be presented on Friday.
+		
 - **Fri**
 	- Meeting with Prof Aiello and Prof Kas.
 		- Prepare the schedule for the next meeting.
