@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="org.ejml:all:0.29" type="repository">
+    <properties maven-id="org.ejml:all:0.29" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/ejml/all/0.29/all-0.29.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/ejml/equation/0.29/equation-0.29.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/ejml/core/0.29/core-0.29.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/ejml/dense64/0.29/dense64-0.29.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/ejml/simple/0.29/simple-0.29.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/ejml/denseC64/0.29/denseC64-0.29.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

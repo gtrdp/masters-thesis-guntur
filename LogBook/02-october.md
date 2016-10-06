@@ -51,6 +51,12 @@ October #1
 - **Thu Oct  6 11:03:23 CEST 2016**
 	- Working on Crowd++.
 		- Using the code from the original version.
+		- Remove unrelated code block, such as the relation with smartphone things: battery, calibration (because we do not use semisupervised learning based on the owner voice) etc.
+		- The code also uses Java Speech Toolkit (JSTK) from Speech Group at Informatik 5, Univ. Erlangen-Nuremberg, GERMANY.
+			- https://github.com/sikoried/jstk
+		- Most time spent on debugging the code.
+		- Crowdpp also uses YIN pitch tracking algorithm: http://recherche.ircam.fr/equipes/pcm/cheveign/ps/2002_JASA_YIN_proof.pdf
+		- Finally got the code to work, bug found in file format and feature extraction (delete the feature after completed, otherwise the next process will append it which will cause Exception)
 
 - **Fri**
 	- Revising thesis

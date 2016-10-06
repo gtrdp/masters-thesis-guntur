@@ -7,3 +7,9 @@ Master's Thesis of MSc Computing Science at the University of Groningen by Guntu
 - Daily Supervisor: Niels Jongs
 - Duration: September - January 2016
 - Location: The University of Groningen, the Netherlands.
+
+## contribution
+- Thesis: 25%
+- Technical contributions: 20%
+- Presentation: 15%
+- Scientific contribution: 25%
