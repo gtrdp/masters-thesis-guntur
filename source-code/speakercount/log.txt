@@ -1,0 +1,2 @@
+audio/2.wav	speaker count:	23	speach percentage:	-1.0
+audio/1.wav	speaker count:	10	speach percentage:	-1.0
