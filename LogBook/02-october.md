@@ -44,15 +44,19 @@ October #1
 		- Highlight: line `391` the `AsyncTask` for crowd counting.
 		- Highlight: line `252` when the event of recording start.
 		- What to get: feature extraction using MFCC and YIN; counting people using the unsupervised algorithm.
+	- **Important** IEEE public list of OUI: https://regauth.standards.ieee.org/standards-ra-web/pub/view.html#registries
+	- **Important** It is not possible to infer the device type from mac address, but only the manufacturer:
+		- https://www.experts-exchange.com/questions/23644286/How-to-determine-if-possible-the-device-type-by-MAC-address.html#answer22221053
 
-- **Thu**
+- **Thu Oct  6 11:03:23 CEST 2016**
 	- Working on Crowd++.
+		- Using the code from the original version.
 
 - **Fri**
 	- Revising thesis
 
 - **Sat**
-	- Experiment.
+	- Experiment for both social density and mac address randomization.
 
 - **Sun**
 	- Deadline Chapter 2.
