@@ -80,8 +80,10 @@ October #1
 		```
 	- **For Presentation** Explain that scanning AP and probe request is impossible to be carried out simultaneously, due to the different WiFi mode.
 
-- **Fri**
-	- Revising thesis
+- **Fri Oct  7 10:02:12 CEST 2016**
+	- [ ] Revising thesis.
+	- [ ] Fixing the code for saturday experiment.
+	- [ ] Looking for bluetooth in terminal.
 
 - **Sat**
 	- Experiment for both social density and mac address randomization.
@@ -95,7 +97,7 @@ October #2
 	- Call Niels.
 		- Explain about machine learning (with 3 features) approach.
 		- Make presentation, that will also be presented on Friday.
-		
+
 - **Fri**
 	- Meeting with Prof Aiello and Prof Kas.
 		- Prepare the schedule for the next meeting.
