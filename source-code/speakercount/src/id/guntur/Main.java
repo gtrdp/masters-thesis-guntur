@@ -22,7 +22,7 @@ public class Main {
 
         // Get the wav file
 //        String filename = FileProcess.newFileOnTime("wav");
-        String filename = "audio/grotemarkt.wav";
+        String filename = "audio/1.wav";
 
         // extract the feature
         try {
