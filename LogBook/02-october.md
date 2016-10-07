@@ -81,9 +81,26 @@ October #1
 	- **For Presentation** Explain that scanning AP and probe request is impossible to be carried out simultaneously, due to the different WiFi mode.
 
 - **Fri Oct  7 10:02:12 CEST 2016**
-	- [ ] Revising thesis.
-	- [ ] Fixing the code for saturday experiment.
-	- [ ] Looking for bluetooth in terminal.
+	- [x] Revising thesis.
+	- [x] Fixing the code for saturday experiment.
+	- [x] Looking for bluetooth in terminal: it seems impossible as no solution found.
+		- Better to do that in phone, and log the result.
+		- using swift: http://stackoverflow.com/questions/24321126/get-bluetooth-devices-in-range-with-swift
+		- could not find a reliable solution for mac os.
+	- [ ] Helping to fix the SME problem.
+	- Look for how to build matlab code to be executable.
+	- For a very dense crowd, look for an event.
+	- **Research** possible problem: moving people, because it is simply hard to track.
+		- **Focus** Possibly one place at different time, say grote markt, IKEA, campus.
+			- Padeppoel: http://www.inwinkelcentra.nl/winkelcentrum-paddepoel/
+			- Grote markt: https://gemeente.groningen.nl/sites/default/files/16-evenementenprofiel-grote-markt-br-a4-cw-maart.pdf
+			- Grote markt: https://www.rug.nl/staff/p.h.pellenbarg/voordrachten/19._groningen_en_de_grote_markt_haalbaarheid_en_kwaliteit.pdf
+			- Vismarkt: https://gemeente.groningen.nl/sites/default/files/16-evenementenprofiel-vismarkt-br-a4-rh-0104.pdf
+			- IKEA (see page 7 and 9) http://www.ruimtelijkeplannen.nl/documents/NL.IMRO.0848.BP701ekkersrijt-OH01/tb_NL.IMRO.0848.BP701ekkersrijt-OH01_02.pdf
+			- P.S. the above documents have also been saved locally for backup if the link broke.
+	- Trying other VAD libraries.
+		- https://pypi.python.org/pypi/webrtcvad
+		- The `crowdpp` does not seem to be really accurate.
 
 - **Sat**
 	- Experiment for both social density and mac address randomization.
@@ -93,15 +110,24 @@ October #1
 
 October #2
 ----------
+- **Mon**
+	- Prepare the presentation for friday.
+	- Email Niels.
+
+- **Tue**
+	- 
 - **Wed**
 	- Call Niels.
 		- Explain about machine learning (with 3 features) approach.
 		- Make presentation, that will also be presented on Friday.
+		- Does behapp also scan for BLE device? or only classic bluetooth?
+		- How big is the required N?
 
 - **Fri**
 	- Meeting with Prof Aiello and Prof Kas.
 		- Prepare the schedule for the next meeting.
 		- Possible ground truth is official document from stakeholders.
+		- How big is the required N?
 	- Listing the lecturers for email.
 
 

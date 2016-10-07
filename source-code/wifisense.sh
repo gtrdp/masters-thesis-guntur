@@ -27,25 +27,37 @@ fi
 loop=1
 # main loop
 while true; do
+	current_date=$(date +%Y%m%d-%H.%M)
 	echo ""
-	echo "===============Loop: "$loop"==============="
+	echo "===============Loop: "$loop" - "$current_date" ==============="
 	# capture probe request packets in background
 	# prepare the file name
-	file_name=$location_name-pr-$(date +%Y%m%d-%H.%M).txt
+	file_name=$location_name-pr-$current_date.txt
 	echo ""
 	echo "Capturing WiFi probe-request packets..."
 	tcpdump -In -i en0 -e -s 256 type mgt subtype probe-req >> $file_name & 
 
+	# start recording the sound
+	echo ""
+	echo "Recording wav audio..."
+	audio_name=$location_name-au-$current_date.wav
+	# run SoX
+	sox -dq -b 8 -r 8000 $audio_name & 
+
 	# wait for scan_duration
-	sleep 600 # every 10 minutes (600 sec)
+	sleep 300 # every 5 minutes (300 sec)
 	# kill the previous process
 	echo ""
 	echo "Killing the capturing process..."
 	killall tcpdump inotifywait
 
+	echo ""
+	echo "Killing the sound recording process..."
+	killall sox inotifywait
+
 	# logging available accesspoint
 	# prepare the file name
-	file_name=$location_name-ap-$(date +%Y%m%d-%H.%M).txt
+	file_name=$location_name-ap-$current_date.txt
 	echo ""
 	echo "Logging available Access Point..."
 	airport -s >> $file_name

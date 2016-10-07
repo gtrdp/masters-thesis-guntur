@@ -95,10 +95,53 @@ public class Constants {
 
         // the value are derived from other device
         // located in MainActivity.java line 152-156
-        mfcc_dist_same_semi = 15.6;
-        mfcc_dist_diff_semi = 21.6;
-        mfcc_dist_same_un = 15.6;
-        mfcc_dist_diff_un = 21.6;
+        // motoX
+//        if (phone_type.equals("motorola_XT1058")) {
+//            editor.putString("mfcc_dist_same_semi", "13");
+//            editor.putString("mfcc_dist_diff_semi", "18");
+//            editor.putString("mfcc_dist_same_un", "13");
+//            editor.putString("mfcc_dist_diff_un", "18");
+//        }
+//        // nexus 4
+//        else if (phone_type.equals("google_Nexus 4")) {
+//            editor.putString("mfcc_dist_same_semi", "17");
+//            editor.putString("mfcc_dist_diff_semi", "22");
+//            editor.putString("mfcc_dist_same_un", "17");
+//            editor.putString("mfcc_dist_diff_un", "22");
+//        }
+//        // s2
+//        else if (phone_type.equals("samsung_SAMSUNG-SGH-I727")) {
+//            editor.putString("mfcc_dist_same_semi", "18");
+//            editor.putString("mfcc_dist_diff_semi", "25");
+//            editor.putString("mfcc_dist_same_un", "18");
+//            editor.putString("mfcc_dist_diff_un", "25");
+//        }
+//        // s3
+//        else if (phone_type.equals("samsung_SAMSUNG-SGH-I747")) {
+//            editor.putString("mfcc_dist_same_semi", "16");
+//            editor.putString("mfcc_dist_diff_semi", "21");
+//            editor.putString("mfcc_dist_same_un", "16");
+//            editor.putString("mfcc_dist_diff_un", "21");
+//        }
+//        // s4
+//        else if (phone_type.equals("samsung_SAMSUNG-SGH-I337")) {
+//            editor.putString("mfcc_dist_same_semi", "14");
+//            editor.putString("mfcc_dist_diff_semi", "24");
+//            editor.putString("mfcc_dist_same_un", "14");
+//            editor.putString("mfcc_dist_diff_un", "24");
+//        }
+//        // other devices
+//        else {
+//            editor.putString("mfcc_dist_same_semi", "15.6");
+//            editor.putString("mfcc_dist_diff_semi", "21.6");
+//            editor.putString("mfcc_dist_same_un", "15.6");
+//            editor.putString("mfcc_dist_diff_un", "21.6");
+//            Toast.makeText(this, "Your device is not recognized and the result might not be accurate...", Toast.LENGTH_SHORT).show();
+//        }
+        mfcc_dist_same_semi = 14;
+        mfcc_dist_diff_semi = 24;
+        mfcc_dist_same_un = 14;
+        mfcc_dist_diff_un = 24;
     }
 
     /**
