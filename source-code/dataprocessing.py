@@ -105,7 +105,7 @@ for location in access_point:
 	plt.figure()
 	plt.plot(access_point[location]['timely'], label='Access Point count')
 	plt.plot(probe_request[location]['timely'], label='Unique devices')
-	plt.axis([0, 3.2, 0, max(probe_request[location]['timely'])+10])
+	plt.axis([0, 12.2, 0, max(probe_request[location]['timely'])+10])
 	plt.xlabel('Measurement')
 	plt.ylabel('Number of MAC address')
 	plt.title(location)
@@ -117,7 +117,7 @@ for location in access_point:
 	lgd = plt.legend(bbox_to_anchor=(1, 1), loc='upper left', ncol=1)
     
     # plt.xticks(1)
-	pdfgraph = PdfPages(location + '-before.pdf')
+	pdfgraph = PdfPages(location + '-' + scan_date +'-before.pdf')
 	pdfgraph.savefig(plt.gcf())
 	pdfgraph.close()
 	# plt.show()
