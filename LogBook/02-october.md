@@ -102,16 +102,40 @@ October #1
 		- https://pypi.python.org/pypi/webrtcvad
 		- The `crowdpp` does not seem to be really accurate.
 
-- **Sat**
+- **Sat Oct  8 12:04:35 CEST 2016**
 	- Experiment for both social density and mac address randomization.
+	- **Possible experimental setup**
+		- set a table of experiment. do the same place for several consecutive days.
+		- mark the only 1 probe request as passing by people.
+	- **Tips**:
+		- If you feel so tired, relax, take a deep sleep and tomorrow morning you'll get better and more energetic.
+		- Read news, which is good to open up conversation with supervisors.
+	- Interesting for randomization: http://www.slideshare.net/airtight/ios8-mac-randomization-via-airtight-blog-series
+	- Learning about MAC address randomization.
 
 - **Sun**
 	- Deadline Chapter 2.
+	- [ ] create preprocessing script ready for production.
+		- incorporate speech count
+		- make it runnable.
+		- create how to if it does not have sufficient input arguments.
+		- ready to set the cut off (threshold)
+		- ready for moving people and for before and after removal.
+		- fix the legend location.
+		- apply MAC address OUI removal and show the graph.
 
 October #2
 ----------
 - **Mon**
 	- Prepare the presentation for friday.
+		- How to count correlation: Pearson r.
+			- And explain about what it does.
+			- Possibly look for other methods of getting correlation. 
+		- Do the experiment twice, with different scanning period.
+		- Explaing the scanning mechanism, what we do in each scanning period.
+		- set a table of experiment. do the same place for several consecutive days.
+		- show the correlation scatter graph, as found somewhere near sk-learn.
+		- explain the instruments used: tech spech of macbook air.
 	- Email Niels.
 
 - **Tue**
@@ -128,6 +152,7 @@ October #2
 		- Prepare the schedule for the next meeting.
 		- Possible ground truth is official document from stakeholders.
 		- How big is the required N?
+		- It is also useless if we use very good microphone, as we will eventually implement that in a simple microphone on smartphone.
 	- Listing the lecturers for email.
 
 
