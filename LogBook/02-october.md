@@ -87,7 +87,7 @@ October #1
 		- Better to do that in phone, and log the result.
 		- using swift: http://stackoverflow.com/questions/24321126/get-bluetooth-devices-in-range-with-swift
 		- could not find a reliable solution for mac os.
-	- [ ] Helping to fix the SME problem.
+	- [x] Helping to fix the SME problem.
 	- Look for how to build matlab code to be executable.
 	- For a very dense crowd, look for an event.
 	- **Research** possible problem: moving people, because it is simply hard to track.
@@ -123,10 +123,12 @@ October #1
 		- ready for moving people and for before and after removal.
 		- fix the legend location.
 		- apply MAC address OUI removal and show the graph.
+	- [ ] Fixing sensing app.
+		- Add number of loop, so that the script will stop when it reaches this number.
 
 October #2
 ----------
-- **Mon**
+- **Mon Oct 10 11:52:51 CEST 2016**
 	- Prepare the presentation for friday.
 		- How to count correlation: Pearson r.
 			- And explain about what it does.
@@ -137,6 +139,10 @@ October #2
 		- show the correlation scatter graph, as found somewhere near sk-learn.
 		- explain the instruments used: tech spech of macbook air.
 	- Email Niels.
+	- Beware of winter break, as everyone is going to be away for vacation.
+		- Preferably to have the thesis done before winter break, as in january Prof Aiello is also gonna be away for sabbatical leave.
+	- Studying for Nederlandse toetsen.
+	- Answering SME questions.
 
 - **Tue**
 	- 
@@ -153,6 +159,8 @@ October #2
 		- Possible ground truth is official document from stakeholders.
 		- How big is the required N?
 		- It is also useless if we use very good microphone, as we will eventually implement that in a simple microphone on smartphone.
+		- How if we do not have enough data?
+		- Is the method scientifically correct?
 	- Listing the lecturers for email.
 
 
