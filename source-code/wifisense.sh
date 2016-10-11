@@ -20,13 +20,22 @@ if [ $# -eq 0 ]
 		echo ""
 		# exit
 		exit 1
-	else
+	elif [ $# -eq 3 ]; then
+	 	#statements 
 		location_name=$1
+		let "max_loop=$2 + 1"
+		sleep_time=$3
+	else
+		echo ""
+		echo "Wrong number of arguments supplied. Exiting..."
+		echo ""
+		# exit
+		exit 1
 fi
 
 loop=1
 # main loop
-while true; do
+while [ $loop -lt $max_loop ]; do
 	current_date=$(date +%Y%m%d-%H.%M)
 	echo ""
 	echo "===============Loop: "$loop" - "$current_date" ==============="
@@ -45,7 +54,7 @@ while true; do
 	sox -dq -b 8 -r 8000 $audio_name & 
 
 	# wait for scan_duration
-	sleep 300 # every 5 minutes (300 sec)
+	sleep $sleep_time 
 	# kill the previous process
 	echo ""
 	echo "Killing the capturing process..."
@@ -67,3 +76,6 @@ while true; do
 	echo "Continue next loop..."
 	loop=$((loop+1))
 done
+
+echo ""
+echo "Max loop reached. Terminating..."
