@@ -116,15 +116,16 @@ October #1
 - **Sun**
 	- Deadline Chapter 2.
 	- [ ] create preprocessing script ready for production.
-		- incorporate speech count
-		- make it runnable.
-		- create how to if it does not have sufficient input arguments.
-		- ready to set the cut off (threshold)
-		- ready for moving people and for before and after removal.
-		- fix the legend location.
-		- apply MAC address OUI removal and show the graph.
-	- [ ] Fixing sensing app.
-		- Add number of loop, so that the script will stop when it reaches this number.
+		- [x] incorporate speech count: using crowdpp
+		- [x] make it runnable.
+		- [x] create how to if it does not have sufficient input arguments.
+		- [x] ready to set the cut off (threshold)
+		- [x] fix the legend location.
+		- [ ] apply MAC address OUI removal and show the graph.
+		- [ ] create text data dump for scatter plot.
+	- [x] Fixing sensing app.
+		- [x] Add number of loop, so that the script will stop when it reaches this number.
+		- [x] Add sleep time.
 
 October #2
 ----------
@@ -144,14 +145,38 @@ October #2
 	- Studying for Nederlandse toetsen.
 	- Answering SME questions.
 
-- **Tue**
-	- 
-- **Wed**
+- **Tue Oct 11 11:01:34 CEST 2016**
+	- Working on presentation for Friday.
+	- Working on SME.
+	- **Possible ideas** For other location, use wiggle.net as the basis of selection.
+	- Making the script executable. Creating quite mode for the java code.
+	- Working on the `wifisense.sh` and `dataprocessing.py`
+	- Looking for the difference between `adhoc` and `infrastructure` wifi.
+	- Got the OUI list here: http://linuxnet.ca/ieee/oui/
+		- The OUI part is almost done.
+
+- **Wed Oct 12 10:30:13 CEST 2016**
 	- Call Niels.
 		- Explain about machine learning (with 3 features) approach.
 		- Make presentation, that will also be presented on Friday.
 		- Does behapp also scan for BLE device? or only classic bluetooth?
 		- How big is the required N?
+	- **Discussion notes**:
+		- Forget about Bluetooth, as it is proven to be unstable. Although bluetooth is on, it is not discoverable.
+		- How big is the N? is a magic question, it really depends on the data. The thing is, the data should give a firm insight of understanding.
+		- VAD and speaker count are promising, learn how it works.
+		- In Crowdpp `theta_s` and `theta_d` are the parameters for detecting speaker count. Play with it.
+		- Do the scanning in this patern: 1 minute probe request and AP scanning. That way we might avoid the randomization and we can get more data points.
+		- For a short experiment, compare the result of 1 minute, 5 and 10 minutes, and see whether there is a linear correlation (increase).
+		- Test and recheck what Freudiger has done about MAC address randomization.
+		- When android is in energy saving mode, the OS prohibits any app for doing WiFi Scan or any other scan.
+		- See how often randomization occurs, and how often phone sends out probe request.
+	- Bluetooth has 10 meters of range: http://www.sans.edu/research/security-laboratory/article/bluetooth
+	- BLE scanner in Mac: https://github.com/samuraipapa/BLE-Mac-Scanner
+	- Do MAC address randomization experiment tonight.
+
+- **Thu**
+	- 
 
 - **Fri**
 	- Meeting with Prof Aiello and Prof Kas.
@@ -166,6 +191,7 @@ October #2
 
 October #3
 ----------
+While doing data collection, also work with writing the thesis or reading the book.
 
 October #4
 ----------
