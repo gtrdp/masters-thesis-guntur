@@ -121,8 +121,9 @@ October #1
 		- [x] create how to if it does not have sufficient input arguments.
 		- [x] ready to set the cut off (threshold)
 		- [x] fix the legend location.
-		- [ ] apply MAC address OUI removal and show the graph.
+		- [x] apply MAC address OUI removal and show the graph.
 		- [ ] create text data dump for scatter plot.
+		- [ ] create vendor comparison from dump file.
 	- [x] Fixing sensing app.
 		- [x] Add number of loop, so that the script will stop when it reaches this number.
 		- [x] Add sleep time.
@@ -174,20 +175,56 @@ October #2
 	- Bluetooth has 10 meters of range: http://www.sans.edu/research/security-laboratory/article/bluetooth
 	- BLE scanner in Mac: https://github.com/samuraipapa/BLE-Mac-Scanner
 	- Do MAC address randomization experiment tonight.
+	- Working on preprocessing script.
 
-- **Thu**
-	- 
+- **Thu Oct 13 12:57:31 CEST 2016**
+	- SME problem solving.
+	- Looking for microphone recording in phone.
+		- http://electronics.stackexchange.com/questions/59157/over-what-frequency-range-can-the-microphone-of-smartphone-receive-the-sound
+		- http://www.makeuseof.com/tag/great-tips-recording-audio-smartphone-tablet/
+		- http://www.scienceprog.com/long-range-directional-microphones-myth-and-reality/
+		- http://www.epanorama.net/newepa/2014/09/08/sound-level-measuring-with-android-phone/
+		- **seems legit** http://www.analog.com/library/analogdialogue/archives/46-05/understanding_microphone_sensitivity.html?doc=an-1328.pdf
+	- **Possible research** using dB (decibels) to identify social density.
+		- Decibels does not correlate linearly, but rather logaritmically.
+	- Working on source code again.
+	- Good for python example: http://www.jesshamrick.com/2011/05/18/an-introduction-to-classes-and-inheritance-in-python/
+	- For scatter plot
+		- http://people.duke.edu/~ccc14/pcfb/numpympl/MatplotlibBarPlots.html
+		- http://www.labri.fr/perso/nrougier/teaching/matplotlib/
 
-- **Fri**
+- **Fri Oct 14 11:17:40 CEST 2016**
 	- Meeting with Prof Aiello and Prof Kas.
 		- Prepare the schedule for the next meeting.
 		- Possible ground truth is official document from stakeholders.
-		- How big is the required N?
+		- How big is the required N? (Magic question?)
 		- It is also useless if we use very good microphone, as we will eventually implement that in a simple microphone on smartphone.
 		- How if we do not have enough data?
 		- Is the method scientifically correct?
 	- Listing the lecturers for email.
+	- **Possible research**: incorporate time of scanning, e.g., during rush hour, morning, or afternoon.
+		- Possibly also add vismarkt as another location for scanning.
+		- Also take pictures when doing the experiment.
+	- **Meeting notes**:
+		- Make sure we have reliable ground truth only for sampling of data. Possible ground truth:
+			- Go Pro with facing up camera.
+			- panoramic picture
+			- camera with 4 different angle.
+			- video
+		- That way we will have 3 comparisons: PR, AP, VAD, and ground truth.
+		- More location for scanning:
+			- Add more remote areas, for less people.
+			- Add more crowded area, e.g., train station.
+			- Also take home, e.g, an hour during breakfast.
+		- **next experimental setup** do that while moving, e.g., with train, bike, or bus.
+		- **Writing ideas** scope down your thesis (for the limitation or aim of research), describe and elaborate what your setting is: fixed situation of scanning, etc.
+		- Possible next or other experimental setup: record the interaction of a person within 24 hours.
 
+- **Sat Oct 15 20:24:46 CEST 2016**
+	- **Ideas**: incorporate decibels: both the number or quantized (by using mean, median, min or max values).
+
+- **Sun Oct 16 16:50:29 CEST 2016**
+	- Working at CMB
 
 October #3
 ----------
