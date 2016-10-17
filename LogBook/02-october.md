@@ -224,11 +224,63 @@ October #2
 	- **Ideas**: incorporate decibels: both the number or quantized (by using mean, median, min or max values).
 
 - **Sun Oct 16 16:50:29 CEST 2016**
-	- Working at CMB
+	- Working at CMB.
+	- Additional places:
+		- Home (breakfast)
+		- Remote areas (min 2): use wiggle.net as the basis.
+	- Learn about carding.
+	- **research notes**: we are only interested in seeing the correlation between probe request and access point count. Try to stick with that.
 
 October #3
 ----------
 While doing data collection, also work with writing the thesis or reading the book.
 
+- **Mon Oct 17 10:32:55 CEST 2016**
+	- **Goal of this week**:
+		- MAC address randomization: learn how it works, get the timing parameters.
+		- Get the probe request count
+		- collect data (also from added locations)
+		- get db measure
+		- get people count
+		- capture ground truth using panoramic images
+		- extract all graph of locations
+		- extract scatter graph
+	- Work on the code, make sure the code works.
+	- Coordinating for verhuizing.
+		- Working on excel and publication.
+	- Location for MAC address: forest near zernike complex.
+	- To get probe request in wireshark: `wlan.fc.type_subtype==4`
+	- **Interesting finding**: nexus 5x immediately sends out probe request when wake up from sleep.
+
+- **Tue**
+	- Work on MAC address randomization.
+		- Explain what you did in detail, the phone type, restarting the phone at first, etc.
+		- Investigate the MAC address after experiment.
+	- When doing probe request explain the phone condition:
+		- What the phone is: LG Nexus 5X, Android N
+		- Battery level
+		- Phone has been restarted.
+		- charged/discharged
+		- phone is in sleep mode or not
+		- the phone is awake
+	- What to investigate:
+		- The SN (sqeuence number)
+		- when randomized mac address appear.
+	- **Research**: find literature about sequence number.
+
+- **Wed**
+	- Start data collection for probe request.
+	- **Research Notes**: when working on pictures, also take note the camera setting: white balance, HDR, focus, etc.
+	- Additional places remote places:
+		- Park selwerd
+		- Noorderplantsoen
+		- Oosterpark
+
 October #4
 ----------
+- **Mon**
+	- **Goal of this week**:
+		- Discuss the findings with supervisors.
+			- Explain that ground truth checking is kind of reinventing the wheel, as there is already a paper that discusses the relation of probe request and social density.
+			- Explain that we are particularly interested with the relation of probe request and access point count.
+			- Explain the aim of this research, which will be implemented in BeHapp app.
