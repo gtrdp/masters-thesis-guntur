@@ -252,7 +252,7 @@ While doing data collection, also work with writing the thesis or reading the bo
 	- To get probe request in wireshark: `wlan.fc.type_subtype==4`
 	- **Interesting finding**: nexus 5x immediately sends out probe request when wake up from sleep.
 
-- **Tue**
+- **Tue Oct 18 10:34:12 CEST 2016**
 	- Work on MAC address randomization.
 		- Explain what you did in detail, the phone type, restarting the phone at first, etc.
 		- Investigate the MAC address after experiment.
@@ -263,10 +263,51 @@ While doing data collection, also work with writing the thesis or reading the bo
 		- charged/discharged
 		- phone is in sleep mode or not
 		- the phone is awake
+		- Location of scanning.
 	- What to investigate:
 		- The SN (sqeuence number)
 		- when randomized mac address appear.
-	- **Research**: find literature about sequence number.
+	- **Research**: find literature about sequence number. find official ieee 802.11 standard.
+	- **Experiment result**:
+		- The phone immediately sends out probe request with original mac when it wakes up from sleep. Usually 4 or 10. If the phone has woken up from a long sleep, more than 1 minutes. When the screen is locked.
+		- The phone keeps sending out using the same first 3 byte of address. Brutally changes the last 3 octets.
+		- The `SN` is close, but not really sequential.
+		- iPad: also keeps sending out probe request when the display is on.
+		- Take note the changes of mac address of LG Nexus 5X.
+		- Every 10 secs (roughly) sends out 2 probe request, same manufacturer, different last 3 octets. Sequential or close SN.
+		- But when it is stable, it sends out every roughly 60 secs, with each different mac (but same ). Count of probe beacon: 1 or 2, or even 3.
+		- To prove it, I turned off the phone and there is no such mac address.
+		- The mac address `SN` is close, but not sequential.
+		- The pattern: original -> 10 sec -> 4 times random -> 60 secs.
+		- The SN is restarted when the phone is active (not sleeping).
+		- The randomized MAC address: `da:a1:19`. And LG is always using that same mac?
+		- For the next experiment, please make sure that your phone WiFi is switched off.
+		- When the screen is on, the phone does not send out randomized mac address.
+		- Also test it using tcpdump.
+		- When the phone restarted, it firstly sends out real mac address.
+		- Create flowchart to filter out randomized mac.
+		- Every burst of probe request, the address changes.
+		- Even when WiFi is off, LG occasinally sends out probe request with original mac.
+	- **Experiment result iPad**:
+		- The iPad keeps sending out randomized mac even tough the screen is on.
+		- Then the loading ion appears, the burst of probe request also captured.
+		- Then iPad wakes from sleep, the mac address also changes. But still randomized.
+		- When the screen is on, it keeps sending out probe request within 3, to 10 secs.
+		- Take notes the randomized mac addess.
+		- Take notes the setting of ipad prior and after sim card installation.
+		- When I switched off the WiFi and on, the mac address changes. The `SN` is also restarted.
+		- No difference, when the sim card is installed or not.
+		- When ipad is connected to an AP (ad hoc, from Nexus), it sends out original mac address.
+		- But the SN is always restarted. (Chance of solution)
+		- If the iPad is in sleep mode, it sends out roughly every 2 minutes or even 4 minutes. and the `SN` is always restarted.
+		
+	- **Research**: see the penetration or market share of each mobile OS.
+	- **Study**:
+		- who is responsible for generating randomized mac address.
+		- What is locally administered MAC address.
+	- IEEE 802.11 standards: http://standards.ieee.org/about/get/802/802.11.html
+	- About sequence number: http://www.lovemytool.com/blog/2010/08/practical-tcp-series-sequence-and-acknowledgement-numbers-by-chris-greer.html
+	- Next experiment: capture packet from multiple channel.
 
 - **Wed**
 	- Start data collection for probe request.
