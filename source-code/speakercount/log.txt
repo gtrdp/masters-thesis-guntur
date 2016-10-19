@@ -13,3 +13,6 @@ audio/cobamasazka.wav	speaker count:	5	speach percentage:	-1.0
 audio/cobamasazka.wav	speaker count:	5	speach percentage:	-1.0
 audio/1.wav	speaker count:	10	speach percentage:	-1.0
 audio/1.wav	speaker count:	10	speach percentage:	-1.0
+audio/1.wav	speaker count:	10	speach percentage:	-1.0
+audio/1.wav	speaker count:	10	speach percentage:	-1.0
+audio/1.wav	speaker count:	10	speach percentage:	-1.0
