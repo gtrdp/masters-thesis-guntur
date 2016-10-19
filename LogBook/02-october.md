@@ -299,23 +299,33 @@ While doing data collection, also work with writing the thesis or reading the bo
 		- No difference, when the sim card is installed or not.
 		- When ipad is connected to an AP (ad hoc, from Nexus), it sends out original mac address.
 		- But the SN is always restarted. (Chance of solution)
-		- If the iPad is in sleep mode, it sends out roughly every 2 minutes or even 4 minutes. and the `SN` is always restarted.
+		- If the iPad is in sleep mode, it sends out roughly every 2 minutes (135 secs) or even 4 minutes. and the `SN` is always restarted.
+		- The `SN` is always resetted in each burst.
+		- The pattern, 2x2 minutes, 4 minutes, then change MAC address
 		
 	- **Research**: see the penetration or market share of each mobile OS.
 	- **Study**:
 		- who is responsible for generating randomized mac address.
 		- What is locally administered MAC address.
 	- IEEE 802.11 standards: http://standards.ieee.org/about/get/802/802.11.html
-	- About sequence number: http://www.lovemytool.com/blog/2010/08/practical-tcp-series-sequence-and-acknowledgement-numbers-by-chris-greer.html
+		- Page 388:
+		
+		```
+		The Sequence Number field is a 12-bit field indicating the sequence number of an MSDU, A-MSDU, or MMPDU. Each MSDU, A-MSDU, or MMPDU transmitted by a STA is assigned a sequence number. Sequence numbers are not assigned to control frames, as the Sequence Control field is not present.		Each fragment of an MSDU or MMPDU contains a copy of the sequence number assigned to that MSDU or MMPDU. The sequence number remains constant in all retransmissions of an MSDU, MMPDU, or fragment thereof.```
 	- Next experiment: capture packet from multiple channel.
+	- WiFi channel should not be a problem because probe requests are usually sent to all channels. Do not forget to cite.
+	- **For writing**: Monitor mode is one of the seven modes that 802.11 wireless cards can operate in: Master (acting as an access point), Managed (client, also known as station), Ad hoc, Mesh, Repeater, Promiscuous, and Monitor mode. https://en.wikipedia.org/wiki/Monitor_mode
+	- Channel hopping is a 'lossy' method. 
 
-- **Wed**
+- **Wed Oct 19 14:08:48 CEST 2016**
 	- Start data collection for probe request.
 	- **Research Notes**: when working on pictures, also take note the camera setting: white balance, HDR, focus, etc.
 	- Additional places remote places:
 		- Park selwerd
 		- Noorderplantsoen
 		- Oosterpark
+	- **Study literature**: find in IEEE standard, in which channel does wifi sends out probe request.
+	- Work on paper for publication.
 
 October #4
 ----------

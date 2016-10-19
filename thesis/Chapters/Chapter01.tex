@@ -33,14 +33,14 @@ Social density estimation, or sometimes referred as crowd counting, is the mecha
 
 Several method of social density estimation exists. Surveillance camera utilization is one of the method used, although it is limited by high deployment or computational cost. Other than image based estimation, some researches have proposed Radio Frequency RF signals, e.g., WiFi or Bluetooth, mainly to get more low deployment or computational cost.
 
-The WiFi and Bluetooth based methods make use of several characteristic present in WiFi or Bluetooth, such as probe-request, MAC address monitoring [cite], Recieved Signal Strength Indicator (RSSI) [cite], Link State Indicator (LSI) [cite], and Channel State Information (CSI) [cite]. From all of those methods, WiFi probe request seems promising, as it is also proven to be able to give social density estimation with high accuracy~\cite{}
+The WiFi and Bluetooth based methods make use of several characteristic present in WiFi or Bluetooth, such as probe-request, MAC address monitoring [cite], Received Signal Strength Indicator \ac{RSSI} [cite], Link State Indicator (LSI) [cite], and Channel State Information (CSI) [cite]. From all of those methods, WiFi probe request seems promising, as it is also proven to be able to give social density estimation with high accuracy~\cite{}
 
 % -> introduction about probe request
 % -> why we dont do it directly on phone, because of permission (rooting)
 % -> explain that it capables to show social density, cite the paper
 % -> explain that behapp is already counting available access point also cite
 % -> explain why we do this, say that probe request has a high correlation with the people count, cite the paper that says this
-However, doing it in smartphone directly is impossible, as it requires root permission nad rooting is illegal according to most countries' law. As extension of research BeHapp.
+However, doing \ac{RSSI} in smartphone directly is impossible, as it requires root permission nad rooting is illegal according to most countries' law. As extension of research BeHapp.
 
 % -> explanation about mac address randomization, which begins from iOS 8 or android 7 remember to cite!
 
@@ -56,7 +56,12 @@ Is there any correlation between number of unique devices and number of availabl
 \end{displayquote}
 
 % how do the parameters affect?
-When the data is captured, several parameters are also used, such as location, time, duration, and so on. Here comes the second:
+% parameters:
+% - duration of scanning (per 1, 5, or 10 minutes)
+% - time of scanning (rush hour, morning, afternoon, etc)
+% - Location of scanning
+% - relation with number of visitors
+When the data is captured, several parameters are also used, such as location, time of scanning, duration of scanning, MAC address filter, and so on. Here comes the second:
 \begin{displayquote}\textit{
 How do the parameters affect the correlation result?}
 \end{displayquote}
@@ -71,6 +76,11 @@ Is there any method to overcome the MAC address randomization issue? Which affec
 Furthermore, the validation using sound is also used and the last research question is asking about the effect of it.
 \begin{displayquote}\textit{
 How does validation using Voice Activity Detection help to achieve better result?}
+\end{displayquote}
+
+% is access point suitable as a reliable proxy for social density estimation?
+\begin{displayquote}
+	\textit{is access point suitable as a reliable proxy for social density estimation?}
 \end{displayquote}
 
 The rest of this thesis is structured as follows. Chapter \ref{ch:related-work} describes the related works, which are closely related to the social density estimation.

@@ -17,6 +17,7 @@ if [ $# -eq 0 ]
 	then
 		echo ""
 		echo "No arguments supplied. Exiting..."
+		echo "Example: ./wifisense.sh grotemarkt 12 300"
 		echo ""
 		# exit
 		exit 1
@@ -28,6 +29,7 @@ if [ $# -eq 0 ]
 	else
 		echo ""
 		echo "Wrong number of arguments supplied. Exiting..."
+		echo "Example: ./wifisense.sh grotemarkt 12 300"
 		echo ""
 		# exit
 		exit 1
@@ -44,6 +46,7 @@ while [ $loop -lt $max_loop ]; do
 	file_name=$location_name-pr-$current_date.txt
 	echo ""
 	echo "Capturing WiFi probe-request packets..."
+	makesure it is in channel 1
 	tcpdump -In -i en0 -e -s 256 type mgt subtype probe-req >> $file_name & 
 
 	# start recording the sound
@@ -64,11 +67,18 @@ while [ $loop -lt $max_loop ]; do
 	echo "Killing the sound recording process..."
 	killall sox inotifywait
 
+
+    # sleep for 2 sec to make everything a bit stable
+    sleep 2
+
 	# logging available accesspoint
 	# prepare the file name
+    # ============= do this twice! =========================
+    # as the first scanning might be unstable
 	file_name=$location_name-ap-$current_date.txt
 	echo ""
 	echo "Logging available Access Point..."
+	airport -s >> $file_name
 	airport -s >> $file_name
 
 	echo ""

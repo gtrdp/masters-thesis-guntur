@@ -387,7 +387,7 @@ public class MFCC {
         // write the result to the file
         String listfile = "listfile.txt";
         FileProcess.writeToSd(args[3] + " " + filename + ".jstk.mfcc.txt", "listfile.txt");
-        System.out.println("MFCC: " + args[3] + " " + filename + ".jstk.mfcc.txt" );
+//        System.out.println("MFCC: " + args[3] + " " + filename + ".jstk.mfcc.txt" );
 
         String[] argscv = new String[4];	//frame ascii  --in-out-list listfile.txt
         argscv[0] = "frame";

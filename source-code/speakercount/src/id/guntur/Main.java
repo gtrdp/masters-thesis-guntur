@@ -17,19 +17,24 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        System.out.println("Working Directory = " +
-                System.getProperty("user.dir"));
+//        System.out.println("Working Directory = " +
+//                System.getProperty("user.dir"));
 
         // Get the wav file
-//        String filename = FileProcess.newFileOnTime("wav");
-        String filename = "audio/1.wav";
+        String filename = null;
+        if(args.length > 0) {
+            filename = args[0];
+        } else {
+            filename = "audio/1.wav";
+//            System.out.println("No arguments received, using default audio filename...");
+        }
 
         // extract the feature
         try {
             Yin.writeFile(filename);
-            System.out.println("SpeakerCountTask: Finish YIN");
+//            System.out.println("SpeakerCountTask: Finish YIN");
             MFCC.writeFile(filename);
-            System.out.println("SpeakerCountTask: Finish MFCC");
+//            System.out.println("SpeakerCountTask: Finish MFCC");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -68,6 +73,7 @@ public class Main {
         FileProcess.deleteFile(tst_files[0]);   // mfcc
         FileProcess.deleteFile(tst_files[1]);   // yin
 
-        System.out.println("Speaker count: " + speaker_count);
+//        System.out.println("Speaker count: " + speaker_count);
+        System.out.println(speaker_count + " speaker(s)");
     }
 }
