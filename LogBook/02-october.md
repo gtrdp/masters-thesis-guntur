@@ -325,7 +325,27 @@ While doing data collection, also work with writing the thesis or reading the bo
 		- Noorderplantsoen
 		- Oosterpark
 	- **Study literature**: find in IEEE standard, in which channel does wifi sends out probe request.
+		- Active scanning is described in IEEE document page: 978
 	- Work on paper for publication.
+- **Thu Oct 20 10:31:51 CEST 2016**
+	- Working on the paper.
+	- Research gate job profile.
+	- Data collection is cancelled (late).
+	- Investigating MAC address randomization.
+	- **Possible discussion**; Look for each floor map of each scanning location, this might be useful to discuss if the result does not match with the ground truth.
+	
+- **Fri Oct 21 17:39:08 CEST 2016**
+	- Data collection in:
+		- IKEA (cancelled due to difficult for collecting ground truth)
+		- Pioenpark
+		- Grotemarkt
+		- Paddepoel
+	- Working on scripting code and data analysis.
+	- Trying to use go pro for ground truth.
+	- **Result**: `airport -s` takes 3 to 4 seconds in average.
+	
+- **Sat**
+- **Sun**
 
 October #4
 ----------
