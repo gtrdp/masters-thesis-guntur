@@ -343,9 +343,16 @@ While doing data collection, also work with writing the thesis or reading the bo
 	- Working on scripting code and data analysis.
 	- Trying to use go pro for ground truth.
 	- **Result**: `airport -s` takes 3 to 4 seconds in average.
+	- Try to use pomodoro to work and to get better productivity.
+	- **Possible writings**: explain using figure, train moving, that the scanning might be biased as the train moves. also include the scanning duration of airport.
 	
-- **Sat**
+- **Sat Oct 22 15:32:17 CEST 2016**
+	- Working on the code at UMCG.
+		- Refactoring the code to be modular.
+	
 - **Sun**
+	- Randomization.
+	- Working on the code.
 
 October #4
 ----------

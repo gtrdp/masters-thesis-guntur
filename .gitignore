@@ -197,9 +197,14 @@ TSWLatexianTemp*
 .DS_Store
 
 # do not track experiment data
-source-code/data/
+source-code/dataprocessing/data/
+source-code/dataprocessing/log.txt
 source-code/speakercount/audio/
+source-code/speakercount/out/
 
+
+# project files
+.idea/
 
 # gitignore for java
 *.class

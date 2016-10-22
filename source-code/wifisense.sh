@@ -21,7 +21,7 @@ if [ $# -eq 0 ]
 		echo ""
 		# exit
 		exit 1
-	elif [ $# -eq 3 ]; then
+	elif [ $# -eq 3 ]; the
 	 	#statements 
 		location_name=$1
 		let "max_loop=$2 + 1"
@@ -89,3 +89,7 @@ done
 
 echo ""
 echo "Max loop reached. Terminating..."
+
+START_TIME=$SECONDS
+dosomething
+ELAPSED_TIME=$(($SECONDS - $START_TIME))
