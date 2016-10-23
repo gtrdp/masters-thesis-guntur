@@ -2,9 +2,9 @@
 # Data preprocessing script for wifi probe-request and access point
 # 
 # TODO
-# - [ ] create text data dump for scatter plot.
+# - [x] create text data dump for scatter plot.
 # - [ ] create dump file for each location for each date
-# - [ ] restructure the code to make it modular
+# - [x] restructure the code to make it modular
 # - [ ] create vendor comparison from dump file.
 # - [ ] incorporate ground truth
 #
@@ -28,7 +28,7 @@ else:
 
 # start reading the log
 reader = Read(threshold,mac_remove,audio)
-access_point, probe_request, audio_record = reader.readLog()
+access_point, probe_request, audio_record, scan_date = reader.readLog()
 
 # dump the result in a local log file
 # for scatter plot
@@ -36,5 +36,5 @@ dumper = Dump(access_point, probe_request, audio_record)
 dumper.writeDump()
 
 # plot the result
-plotter = PlotGraph(access_point, probe_request,audio_record, audio)
+plotter = PlotGraph(access_point, probe_request,audio_record, audio, scan_date, threshold)
 plotter.plot()
