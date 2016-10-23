@@ -311,7 +311,7 @@ While doing data collection, also work with writing the thesis or reading the bo
 		- Page 388:
 		
 		```
-		The Sequence Number field is a 12-bit field indicating the sequence number of an MSDU, A-MSDU, or MMPDU. Each MSDU, A-MSDU, or MMPDU transmitted by a STA is assigned a sequence number. Sequence numbers are not assigned to control frames, as the Sequence Control field is not present.		Each fragment of an MSDU or MMPDU contains a copy of the sequence number assigned to that MSDU or MMPDU. The sequence number remains constant in all retransmissions of an MSDU, MMPDU, or fragment thereof.```
+		The Sequence Number field is a 12-bit field indicating the sequence number of an MSDU, A-MSDU, or MMPDU. Each MSDU, A-MSDU, or MMPDU transmitted by a STA is assigned a sequence number. Sequence numbers are not assigned to control frames, as the Sequence Control field is not present.		Each fragment of an MSDU or MMPDU contains a copy of the sequence number assigned to that MSDU or MMPDU. The sequence number remains constant in all retransmissions of an MSDU, MMPDU, or fragment thereof.		```
 	- Next experiment: capture packet from multiple channel.
 	- WiFi channel should not be a problem because probe requests are usually sent to all channels. Do not forget to cite.
 	- **For writing**: Monitor mode is one of the seven modes that 802.11 wireless cards can operate in: Master (acting as an access point), Managed (client, also known as station), Ad hoc, Mesh, Repeater, Promiscuous, and Monitor mode. https://en.wikipedia.org/wiki/Monitor_mode
@@ -350,9 +350,21 @@ While doing data collection, also work with writing the thesis or reading the bo
 	- Working on the code at UMCG.
 		- Refactoring the code to be modular.
 	
-- **Sun**
+- **Sun Oct 23 21:38:23 CEST 2016**
 	- Randomization.
 	- Working on the code.
+	- Got the 2 GoPros from Bhimo and Erlang. One is coming tomorrow from Ci Renren.
+	- GoPro 180 view: http://www.cultofmac.com/444004/your-gopro-videos-will-do-a-180-with-this-lensbaby-fisheye/
+	- GoPro 360 view using 3 devices:
+		- https://www.dropbox.com/s/v7s28k4d7nf3ern/gopro3X360.jpg
+		- https://www.reddit.com/r/oculus/comments/2brgx2/spherical_4k_360180_videos_with_only_3_gopro/
+	- **Writing**: For the time of taking time lapse, use the average biking speed for human.
+	- **Possible work**: Filter out also based on probe request RSSI.
+	- Azurewave (`DC85DE`) is possibly coming from chromecast.
+	- **Writing**: write also what experiment that we have been done.
+		- different scanning period, etc.
+		- How many times pilot testing were carried out.
+	- Devising what are needed for data processing.
 
 October #4
 ----------
@@ -362,3 +374,8 @@ October #4
 			- Explain that ground truth checking is kind of reinventing the wheel, as there is already a paper that discusses the relation of probe request and social density.
 			- Explain that we are particularly interested with the relation of probe request and access point count.
 			- Explain the aim of this research, which will be implemented in BeHapp app.
+			- Explain the drawbacks of panoramic picture: cut human, unaligned images.
+	- Working on the new device (raspberry and new wifi dongle).
+	- Working on gopro.
+	- Investigate the relation of WiFi signal strength and distance.
+	

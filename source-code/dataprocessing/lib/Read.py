@@ -46,7 +46,7 @@ class Read:
 					self.countVoice(filename, scan_time, location)
 
 		# return the result
-		return self.access_point, self.probe_request, self.audio_record
+		return self.access_point, self.probe_request, self.audio_record, scan_date
 
 	def countProbe(self, filename, scan_time, location):
 		foo = dict()
