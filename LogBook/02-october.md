@@ -365,10 +365,14 @@ While doing data collection, also work with writing the thesis or reading the bo
 		- different scanning period, etc.
 		- How many times pilot testing were carried out.
 	- Devising what are needed for data processing.
+	- **Note**: remember to do pilot testing before going to the real experiment.
+	- Nice to have gui to process the data.
+		- https://kivy.org/#home
+		- https://wiki.python.org/moin/TkInter (de facto official)
 
 October #4
 ----------
-- **Mon**
+- **Mon Oct 24 13:50:00 CEST 2016**
 	- **Goal of this week**:
 		- Discuss the findings with supervisors.
 			- Explain that ground truth checking is kind of reinventing the wheel, as there is already a paper that discusses the relation of probe request and social density.
@@ -378,4 +382,5 @@ October #4
 	- Working on the new device (raspberry and new wifi dongle).
 	- Working on gopro.
 	- Investigate the relation of WiFi signal strength and distance.
+	- Working on the code.
 	

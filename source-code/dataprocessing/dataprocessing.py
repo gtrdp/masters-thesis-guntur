@@ -3,10 +3,10 @@
 # 
 # TODO
 # - [x] create text data dump for scatter plot.
-# - [ ] create dump file for each location for each date
+# - [x] create dump file for each location for each date
 # - [x] restructure the code to make it modular
-# - [ ] create vendor comparison from dump file.
-# - [ ] incorporate ground truth
+# - [x] create vendor comparison from dump file.
+# - [x] incorporate ground truth
 #
 # LG nexus MAC address: 78:f8:82:ca:98:2a
 
@@ -28,13 +28,16 @@ else:
 
 # start reading the log
 reader = Read(threshold,mac_remove,audio)
-access_point, probe_request, audio_record, scan_date = reader.readLog()
+access_point, probe_request, audio_record, ground_truth, scan_date = reader.readLog()
 
 # dump the result in a local log file
 # for scatter plot
-dumper = Dump(access_point, probe_request, audio_record)
+dumper = Dump(access_point, probe_request, audio_record, ground_truth, scan_date)
 dumper.writeDump()
+dumper.writeLocalDump()
 
 # plot the result
-plotter = PlotGraph(access_point, probe_request,audio_record, audio, scan_date, threshold)
+plotter = PlotGraph(access_point, probe_request, audio_record, ground_truth, audio, scan_date, threshold)
 plotter.plot()
+plotter.plotScatterLocal()
+plotter.plotScatterGlobal()
