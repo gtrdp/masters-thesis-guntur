@@ -9,6 +9,7 @@ class Read:
 	probe_request = dict()
 	audio_record = dict()
 	decibel_sound = dict()
+	ground_truth = dict()
 	oui_list = dict()
 
 	threshold = 0
@@ -41,12 +42,15 @@ class Read:
 				# probe request log
 				elif scan_type == "pr":
 					self.countProbe(filename, scan_time, location)
-
+				# audio recording
 				elif scan_type == "au" and self.audio:  # audio files
 					self.countVoice(filename, scan_time, location)
+				# ground truth data
+				elif scan_type == "gt":
+					self.groundTruthChecking(filename, scan_time, location)
 
 		# return the result
-		return self.access_point, self.probe_request, self.audio_record, scan_date
+		return self.access_point, self.probe_request, self.audio_record, self.ground_truth, scan_date
 
 	def countProbe(self, filename, scan_time, location):
 		foo = dict()
@@ -153,3 +157,9 @@ class Read:
 			self.audio_record[location]['total'] += foo_int
 			self.audio_record[location]['timely'].append(foo_int)
 			# end if
+
+	def groundTruthChecking(self, filename, scan_time, location):
+		self.ground_truth[location] = list()
+		with open("data/" + filename) as f:
+			for line in f:
+				self.ground_truth[location].append(int(line.strip()))
