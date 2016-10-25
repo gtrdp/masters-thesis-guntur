@@ -311,7 +311,7 @@ While doing data collection, also work with writing the thesis or reading the bo
 		- Page 388:
 		
 		```
-		The Sequence Number field is a 12-bit field indicating the sequence number of an MSDU, A-MSDU, or MMPDU. Each MSDU, A-MSDU, or MMPDU transmitted by a STA is assigned a sequence number. Sequence numbers are not assigned to control frames, as the Sequence Control field is not present.		Each fragment of an MSDU or MMPDU contains a copy of the sequence number assigned to that MSDU or MMPDU. The sequence number remains constant in all retransmissions of an MSDU, MMPDU, or fragment thereof.		```
+		The Sequence Number field is a 12-bit field indicating the sequence number of an MSDU, A-MSDU, or MMPDU. Each MSDU, A-MSDU, or MMPDU transmitted by a STA is assigned a sequence number. Sequence numbers are not assigned to control frames, as the Sequence Control field is not present.		Each fragment of an MSDU or MMPDU contains a copy of the sequence number assigned to that MSDU or MMPDU. The secondquence number remains constant in all retransmissions of an MSDU, MMPDU, or fragment thereof.		```
 	- Next experiment: capture packet from multiple channel.
 	- WiFi channel should not be a problem because probe requests are usually sent to all channels. Do not forget to cite.
 	- **For writing**: Monitor mode is one of the seven modes that 802.11 wireless cards can operate in: Master (acting as an access point), Managed (client, also known as station), Ad hoc, Mesh, Repeater, Promiscuous, and Monitor mode. https://en.wikipedia.org/wiki/Monitor_mode
@@ -379,8 +379,36 @@ October #4
 			- Explain that we are particularly interested with the relation of probe request and access point count.
 			- Explain the aim of this research, which will be implemented in BeHapp app.
 			- Explain the drawbacks of panoramic picture: cut human, unaligned images.
-	- Working on the new device (raspberry and new wifi dongle).
-	- Working on gopro.
+			- Discussing about the next possible experiment.
+			- Getting ground truth is hard, and it is not the real ground truth.
+			- Show the map of experiment.
+			- Show before and after the signal strength removal.
 	- Investigate the relation of WiFi signal strength and distance.
 	- Working on the code.
+	- **Idea**: to see the correlation between probe request and actual social density, it is better to test it in controlled situation (laboratory).
 	
+	- **Idea**: filtering out the probe request by rssi? since the probe request may be coming from far away. Should we also implement this to the access point?
+	- **Writing**: got the justification of thresholding for probe request from mas azka, about localization and converting from signal strength to distance.
+	
+- **Tue Oct 25 10:05:18 CEST 2016**
+	- Discussion with Niels.
+		- Distribution of signal strength, use it to work on threshold.
+		- 0.3 of correlation means that 30% of the variation is explained.
+		- hashing the probe request, to overcome the randomization.
+		- make sure the one minute time interval is reliable to overcome the randomization.
+	- Working on randomization.
+		- SN might be a good solution for this, just have to test it
+		- hashed probe request data (management frame) could be unique for each device.
+		- http://www.rfwireless-world.com/Terminology/WLAN-probe-request-and-response-frame.html
+	- Working on gopro.
+	- **Study**: what is the signal strength in beacon frame.
+	- **Experimental setup**: also record when taking breakfast.
+	- Signal strength:
+		- https://documentation.meraki.com/MR/WiFi_Basics_and_Best_Practices/Wireless_fundamentals%3A_Signal-to-Noise_Ratio_(SNR)__and_wireless_signal_strength
+		- https://ccie-or-null.net/2011/01/24/understanding-a-wi-fi-connection/
+		- http://www.watchguard.com/help/docs/wsm/xtm_11/en-us/content/en-us/wireless/ap_wireless_signalstrength_c.html
+> In general, you should have a minimum of +25dBm signal-to-noise ratio. Lower values than +25dBm result in poor performance and speeds.
+	- **Writing**: explain why we do not do that in school/university, because WiFi is highly restricted in campus, i.e., we are not allowed to have individual access point in school.
+	- **Writing**:
+		- time lapse is selected to conserve energy.
+		- energy is one of the concern.

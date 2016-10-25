@@ -39,7 +39,10 @@ class PlotGraph:
 				plt.plot(self.audio_record[location]['timely'], label='Speaker Count')
 			plt.plot(self.ground_truth[location], label='Ground Truth')
 
-			plt.axis([0, len(self.access_point[location]['timely']) + 0.2, 0, max(self.probe_request[location]['timely']) + 50])
+			max_x = len(self.access_point[location]['timely']) + 0.2
+			max_y = max(self.probe_request[location]['timely'] + self.access_point[location]['timely'] + self.ground_truth[location])
+			print max_y
+			plt.axis([0, max_x, 0, max_y + int(round(0.25*max_y))])
 			plt.xlabel('Measurement')
 			plt.ylabel('Parameters')
 			plt.title(location)
@@ -84,7 +87,7 @@ class PlotGraph:
 		pdfgraph.savefig(plt.gcf())
 		pdfgraph.close()
 
-		print "ap vs. pr: " + str(pearsonr(pr, ap))
+		print location + " - ap vs. pr: " + str(pearsonr(pr, ap))
 
 		# pr vs. gt
 		plt.figure(3)
@@ -101,7 +104,7 @@ class PlotGraph:
 		pdfgraph.savefig(plt.gcf())
 		pdfgraph.close()
 
-		print "pr vs. gt: " + str(
+		print location + " - pr vs. gt: " + str(
 			pearsonr(pr, gt))
 
 		# gt vs. ap
@@ -119,7 +122,7 @@ class PlotGraph:
 		pdfgraph.savefig(plt.gcf())
 		pdfgraph.close()
 
-		print "gt vs. ap: " + str(
+		print location + " - gt vs. ap: " + str(
 			pearsonr(gt, ap))
 
 	def plotScatterGlobal(self):
