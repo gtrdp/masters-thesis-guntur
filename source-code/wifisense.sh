@@ -43,11 +43,11 @@ while [ $loop -lt $max_loop ]; do
 	echo "===============Loop: "$loop" - "$current_date" ==============="
 	# capture probe request packets in background
 	# prepare the file name
-	file_name=$location_name-pr-$current_date.txt
+	file_name=$location_name-pr-$current_date.pcap
 	echo ""
 	echo "Capturing WiFi probe-request packets..."
-	makesure it is in channel 1
-	tcpdump -In -i en0 -e -s 256 type mgt subtype probe-req >> $file_name & 
+#	sudo airport --channel=1
+	tcpdump -In -i en0 -e -s 256 type mgt subtype probe-req -w $file_name &
 
 	# start recording the sound
 	echo ""

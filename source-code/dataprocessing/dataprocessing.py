@@ -10,6 +10,8 @@
 # - [ ] save the correlation result to txt file
 # - [ ] filter out using rssi
 # - [ ] also show the correlation value and p value in the graph
+# - [ ] dump the data for specific place only, regardless date
+# - [ ] create pseudonym (hashing)
 #
 # LG nexus MAC address: 78:f8:82:ca:98:2a
 
