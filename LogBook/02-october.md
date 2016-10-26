@@ -396,6 +396,7 @@ October #4
 		- 0.3 of correlation means that 30% of the variation is explained.
 		- hashing the probe request, to overcome the randomization.
 		- make sure the one minute time interval is reliable to overcome the randomization.
+		- arguments on ground truth.
 	- Working on randomization.
 		- SN might be a good solution for this, just have to test it
 		- hashed probe request data (management frame) could be unique for each device.
@@ -410,5 +411,21 @@ October #4
 > In general, you should have a minimum of +25dBm signal-to-noise ratio. Lower values than +25dBm result in poor performance and speeds.
 	- **Writing**: explain why we do not do that in school/university, because WiFi is highly restricted in campus, i.e., we are not allowed to have individual access point in school.
 	- **Writing**:
-		- time lapse is selected to conserve energy.
+		- time lapse is selected to conserve energy also memory (MB).
 		- energy is one of the concern.
+		- explain the size of data dump (images (MB) and text (lines))
+	
+- **Wed Oct 26 09:59:36 CEST 2016**
+	- Data collection.
+	- discussion is a good way to relieve stress
+	- **Writing**: draw gipro angle od view (double).
+	- Found several research papers and links related to mac address randomization:
+		- http://repo.thehackademy.net/depot_madchat/racine/reseau/wireless/IDS/wlan-mac-spoof.pdf
+		- http://blogs.cisco.com/wireless/apple-ios-8-and-mac-randomization-what-it-means-for-ciscos-connected-mobile-experiences-cmx-solution
+		- http://community.arubanetworks.com/t5/AAA-NAC-Guest-Access-BYOD/iOS-8-amp-MAC-Address-Randomization/td-p/169900
+		- http://www.cso.com.au/article/547177/apple_randomises_mac_addresses_ios_8_killing_off_key_ad-tracking_tool/
+		- http://www.imore.com/closer-look-ios-8s-mac-randomization
+	- **Writing**:
+		- Dedicate a chapter for mac address randomization.
+		- The MAC address once collected, is hashed.
+		
