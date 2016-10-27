@@ -427,5 +427,19 @@ October #4
 		- http://www.imore.com/closer-look-ios-8s-mac-randomization
 	- **Writing**:
 		- Dedicate a chapter for mac address randomization.
+			- explain that the IE method is not really 100% correct. prove it by using LG nexus randomized and real probe request.
 		- The MAC address once collected, is hashed.
-		
+	- Bash command to read `pcap` file:
+
+	```
+	tcpdump -en -r cuba.pcap
+	```
+- **Thu Oct 27 10:02:11 CEST 2016**
+	- Data collection.
+	- **Writing**: 
+		- when doing data collection, my personal gadgets are switched to airplane mode.
+		- Also plot a graph about the distribution of decibels in each location.
+		- possibly cite all the references from the latest paper (the MAC address randomization).
+		- Explain all automation method that was coded.
+	- Find a way to make you working hours efficient (use pomodoro method wisely).
+	- Revising the `sorter.sh` script so that it runs simply by clicking it.
