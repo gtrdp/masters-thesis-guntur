@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # script to sort the gopro images into separate folders
-# arguments: foldernames, total minutes (folder) and file count
 # how it works:
 # - loop for total minutes
 # - in each loop copy total file count files to the folder

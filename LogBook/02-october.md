@@ -408,7 +408,9 @@ October #4
 		- https://documentation.meraki.com/MR/WiFi_Basics_and_Best_Practices/Wireless_fundamentals%3A_Signal-to-Noise_Ratio_(SNR)__and_wireless_signal_strength
 		- https://ccie-or-null.net/2011/01/24/understanding-a-wi-fi-connection/
 		- http://www.watchguard.com/help/docs/wsm/xtm_11/en-us/content/en-us/wireless/ap_wireless_signalstrength_c.html
-> In general, you should have a minimum of +25dBm signal-to-noise ratio. Lower values than +25dBm result in poor performance and speeds.
+
+	> In general, you should have a minimum of +25dBm signal-to-noise ratio. Lower values than +25dBm result in poor performance and speeds.
+	
 	- **Writing**: explain why we do not do that in school/university, because WiFi is highly restricted in campus, i.e., we are not allowed to have individual access point in school.
 	- **Writing**:
 		- time lapse is selected to conserve energy also memory (MB).
@@ -443,3 +445,4 @@ October #4
 		- Explain all automation method that was coded.
 	- Find a way to make you working hours efficient (use pomodoro method wisely).
 	- Revising the `sorter.sh` script so that it runs simply by clicking it.
+	- Creating `pcapconverter.sh` to convert `pcap` files to `txt` files.
