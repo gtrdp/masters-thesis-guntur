@@ -2,16 +2,14 @@
 # Data preprocessing script for wifi probe-request and access point
 # 
 # TODO
-# - [x] create text data dump for scatter plot.
-# - [x] create dump file for each location for each date
-# - [x] restructure the code to make it modular
-# - [x] create vendor comparison from dump file.
-# - [x] incorporate ground truth
-# - [ ] save the correlation result to txt file
 # - [ ] filter out using rssi
-# - [ ] also show the correlation value and p value in the graph
-# - [ ] dump the data for specific place only, regardless date
+# - [x] also show the correlation value and p value in the graph
+# - [x] dump the data for specific place only, regardless date
 # - [ ] create pseudonym (hashing)
+# - [x] add the phro and p value in the graph title
+# - [ ] work on the SNR histogram
+# - [ ] work on decibel histogram
+# - [ ] work on decibel on access point RSSI
 #
 # LG nexus MAC address: 78:f8:82:ca:98:2a
 
@@ -19,6 +17,7 @@ import sys
 from lib.Read import Read
 from lib.Dump import Dump
 from lib.PlotGraph import PlotGraph
+from lib.SNR import SNR
 
 # Check the input arguments
 if len(sys.argv) == 4:
@@ -46,3 +45,10 @@ plotter = PlotGraph(access_point, probe_request, audio_record, ground_truth, aud
 plotter.plot()
 plotter.plotScatterLocal()
 plotter.plotScatterGlobal()
+plotter.plotScatterCumulative()
+
+# get and plot the RSSI and SNR
+snrReader = SNR()
+
+snrReader.readProbeSNR()
+snrReader.readAPSignal()

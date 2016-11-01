@@ -20,10 +20,15 @@ class Dump:
 		self.ground_truth = ground_truth
 		self.scan_date = scan_date
 
-	def readDump(self):
+	def readDump(self, filename):
 		# read all data from log file
-		with open('data-dump.txt') as f:
-			for line in islice(f, 3, None): # skip the headers
+		try:
+			f = open(filename, 'r+')
+		except Exception, e:
+			print str(e)
+			print "Empty data dump: "+filename+"..."
+		else:
+			for line in islice(f, 3, None):  # skip the headers
 				foo = line.split("	")
 				# convert to int
 				for i, val in enumerate(foo):
@@ -31,9 +36,12 @@ class Dump:
 
 				self.all_data.append(tuple(foo))
 
+			f.close()
+
+	# Write global dump
 	def writeDump(self):
 		# read previous data
-		self.readDump()
+		self.readDump('dump/global-dump.txt')
 
 		# we assume that the length of all ap pr and audio are the same
 		for location in self.access_point:
@@ -54,7 +62,7 @@ class Dump:
 		self.all_data = list(set(self.all_data))
 
 		# write data to the file, overwrite
-		target = open('data-dump.txt', 'w')
+		target = open('dump/global-dump.txt', 'w')
 		# header comes first
 		header = "[WiFi and Probe request correlation data]\n\nAP	PR	Au	GT\n"
 		target.write(header)
@@ -64,6 +72,8 @@ class Dump:
 
 		target.close()
 
+	# Write local dump for each location and each scanning time
+	# also write to cumulative local dump
 	def writeLocalDump(self):
 		# This function writes: correlation dump, raw data, manufacturer
 		local_dump = list()
@@ -71,7 +81,7 @@ class Dump:
 		# we assume that the length of all ap pr and audio are the same
 		for location in self.access_point:
 			# =======================================
-			# 1. write the dump for correlation graph
+			# 1. a) write the dump for correlation graph
 			# only proceed if the variable length is the same
 			if len(self.access_point[location]['timely']) == len(self.probe_request[location]['timely']) == len(
 					self.audio_record[location]['timely']):
@@ -90,7 +100,7 @@ class Dump:
 			local_dump = list(set(local_dump))
 
 			# write data to the file, overwrite
-			target = open(location + '-' + self.scan_date + '-dump.txt', 'w')
+			target = open('dump/' + location + '-' + self.scan_date + '-dump.txt', 'w')
 			# header comes first
 			header = "[WiFi and Probe request correlation data for " + location +"-"+self.scan_date+"]\n\nAP	PR	Au	GT\n"
 			target.write(header)
@@ -99,13 +109,35 @@ class Dump:
 				target.write(
 					str(value[0]) + "\t" + str(value[1]) + "\t" + str(value[2]) + "\t" + str(value[3]) + "\n")
 
-			# close the handle and empty the list
 			target.close()
+
+			# ==========================
+			# 1. b) cumulative local dump
+			# firstly read out the previous data
+			self.all_data = list()
+			self.readDump('dump/' + location + '-dump.txt')
+
+			# append the data and remove duplicates
+			self.all_data = self.all_data + local_dump
+			self.all_data = list(set(self.all_data))
+
+			# write to file
+			target = open('dump/' + location + '-dump.txt', 'w')
+			# header comes first
+			header = "[WiFi and Probe request correlation data for " + location + "]\n\nAP	PR	Au	GT\n"
+			target.write(header)
+
+			for value in self.all_data:
+				target.write(
+					str(value[0]) + "\t" + str(value[1]) + "\t" + str(value[2]) + "\t" + str(value[3]) + "\n")
+
+			# empty the list
 			local_dump = list()
+			target.close()
 
 			# ==========================
 			# 2. the processed data dump
-			target = open(location + '-' + self.scan_date + '-raw.txt', 'w')
+			target = open('dump/' + location + '-' + self.scan_date + '-raw.txt', 'w')
 			# header comes first
 			header = "[Raw data for " + location + "-" + self.scan_date + "]\n\n"
 			target.write(header)
@@ -129,7 +161,7 @@ class Dump:
 					oui_list[macaddr] = company
 
 			# the file handler
-			target = open(location + '-' + self.scan_date + '-manufacturer.txt', 'w')
+			target = open('dump/' + location + '-' + self.scan_date + '-manufacturer.txt', 'w')
 			header = "[Manufacturer dump for " + location + "-" + self.scan_date + "]\n\n"
 			target.write(header)
 

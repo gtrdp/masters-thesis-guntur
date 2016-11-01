@@ -446,3 +446,44 @@ October #4
 	- Find a way to make you working hours efficient (use pomodoro method wisely).
 	- Revising the `sorter.sh` script so that it runs simply by clicking it.
 	- Creating `pcapconverter.sh` to convert `pcap` files to `txt` files.
+	- Possible way to read `pcap` file (really good method):
+	
+	```
+	tshark -r file.pcap -V
+	```
+	- **Code**: work on randomization solution.
+	- **Writing**: suggest to always use pcap format to capture network, never use plain text, as I did, as many data are lost.
+
+- **Fri Oct 28 09:24:19 CEST 2016**
+	- Data collection.
+	- Signal strength:
+		- http://www.wireless-nets.com/resources/tutorials/define_SNR_values.html
+		- more than 40dB SNR = Excellent signal (5 bars); always associated; lightening fast.
+		- 25dB to 40dB SNR = Very good signal (3 - 4 bars); always associated; very fast.
+		- 15dB to 25dB SNR = Low signal (2 bars); always associated; usually fast.
+		- 10dB - 15dB SNR = Very low signal (1 bar); mostly associated; mostly slow.
+		- 5dB to 10dB SNR = No signal; not associated; no go.
+- **Sat Oct 29 14:52:12 CEST 2016**
+	- **Argument, writing**:
+		- it is hard to count people inside the bus.
+		- we rely on an assumption that says everyone brings their own mobilephone with them, thus we can track it, just like what retail companies do.
+		- To avoid randomized mac, we use discretize the monitoring, instead of doing it continuously for a long time, we did it in separate scanning interval.
+		- Why dont you use 2 devices for separate purpose? one for probe request and one for access point.
+		- Limitation: This work is only limited to free neighbourhood, i.e., this does not apply to a wifi restricted location such as university buildings.
+	- **Question**: which properties are best to describe distribution?
+
+- **Sun Oct 30 12:33:36 CET 2016**
+	- **Writing**: most papers use camera only for stratification: no crowd, low crowd, medium crowd, high crowd.
+	- **experiment**:
+		- do a testing on the speaker count algorithm, using a music.
+		- using several music:
+			- solo
+			- duet
+			- pentatonix (acapella)
+	- **Writing**:
+		- 1 minute is selected to minimize the effect of MAC address randomization, as well as according to our experiment, 1 minute is the interval of sending probe request in several manufacturers (it subjects to change)
+		- assumption when it sees cars or buses
+		- sound depends when the people speak out or not
+		- the setting may vary in cities or even countries.
+		- explain why dont we use channel hopping scanning.
+	- Look for how they find ground truth in crowd counting.
