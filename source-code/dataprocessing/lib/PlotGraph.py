@@ -1,7 +1,6 @@
 # this program read the condensed log file and plot it in a graph
 # (c) Guntur DP 2016 - guntur.dharma@gmail.com
 
-import matplotlib.pyplot as plt
 import pprint
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
@@ -34,17 +33,17 @@ class PlotGraph:
 			# prepare the figure
 			plt.figure(1)
 			plt.plot(self.access_point[location]['timely'], label='Access Point count')
-			plt.plot(self.probe_request[location]['timely'], label='Unique devices')
+			plt.plot(self.probe_request[location]['timely'], label='Device count')
 			if self.audio:
-				plt.plot(self.audio_record[location]['timely'], label='Speaker Count')
-			plt.plot(self.ground_truth[location], label='Ground Truth')
+				plt.plot(self.audio_record[location]['timely'], label='Speaker count')
+			plt.plot(self.ground_truth[location], label='Ground truth')
 
 			max_x = len(self.access_point[location]['timely']) + 0.2
 			max_y = max(self.probe_request[location]['timely'] + self.access_point[location]['timely'] + self.ground_truth[location])
 			print max_y
 			plt.axis([0, max_x, 0, max_y + int(round(0.25*max_y))])
-			plt.xlabel('Measurement')
-			plt.ylabel('Parameters')
+			plt.xlabel('# Measurement')
+			plt.ylabel('Count')
 			plt.title(location)
 
 			# annotate the points
@@ -61,69 +60,42 @@ class PlotGraph:
 			lgd = plt.legend(bbox_to_anchor=(1, 1), loc='upper right', ncol=1)
 
 			# plt.xticks(1)
-			pdfgraph = PdfPages(location + '-' + self.scan_date +'-after-'+ str(self.threshold) +'.pdf')
+			pdfgraph = PdfPages(location + '-' + self.scan_date +'.pdf')
 			pdfgraph.savefig(plt.gcf())
 			pdfgraph.close()
 			# plt.show()
 
 			print "The graph is saved..."
 
-			# plot scatter and count the correlation
+	# plot scatter and count the correlation
+	def plotScatter(self, ap, pr, au, gt, location, scan_date = None):
+		# prepare the variable for loops
+		correlation = list()
+		xlabel = ['device count', 'ground truth', 'ground truth']
+		ylabel = ['access point count', 'device count', 'access point count']
+		x = [pr, gt, gt]
+		y = [ap, pr, ap]
+		filename = ['-pr-vs-ap.pdf', '-gt-vs-pr.pdf', '-gt-vs-ap.pdf']
 
-	def plotScatter(self, ap, pr, au, gt, location):
-		# plotting scatter table and calculating correlation
-		# ap vs. pr
-		plt.figure(2)
-		plt.xlabel('Unique Device (Probe request)')
-		plt.ylabel('Access Point count')
-		plt.title(location)
-		plt.scatter(pr, ap)
+		for i in range(0, 3):
+			# calculate the correlation first
+			rho, pvalue = pearsonr(x[i], y[i])
+			# plotting scatter table and calculating correlation
+			plt.figure()
+			plt.xlabel(xlabel[i])
+			plt.ylabel(ylabel[i])
+			plt.scatter(x[i], y[i])
+			plt.grid(True)
 
-		if location == "global":
-			pdfgraph = PdfPages(location + '-pr-vs-ap.pdf')
-		else:
-			pdfgraph = PdfPages(location + '-' + self.scan_date + '-pr-vs-ap.pdf')
+			if scan_date is None:
+				pdfgraph = PdfPages(location + filename[i])
+				plt.title(r'$\mathrm{%s:}\ \rho=%.3f,\ p-value=%.3f$' % (location, rho, pvalue))
+			else:
+				pdfgraph = PdfPages(location + '-' + scan_date + filename[i])
+				plt.title(r'$\mathrm{%s-%s:}\ \rho=%.3f,\ p-value=%.3f$' % (location, scan_date, rho, pvalue))
 
-		pdfgraph.savefig(plt.gcf())
-		pdfgraph.close()
-
-		print location + " - ap vs. pr: " + str(pearsonr(pr, ap))
-
-		# pr vs. gt
-		plt.figure(3)
-		plt.xlabel('Unique Device (Probe request)')
-		plt.ylabel('Ground Truth')
-		plt.title(location)
-		plt.scatter(pr, gt)
-
-		if location == "global":
-			pdfgraph = PdfPages(location + '-pr-vs-gt.pdf')
-		else:
-			pdfgraph = PdfPages(location + '-' + self.scan_date + '-pr-vs-gt.pdf')
-
-		pdfgraph.savefig(plt.gcf())
-		pdfgraph.close()
-
-		print location + " - pr vs. gt: " + str(
-			pearsonr(pr, gt))
-
-		# gt vs. ap
-		plt.figure(4)
-		plt.xlabel('Ground truth')
-		plt.ylabel('Access Point count')
-		plt.title(location)
-		plt.scatter(gt, ap)
-
-		if location == "global":
-			pdfgraph = PdfPages(location + '-gt-vs-ap.pdf')
-		else:
-			pdfgraph = PdfPages(location + '-' + self.scan_date + '-gt-vs-ap.pdf')
-
-		pdfgraph.savefig(plt.gcf())
-		pdfgraph.close()
-
-		print location + " - gt vs. ap: " + str(
-			pearsonr(gt, ap))
+			pdfgraph.savefig(plt.gcf())
+			pdfgraph.close()
 
 	def plotScatterGlobal(self):
 		ap = list()
@@ -132,7 +104,7 @@ class PlotGraph:
 		gt = list()
 
 		# read all data from log file
-		with open('data-dump.txt') as f:
+		with open('dump/global-dump.txt') as f:
 			for line in islice(f, 3, None):  # skip the headers
 				foo = line.split("	")
 
@@ -149,4 +121,26 @@ class PlotGraph:
 							 self.probe_request[location]['timely'],
 							 self.audio_record[location]['timely'],
 							 self.ground_truth[location],
-							 location)
+							 location,
+							 self.scan_date)
+
+	def plotScatterCumulative(self):
+		for location in self.access_point:
+			ap = list()
+			pr = list()
+			au = list()
+			gt = list()
+
+			print location
+
+			# read all data from log file
+			with open('dump/'+location+'-dump.txt') as f:
+				for line in islice(f, 3, None):  # skip the headers
+					foo = line.split("	")
+
+					ap.append(int(foo[0].strip()))
+					pr.append(int(foo[1].strip()))
+					au.append(int(foo[2].strip()))
+					gt.append(int(foo[3].strip()))
+
+			self.plotScatter(ap, pr, au, gt, location)
