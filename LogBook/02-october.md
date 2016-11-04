@@ -477,7 +477,7 @@ October #4
 	- **experiment**:
 		- do a testing on the speaker count algorithm, using a music.
 		- using several music:
-			- solo
+			- solo (solo singer, band, or an oration)
 			- duet
 			- pentatonix (acapella)
 	- **Writing**:
