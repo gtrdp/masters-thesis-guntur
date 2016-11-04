@@ -18,7 +18,7 @@ November #1
 	- Counting heads.
 	- Extracting the data and creating graphs.
 	
-- **Tue**
+- **Tue Nov  1 20:08:01 CET 2016**
 	- Call Niels:
 		- Explain by conclusion, not using whole data
 			- effect of day
@@ -27,6 +27,27 @@ November #1
 			- put it in a whole picture
 			- signal strength: WiFi and probe request
 		- Explain the MAC address randomization.
+		- Working on decibels.
+			- https://support.biamp.com/General/Audio/Peak_vs_RMS_Meters
+			- **Important, writing**: also address the microphone sensitivity.
+			- https://support.biamp.com/General/Audio/Microphone_sensitivity
+			- Sound level decreases by 6dB with each doubling of distance from the source.
+			- The sound is already using ambient noise reduction.
+			- Those microphones are attuned to a specific (and rather narrow) range of sound intensity.
+		- Found a magazine that explain the microphone sensitivity.
+
+- **Wed Nov  2 12:06:43 CET 2016**
+	- Working on getting the RMS and the Peak level using SoX.
+	- Please try to make your working hours more productive.
+	- Work on the conference paper.
+	- Most modern microphone has built in ambient noise reduction.
+
+- **Thu Nov  3 12:08:23 CET 2016**
+	- Working on the slide.
+
+- **Fri Nov  4 10:14:20 CET 2016**
+	- 
+		
 
 November #2
 -----------
