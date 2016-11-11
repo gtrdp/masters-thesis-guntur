@@ -45,6 +45,8 @@ class Dump:
 
 		# we assume that the length of all ap pr and audio are the same
 		for location in self.access_point:
+			print sum(self.probe_request[location]['timely'])/len(self.probe_request[location]['timely'])
+
 			# only proceed if the variable length is the same
 			if len(self.access_point[location]['timely']) == len(self.probe_request[location]['timely']) == len(self.audio_record[location]['timely']):
 				for i in range(0, len(self.access_point[location]['timely'])):

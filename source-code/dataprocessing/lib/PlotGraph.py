@@ -40,7 +40,7 @@ class PlotGraph:
 
 			max_x = len(self.access_point[location]['timely']) + 0.2
 			max_y = max(self.probe_request[location]['timely'] + self.access_point[location]['timely'] + self.ground_truth[location])
-			print max_y
+			# print max_y
 			plt.axis([0, max_x, 0, max_y + int(round(0.25*max_y))])
 			plt.xlabel('# Measurement')
 			plt.ylabel('Count')

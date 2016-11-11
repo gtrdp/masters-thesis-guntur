@@ -91,6 +91,13 @@ November #2
 	- As a rule of thumb, several hundred re-samples will be sufficient for most problems
 	- For resampling:
 		- http://stackoverflow.com/questions/3674409/numpy-how-to-split-partition-a-dataset-array-into-training-and-test-datasets
+	- Nice article, different between machine learning and statistical modeling
+		- https://www.analyticsvidhya.com/blog/2015/07/difference-machine-learning-statistical-modeling/
+	- Good article to choose the estimator (algorithm), from scikit learn:
+		- http://scikit-learn.org/stable/tutorial/machine_learning_map/
+	- A sort of rule of thumb:
+		- quantitative, continuous result: regression
+		- classes, discrete result: classification
 
 November #3
 -----------

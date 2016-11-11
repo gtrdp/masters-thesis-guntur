@@ -22,6 +22,11 @@ class Read:
 		self.audio = audio
 
 	def readLog(self):
+		# buffer variable
+		ap_buffer, pr_buffer, au_buffer, gt_buffer = dict(), dict(), dict(), dict()
+		ap_counter, pr_counter, au_counter, gt_counter = 0, 0, 0, 0
+		speaker_count = 0
+
 		# firstly read OUI list and store that in memory
 		# for MAC address removal
 		with open('nmap-mac-prefixes.txt') as f:
@@ -38,13 +43,56 @@ class Read:
 
 				# access point
 				if scan_type == "ap":
-					self.countAccessPoint(filename, scan_time, location)
+					ap_buffer = self.countAccessPoint(filename, scan_time, location, ap_buffer)
+
+					if ap_counter > 0:
+						if location not in self.access_point:
+							# new record
+							self.access_point[location] = {'total': ap_buffer, 'timely': [len(ap_buffer)]}
+						else:
+							self.access_point[location]['total'].update(ap_buffer)
+							self.access_point[location]['timely'].append(len(ap_buffer))
+
+						ap_counter = 0
+						ap_buffer = dict()
+					else:
+						ap_counter = + 1
+
 				# probe request log
 				elif scan_type == "pr":
-					self.countProbe(filename, scan_time, location)
+					pr_buffer = self.countProbe(filename, scan_time, location, pr_buffer)
+
+					if pr_counter > 0:
+						if location not in self.probe_request:
+							# new record
+							self.probe_request[location] = {'total': pr_buffer, 'timely': [len(pr_buffer)]}
+						else:
+							self.probe_request[location]['total'] = pr_buffer
+							self.probe_request[location]['timely'].append(len(pr_buffer))
+
+						pr_counter = 0
+						pr_buffer = dict()
+					else:
+						pr_counter =+ 1
+
 				# audio recording
 				elif scan_type == "au" and self.audio:  # audio files
-					self.countVoice(filename, scan_time, location)
+					speaker_count = self.countVoice(filename, scan_time, location, speaker_count)
+
+					if au_counter > 0:
+						if location not in self.audio_record:
+							# new record
+							self.audio_record[location] = {'total': speaker_count, 'timely': [speaker_count]}
+						else:
+							self.audio_record[location]['total'] += speaker_count
+							self.audio_record[location]['timely'].append(speaker_count)
+						# end if
+
+						au_counter, speaker_count = 0, 0
+						au_buffer = dict()
+					else:
+						au_counter = + 1
+
 				# ground truth data
 				elif scan_type == "gt":
 					self.groundTruthChecking(filename, scan_time, location)
@@ -52,8 +100,8 @@ class Read:
 		# return the result
 		return self.access_point, self.probe_request, self.audio_record, self.ground_truth, scan_date
 
-	def countProbe(self, filename, scan_time, location):
-		foo = dict()
+	def countProbe(self, filename, scan_time, location, foo):
+		# foo = dict()
 		scan_time = scan_time[:-4]
 
 		with open("data/" + filename) as f:
@@ -95,15 +143,10 @@ class Read:
 				if foo[row] < self.threshold:
 					foo.pop(row, None)
 
-		if location not in self.probe_request:
-			# new record
-			self.probe_request[location] = {'total': foo, 'timely': [len(foo)]}
-		else:
-			self.probe_request[location]['total'] = foo
-			self.probe_request[location]['timely'].append(len(foo))
+		return foo
 
-	def countAccessPoint(self, filename, scan_time, location):
-		ap_bssid = dict()
+	def countAccessPoint(self, filename, scan_time, location, ap_bssid):
+		# ap_bssid = dict()
 		scan_time = scan_time[:-4]
 
 		with open("data/" + filename) as f:
@@ -133,33 +176,32 @@ class Read:
 					if bssid not in ap_bssid:
 						ap_bssid[bssid] = ssid
 
-		if location not in self.access_point:
-			# new record
-			self.access_point[location] = {'total': ap_bssid, 'timely': [len(ap_bssid)]}
-		else:
-			self.access_point[location]['total'].update(ap_bssid)
-			self.access_point[location]['timely'].append(len(ap_bssid))
+		return ap_bssid
 
-	def countVoice(self, filename, scan_time, location):
+	def countVoice(self, filename, scan_time, location, speaker_count):
 		# run the jar file
 		foo = subprocess.check_output(['java', '-jar', 'speakercount-ready.old.jar', 'data/' + filename])
 		foo = foo.strip()
 
 		try:
-			foo_int = int(foo)
+			foo_int = speaker_count + int(foo)
 		except Exception, e:
-			foo_int = 0
+			foo_int = speaker_count + 0
 
-		if location not in self.audio_record:
-			# new record
-			self.audio_record[location] = {'total': foo_int, 'timely': [foo_int]}
-		else:
-			self.audio_record[location]['total'] += foo_int
-			self.audio_record[location]['timely'].append(foo_int)
-			# end if
+		return speaker_count
 
 	def groundTruthChecking(self, filename, scan_time, location):
 		self.ground_truth[location] = list()
+
+		index, buffer = 0, 0
 		with open("data/" + filename) as f:
 			for line in f:
-				self.ground_truth[location].append(int(line.strip()))
+				if index % 2 == 1:
+					# odd number, put to the list
+					buffer += int(line.strip())
+					self.ground_truth[location].append(buffer)
+				else:
+					# even number, add to the buffer
+					buffer = int(line.strip())
+
+				index += 1
