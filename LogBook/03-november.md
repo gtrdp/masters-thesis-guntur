@@ -85,9 +85,11 @@ November #2
 	- also use time as a benchmarking paramaters to compare classifiers.
 	- **Overfitting**: common problem if the parameters are large.
 	- Email from Niels:
+	
 	> http://statweb.stanford.edu/~tibs/ElemStatLearn/
 > This al you need to understand machine learning, bootstrap and cross validation. Do not try to understand the theory behind al the model but try to find some model that are suitable for your data set. Next you’ll need to find a way to validate your model, most likely by bootstrapping or cross validation. 
 > The book also has some practical examples. For your one ease, try to use R. R has allot of packages for machine learning and requires minimum effort in very flexible coding environment.
+
 	- As a rule of thumb, several hundred re-samples will be sufficient for most problems
 	- For resampling:
 		- http://stackoverflow.com/questions/3674409/numpy-how-to-split-partition-a-dataset-array-into-training-and-test-datasets
