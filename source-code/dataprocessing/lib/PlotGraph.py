@@ -12,17 +12,25 @@ class PlotGraph:
 	access_point = dict()
 	probe_request = dict()
 	audio_record = dict()
+	rms = dict()
+	pklv = dict()
 	ground_truth = dict()
+	rssi = dict()
+	snr = dict()
 
 	audio = 0
 	scan_date = ""
 	threshold = 0
 
-	def __init__(self, access_point, probe_request, audio_record, ground_truth, audio, scan_date, threshold):
+	def __init__(self, access_point, probe_request, audio_record, ground_truth, pklv, rms, rssi, snr, audio, scan_date, threshold):
 		self.access_point = access_point
 		self.probe_request = probe_request
 		self.audio_record = audio_record
 		self.ground_truth = ground_truth
+		self.pklv = pklv
+		self.rms = rms
+		self.rssi = rssi
+		self.snr = snr
 
 		self.audio = audio
 		self.scan_date = scan_date
@@ -70,7 +78,6 @@ class PlotGraph:
 	# plot scatter and count the correlation
 	def plotScatter(self, ap, pr, au, gt, location, scan_date = None):
 		# prepare the variable for loops
-		correlation = list()
 		xlabel = ['device count', 'ground truth', 'ground truth']
 		ylabel = ['access point count', 'device count', 'access point count']
 		x = [pr, gt, gt]
@@ -98,22 +105,63 @@ class PlotGraph:
 			pdfgraph.close()
 
 	def plotScatterGlobal(self):
-		ap = list()
-		pr = list()
-		au = list()
-		gt = list()
+		ap = dict()
+		pr = dict()
+		gt = dict()
 
 		# read all data from log file
+		# separate the data into locations
 		with open('dump/global-dump.txt') as f:
 			for line in islice(f, 3, None):  # skip the headers
 				foo = line.split("	")
+				loc = foo[8].strip()
 
-				ap.append(int(foo[0].strip()))
-				pr.append(int(foo[1].strip()))
-				au.append(int(foo[2].strip()))
-				gt.append(int(foo[3].strip()))
+				if loc not in ap:
+					ap[loc] = [int(foo[0].strip())]
+					pr[loc] = [int(foo[1].strip())]
+					gt[loc] = [int(foo[3].strip())]
+				else:
+					ap[loc].append(int(foo[0].strip()))
+					pr[loc].append(int(foo[1].strip()))
+					gt[loc].append(int(foo[3].strip()))
 
-		self.plotScatter(ap, pr, au, gt, "global")
+		# plot the graph
+		xlabel = ['device count', 'ground truth', 'ground truth']
+		ylabel = ['access point count', 'device count', 'access point count']
+		x = [pr, gt, gt]
+		y = [ap, pr, ap]
+		filename = ['-pr-vs-ap.pdf', '-gt-vs-pr.pdf', '-gt-vs-ap.pdf']
+		location_name = {"g": "grotemarkt", "h": "home", "p": "paddepoel", "r": "remote"}
+		colors = {"g": "c", "h": "m", "p": "y", "r": "g"}
+
+		for i in range(0, 3):
+			# combine all data
+			x_all, y_all = list(), list()
+			for key in x[i]:
+				x_all += x[i][key]
+				y_all += y[i][key]
+
+			# calculate the correlation first
+			rho, pvalue = pearsonr(x_all, y_all)
+
+			# plotting scatter table and calculating correlation
+			plt.figure()
+
+			# plotting in all location
+			for key in x[i]:
+				plt.scatter(x[i][key], y[i][key], c=colors[key], label=location_name[key])
+
+			plt.xlabel(xlabel[i])
+			plt.ylabel(ylabel[i])
+			plt.grid(True)
+			plt.legend(loc='upper left')
+
+			# save to pdf
+			pdfgraph = PdfPages("global" + filename[i])
+			plt.title(r'$\mathrm{global:}\ \rho=%.3f,\ p-value=%.3f$' % (rho, pvalue))
+
+			pdfgraph.savefig(plt.gcf())
+			pdfgraph.close()
 
 	def plotScatterLocal(self):
 		for location in self.access_point:

@@ -7,9 +7,9 @@
 # - [x] dump the data for specific place only, regardless date
 # - [ ] create pseudonym (hashing)
 # - [x] add the phro and p value in the graph title
-# - [ ] work on the SNR histogram
-# - [ ] work on decibel histogram
-# - [ ] work on decibel on access point RSSI
+# - [x] work on the SNR histogram
+# - [x] work on decibel histogram
+# - [x] work on decibel on access point RSSI
 #
 # LG nexus MAC address: 78:f8:82:ca:98:2a
 
@@ -32,23 +32,23 @@ else:
 
 # start reading the log
 reader = Read(threshold,mac_remove,audio)
-access_point, probe_request, audio_record, ground_truth, scan_date = reader.readLog()
+access_point, probe_request, audio_record, ground_truth, pklv, rms, rssi, snr, scan_date = reader.readLog()
 
 # dump the result in a local log file
 # for scatter plot
-dumper = Dump(access_point, probe_request, audio_record, ground_truth, scan_date)
+dumper = Dump(access_point, probe_request, audio_record, ground_truth, pklv, rms, rssi, snr, scan_date)
 dumper.writeDump()
 dumper.writeLocalDump()
 
 # plot the result
-plotter = PlotGraph(access_point, probe_request, audio_record, ground_truth, audio, scan_date, threshold)
+plotter = PlotGraph(access_point, probe_request, audio_record, ground_truth, pklv, rms, rssi, snr, audio, scan_date, threshold)
 plotter.plot()
 plotter.plotScatterLocal()
 plotter.plotScatterGlobal()
 plotter.plotScatterCumulative()
 
 # get and plot the RSSI and SNR
-snrReader = SNR()
-
-snrReader.readProbeSNR()
-snrReader.readAPSignal()
+# snrReader = SNR()
+#
+# snrReader.readProbeSNR()
+# snrReader.readAPSignal()

@@ -76,10 +76,6 @@ November #2
 		- machine learning
 
 - **Fri Nov 11 14:23:08 CET 2016**
-	- creating the graph with color
-		- also plot the timely grotemarkt with the db graphs
-		- add location parameters to the global data dump: just combine the separated dumps.
-	- starting coding with machine learning
 	- Learning about cross validation and statistics
 		- https://www.cs.tau.ac.il/~nin/Courses/NC05/pr_l13.pdf (good example of cross validation)
 	- also use time as a benchmarking paramaters to compare classifiers.
@@ -100,6 +96,34 @@ November #2
 	- A sort of rule of thumb:
 		- quantitative, continuous result: regression
 		- classes, discrete result: classification
+		
+- **Sat Nov 12 13:51:01 CET 2016**
+	- creating the graph with color
+		- also plot the timely grotemarkt with the db graphs
+		- add location parameters to the global data dump: just combine the separated dumps.
+	- starting coding with machine learning
+	- beginnin using R
+	- Good summary of machine learning algorithm
+		- machine learning regression algorithms for biophysical parameter retrieval
+	- regression with multiple variable:
+		- http://www.psychstat.missouristate.edu/multibook/mlt07.htm
+		- http://onlinestatbook.com/2/regression/multiple_regression.html
+		- http://www.stat.yale.edu/Courses/1997-98/101/linmult.htm
+- **Sun Nov 13 12:00:20 CET 2016**
+	- **Writing**: explain the data analysis using three-way data splits.
+	- **Presenting**: to present data, use the square representation as in the machine learning seitosa dataset.
+		- named scatterplot matrix.
+	- possible models:
+		- linear
+		- poliniear
+	- Useful bookmarks:
+		- http://www.stat.columbia.edu/~martin/W2024/R6.pdf
+		- http://www.statmethods.net/stats/regression.html
+		- https://www.r-bloggers.com/r-tutorial-series-multiple-linear-regression/
+		- https://www.r-bloggers.com/r-tutorial-series-simple-linear-regression/
+		- https://www.r-bloggers.com/r-tutorial-series-basic-polynomial-regression/
+		- http://www.statmethods.net/graphs/scatterplot.html
+		- http://onlinestatbook.com/2/regression/intro.html
 
 November #3
 -----------
