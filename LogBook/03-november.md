@@ -124,9 +124,20 @@ November #2
 		- https://www.r-bloggers.com/r-tutorial-series-basic-polynomial-regression/
 		- http://www.statmethods.net/graphs/scatterplot.html
 		- http://onlinestatbook.com/2/regression/intro.html
+	- installing R and R Studio
 
 November #3
 -----------
+- **Mon Nov 14 11:55:02 CET 2016**
+	- Working on the R.
+	- data table cheat sheet
+		- https://s3.amazonaws.com/assets.datacamp.com/img/blog/data+table+cheat+sheet.pdf
+	- getting used to R environment and programming.
+	- possible models:
+		- using different multivariate
+
+- **Tue**
+	- learn about non linear regression in R
 
 November #4
 -----------
