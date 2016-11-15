@@ -11,3 +11,8 @@ lines(lowess(wt,mpg), col="blue") # lowess line (x,y)
 
 pairs(~mpg+disp+drat+wt,data=mtcars, 
       main="Simple Scatterplot Matrix")
+
+
+plot(global_data)
+summary(lm(gt~pr))
+summary(lowess(gt~pr))
