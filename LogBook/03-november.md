@@ -136,9 +136,17 @@ November #3
 	- possible models:
 		- using different multivariate
 
-- **Tue**
+- **Tue Nov 15 11:33:49 CET 2016**
 	- learn about non linear regression in R
-
+	- cross validation using multiple explanatory variable.
+	- nice article about non linear regression in R
+		- http://machinelearningmastery.com/non-linear-regression-in-r/
+		- http://www.svm-tutorial.com/2014/10/support-vector-regression-r/ (tuning the svm)
+	- From the book from Niels, page 465:
+		> Because it uses only the training point closest to the query point, the bias of the 1-nearest-neighbor estimate is often low, but the variance is high. A famous result of Cover and Hart (1967) shows that asymptotically the error rate of the 1-nearest-neighbor classifier is never more than twice the Bayes rate. The rough idea of the proof is as follows (using squared-error loss). We assume that the query point coincides with one of the training points, so that the bias is zero. This is true asymptotically if the dimension of the feature space is fixed and the training data fills up the space in a dense fashion. Then the error of the Bayes rule is just the variance of a Bernoulli random variate (the target at the query point), while the error of 1-nearest-neighbor rule is twice the variance of a Bernoulli random variate, one contribution each for the training and query targets.
+- **Wed**	- Discussion with Niels:
+		- kNN with 1 cluster always give very accurate result, why?
+		- Is it possible to do k-fold cross validation for multiple variate?	
 November #4
 -----------
 
