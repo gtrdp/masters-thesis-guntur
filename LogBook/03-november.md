@@ -144,9 +144,34 @@ November #3
 		- http://www.svm-tutorial.com/2014/10/support-vector-regression-r/ (tuning the svm)
 	- From the book from Niels, page 465:
 		> Because it uses only the training point closest to the query point, the bias of the 1-nearest-neighbor estimate is often low, but the variance is high. A famous result of Cover and Hart (1967) shows that asymptotically the error rate of the 1-nearest-neighbor classifier is never more than twice the Bayes rate. The rough idea of the proof is as follows (using squared-error loss). We assume that the query point coincides with one of the training points, so that the bias is zero. This is true asymptotically if the dimension of the feature space is fixed and the training data fills up the space in a dense fashion. Then the error of the Bayes rule is just the variance of a Bernoulli random variate (the target at the query point), while the error of 1-nearest-neighbor rule is twice the variance of a Bernoulli random variate, one contribution each for the training and query targets.
-- **Wed**	- Discussion with Niels:
+- **Wed Nov 16 13:39:42 CET 2016**	- Discussion with Niels:
 		- kNN with 1 cluster always give very accurate result, why?
-		- Is it possible to do k-fold cross validation for multiple variate?	
+		- Is it possible to do k-fold cross validation for multiple variate?
+	- **Presentation:** For the start, explain the dataset that was used.
+	- ANN is the most sophisticated models, and it should give the least error.
+	- Powerful package for machine learning
+		- https://cran.r-project.org/web/packages/e1071/e1071.pdf
+	- Cross validation result is similar with the predicted squared mean error?
+	- Nice article about cross validation:
+		- https://www.r-bloggers.com/cross-validation-for-predictive-analytics-using-r/
+	- **Presenting**: use the graph of prediction error to estimate the error.
+		- also for cross validation.
+
+- **Thu Nov 17 12:06:07 CET 2016**
+	- Continue learnig about tuning regression.
+	- **Cross validation** in R:
+		- http://www.katrinerk.com/courses/r-worksheets/r-code-classification-and-cross-validation
+		- https://www.analyticsvidhya.com/blog/2015/11/improve-model-performance-cross-validation-in-python-r/
+	- In ideal situation, the sum up of k-fold cross validation should be zero.
+	- How to measure **bias** and **variance**:
+		- Bias: the agerage of error
+		- Variance: the average of std deviation
+	- **Presenting**: show this graph
+		- LOOCV
+		- 10 fold cross validation
+		- prediction error.
+	- Create custom script for thecross validation.
+	- The hat of the function indicates that it is an estimation.	- Found a book from Ricky Ho that summarizes the machine learning algorithm.		- http://blog.revolutionanalytics.com/2012/08/cheat-sheet-for-prediction-and-classification-models-in-r.html	- SVM parameters:		- http://www.svms.org/parameters/	
 November #4
 -----------
 
