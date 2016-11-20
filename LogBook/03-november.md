@@ -171,9 +171,42 @@ November #3
 		- 10 fold cross validation
 		- prediction error.
 	- Create custom script for thecross validation.
-	- The hat of the function indicates that it is an estimation.	- Found a book from Ricky Ho that summarizes the machine learning algorithm.		- http://blog.revolutionanalytics.com/2012/08/cheat-sheet-for-prediction-and-classification-models-in-r.html	- SVM parameters:		- http://www.svms.org/parameters/	
+	- The hat of the function indicates that it is an estimation.	- Found a book from Ricky Ho that summarizes the machine learning algorithm.		- http://blog.revolutionanalytics.com/2012/08/cheat-sheet-for-prediction-and-classification-models-in-r.html	- SVM parameters:		- http://www.svms.org/parameters/
+	- Comparison of error:
+		- http://stats.stackexchange.com/questions/110999/r-confused-on-residual-terminology- **Fri Nov 18 11:35:27 CET 2016** 	- Lasso regression:		- http://stats.stackexchange.com/questions/72251/an-example-lasso-regression-using-glmnet-for-binary-outcome
+	- Another:
+		- https://www.r-bloggers.com/cross-validation-estimating-prediction-error/
+		- https://rstudio-pubs-static.s3.amazonaws.com/2897_9220b21cfc0c43a396ff9abf122bb351.html
+	- List of available train method in `caret` package:
+		- https://rdrr.io/cran/caret/man/models.html
+	- Nice example of how to do data analysis in R:
+		- https://www.kaggle.com/c/overfitting/forums/t/456/modelling-algorithms-in-r/2787
+	- Why squared error is preferred in statistics:
+		- http://www.benkuhn.net/squared
+		
+- **Sat Nov 19 15:20:05 CET 2016**
+	- Another blogpost for cross validation:
+		- http://www.milanor.net/blog/cross-validation-for-predictive-analytics-using-r/
+	- For doing the cross validation:
+		- http://stats.stackexchange.com/questions/61090/how-to-split-a-data-set-to-do-10-fold-cross-validation
+		
+		```
+		require(caret)
+flds <- createFolds(y, k = 10, list = TRUE, returnTrain = FALSE)
+names(flds)[1] <- "train"
+		```
+	- Functions in R:
+		- https://www.r-bloggers.com/how-to-write-and-debug-an-r-function/
+		- http://www.statmethods.net/management/userfunctions.html
+
+- **Sun Nov 20 15:41:53 CET 2016**
+	- Use `caret` class for training, specifically the method `train`, documentation:
+		- http://artax.karlin.mff.cuni.cz/r-help/library/caret/html/train.html
+
 November #4
 -----------
+- Call Niels:
+	- Explain the condition of time related dataset, says that it is possibly hard to extract social density data.
 
 November #5
 -----------
