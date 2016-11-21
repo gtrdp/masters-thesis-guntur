@@ -1,0 +1,129 @@
+# load data
+all_global_data <- read.table("global-dump.txt",
+                              header = TRUE,
+                              sep="\t", 
+                              col.names=c("ap", "pr","au", "gt",
+                                          "rms", "pklv", "rssi", "snr", "loc"), 
+                              fill=FALSE, 
+                              strip.white=TRUE)
+
+phone_data_gt <- all_global_data[c("gt", "ap", "rms", "pklv", "rssi")]
+phone_data_pr <- all_global_data[c("pr", "ap", "rms", "pklv", "rssi")]
+
+# for evaluation
+fit_control <- trainControl(method = "repeatedcv", number = 10, repeats = 10)
+# k-fold cross validation function
+crossval.svm.gt <- function(number, epsilon, cost){
+  library(caret)
+  library(e1071)
+  folds <- createFolds(phone_data_gt[,c("gt")], k = number, list = TRUE, returnTrain = FALSE)
+  
+  svm.accuracies <- c()
+  for (i in 1:10) {
+    model <- svm(gt~., phone_data_gt[-folds[[i]],], epsilon=epsilon, cost=cost)
+    predictions <- predict(model, phone_data_gt[-folds[[i]],])
+    
+    rmse <- sqrt(mean((phone_data_gt[-folds[[i]],]$gt - predictions)^2))
+    svm.accuracies = append(rmse, svm.accuracies)
+  }
+  
+  return(svm.accuracies)
+}
+crossval.svm.pr <- function(number, epsilon, cost){
+  library(caret)
+  library(e1071)
+  folds <- createFolds(phone_data_pr[,c("pr")], k = number, list = TRUE, returnTrain = FALSE)
+  
+  svm.accuracies <- c()
+  for (i in 1:10) {
+    model <- svm(pr~., phone_data_pr[-folds[[i]],], epsilon=epsilon, cost=cost)
+    predictions <- predict(model, phone_data_pr[-folds[[i]],])
+    
+    rmse <- sqrt(mean((phone_data_pr[-folds[[i]],]$pr - predictions)^2))
+    svm.accuracies = append(rmse, svm.accuracies)
+  }
+  
+  return(svm.accuracies)
+}
+
+##############################################################################
+# For Head Count (Ground truth)
+##############################################################################
+# Linear
+library(caret)
+tuning_params <- expand.grid(nvmax=seq(1,4,1))
+linear.gt <- train(gt~., data=phone_data_gt, method="leapForward",
+                   trControl=fit_control, tuneGrid = tuning_params)
+
+# Ridge detection
+library(caret)
+tuning_params <- expand.grid(lambda=seq(0,0.05,0.001))
+ridge.gt <- train(gt~., data=phone_data_gt, method="ridge",
+                  trControl=fit_control, tuneGrid = tuning_params)
+
+# Lasso
+library(caret)
+tuning_params <- expand.grid(fraction=seq(0,1.1,0.05))
+lasso.gt <- train(gt~., data=phone_data_gt, method="lasso",
+                  trControl=fit_control, tuneGrid = tuning_params)
+
+# mars
+library(caret)
+tuning_params <- expand.grid(degree=seq(0,10,1))
+mars.gt <- train(gt~., data=phone_data_gt, method="gcvEarth",
+                 trControl=fit_control, tuneGrid = tuning_params)
+
+# knn
+library(caret)
+tuning_params <- expand.grid(k=seq(1,20,1))
+knn.gt <- train(gt~., data=phone_data_gt, method="knn",
+                trControl=fit_control, tuneGrid = tuning_params)
+
+# SVM
+library(e1071)
+tuneResult <- tune(svm, gt~.,  data=phone_data_gt,
+                   ranges = list(epsilon = seq(0,0.4,0.01), cost = 2^(0:9)))
+svm.gt <- svm(gt~., phone_data_gt, epsilon=0.08, cost=2)
+svm.accuracy <- crossval.svm.gt(10, 0.08, 2)
+mean(svm.accuracy)
+
+##############################################################################
+# For Unique device (Probe request)
+##############################################################################
+# Linear
+library(caret)
+tuning_params <- expand.grid(nvmax=seq(1,4,1))
+linear.pr <- train(pr~., data=phone_data_pr, method="leapForward",
+                   trControl=fit_control, tuneGrid = tuning_params)
+
+# Ridge detection
+library(caret)
+tuning_params <- expand.grid(lambda=seq(0,0.05,0.001))
+ridge.pr <- train(pr~., data=phone_data_pr, method="ridge",
+                  trControl=fit_control, tuneGrid = tuning_params)
+
+# Lasso
+library(caret)
+tuning_params <- expand.grid(fraction=seq(0,1,0.05))
+lasso.pr <- train(pr~., data=phone_data_pr, method="lasso",
+                  trControl=fit_control, tuneGrid = tuning_params)
+
+# mars
+library(caret)
+tuning_params <- expand.grid(degree=seq(0,20,1))
+mars.pr <- train(pr~., data=phone_data_pr, method="gcvEarth",
+                 trControl=fit_control, tuneGrid = tuning_params)
+
+# knn
+library(caret)
+tuning_params <- expand.grid(k=seq(1,20,1))
+knn.pr <- train(pr~., data=phone_data_pr, method="knn",
+                trControl=fit_control, tuneGrid = tuning_params)
+
+# SVM
+library(e1071)
+tuneResult <- tune(svm, pr~.,  data=phone_data_pr,
+                   ranges = list(epsilon = seq(0,0.2,0.01), cost = 2^(0:9)))
+svm.pr <- svm(pr~., phone_data_pr, epsilon=0, cost=4)
+svm.accuracy <- crossval.svm.pr(10, 0, 4)
+mean(svm.accuracy)

@@ -16,3 +16,116 @@ pairs(~mpg+disp+drat+wt,data=mtcars,
 plot(global_data)
 summary(lm(gt~pr))
 summary(lowess(gt~pr))
+
+data(iris)
+## tune  svm  for classification with RBF-kernel (default in svm),
+## using one split for training/validation set
+obj <- tune(svm, gt~., data = phone_data_gt,
+            ranges = list(gamma = 2^(-1:1), cost = 2^(2:4)),
+            tunecontrol = tune.control(sampling = "fix")
+)
+## alternatively:
+## obj <- tune.svm(Species~., data = iris, gamma = 2^(-1:1), cost = 2^(2:4))
+summary(obj)
+plot(obj)
+
+
+# tune  knn  using a convenience function; this time with the
+## conventional interface and bootstrap sampling:
+x <- iris[,-5]
+y <- iris[,5]
+obj2 <- tune.knn(x, y, k = 1:10, tunecontrol = tune.control(sampling = "boot"))
+summary(obj2)
+plot(obj2)
+
+library(caret)
+model4.gt <- knnreg(phone_data_gt[,2:5], phone_data_gt[,1], k=1)
+summary(model4.gt)
+model4.gt
+predictions <- predict(model4.gt, phone_data_gt[,2:5])
+rmse <- sqrt(mean((phone_data_gt$gt - predictions)^2))
+print(rmse)
+
+x <- phone_data_gt[,2:5]
+y <- phone_data_gt[,1]
+obj2 <- tune.knn(x, y, k = 1:10, tunecontrol = tune.control(sampling = "boot"))
+summary(obj2)
+plot(obj2)
+
+## tune  rpart  for regression, using 10-fold cross validation (default)
+data(mtcars)
+obj3 <- tune.rpart(mpg~., data = mtcars, minsplit = c(5,10,15))
+summary(obj3)
+plot(obj3)
+
+## simple error estimation for lm using 10-fold cross validation
+tune(lm, mpg~., data = mtcars)
+
+
+# subset selection example
+d <- data.frame(
+  state = rep(c('NY', 'CA'), 10),
+  year = rep(1:10, 2),
+  response= rnorm(20)
+)
+
+library(plyr)
+# Break up d by state, then fit the specified model to each piece and
+# return a list
+models <- dlply(d, "state", function(df) 
+  lm(response ~ year, data = df))
+
+# Apply coef to each model and return a data frame
+ldply(models, coef)
+
+# Print the summary of each model
+l_ply(models, summary, .print = TRUE)
+
+
+
+# All Subsets Regression
+library(leaps)
+attach(mydata)
+leaps<-regsubsets(gt~.,data=phone_data_gt,nbest=10)
+# view results 
+summary(leaps)
+plot(leaps)
+# plot a table of models showing variables in each model.
+# models are ordered by the selection statistic.
+plot(leaps,scale="r2")
+# plot statistic by subset size 
+library(car)
+subsets(leaps, statistic="rsq")
+
+
+
+
+library(mlbench)
+data(Sonar)
+str(Sonar[, 1:10])
+library(caret)
+set.seed(998)
+inTraining <- createDataPartition(Sonar$Class, p = .75, list = FALSE)
+training <- Sonar[ inTraining,]
+testing  <- Sonar[-inTraining,]
+
+gbmGrid <-  expand.grid(interaction.depth = c(1, 5, 9), 
+                        n.trees = (1:30)*50, 
+                        shrinkage = 0.1,
+                        n.minobsinnode = 20)
+gbmGrid2 <-  expand.grid(interaction.depth = c(1, 5, 9))
+
+nrow(gbmGrid)
+
+set.seed(825)
+gbmFit2 <- train(Class ~ ., data = training, 
+                 method = "gbm", 
+                 trControl = fitControl, 
+                 verbose = FALSE, 
+                 ## Now specify the exact models 
+                 ## to evaluate:
+                 tuneGrid = gbmGrid2)
+gbmFit2
+
+trellis.par.set(caretTheme())
+plot(gbmFit2)
