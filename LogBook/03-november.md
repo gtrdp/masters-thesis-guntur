@@ -173,8 +173,7 @@ November #3
 	- Create custom script for thecross validation.
 	- The hat of the function indicates that it is an estimation.	- Found a book from Ricky Ho that summarizes the machine learning algorithm.		- http://blog.revolutionanalytics.com/2012/08/cheat-sheet-for-prediction-and-classification-models-in-r.html	- SVM parameters:		- http://www.svms.org/parameters/
 	- Comparison of error:
-		- http://stats.stackexchange.com/questions/110999/r-confused-on-residual-terminology- **Fri Nov 18 11:35:27 CET 2016** 	- Lasso regression:		- http://stats.stackexchange.com/questions/72251/an-example-lasso-regression-using-glmnet-for-binary-outcome
-	- Another:
+		- http://stats.stackexchange.com/questions/110999/r-confused-on-residual-terminology- **Fri Nov 18 11:35:27 CET 2016** 	- Lasso regression:		- http://stats.stackexchange.com/questions/72251/an-example-lasso-regression-using-glmnet-for-binary-outcome	- Another:
 		- https://www.r-bloggers.com/cross-validation-estimating-prediction-error/
 		- https://rstudio-pubs-static.s3.amazonaws.com/2897_9220b21cfc0c43a396ff9abf122bb351.html
 	- List of available train method in `caret` package:
@@ -202,9 +201,16 @@ names(flds)[1] <- "train"
 - **Sun Nov 20 15:41:53 CET 2016**
 	- Use `caret` class for training, specifically the method `train`, documentation:
 		- http://artax.karlin.mff.cuni.cz/r-help/library/caret/html/train.html
+	- Documentation for training and tuning in `caret`:
+		- https://topepo.github.io/caret/model-training-and-tuning.html
+		- https://topepo.github.io/caret/available-models.html (available models)
+	- Machine Learning evaluation in R:
+		- http://machinelearningmastery.com/machine-learning-evaluation-metrics-in-r/
 
 November #4
 -----------
+- **Mon Nov 21 10:50:10 CET 2016**
+	- 
 - Call Niels:
 	- Explain the condition of time related dataset, says that it is possibly hard to extract social density data.
 
