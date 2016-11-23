@@ -210,9 +210,20 @@ names(flds)[1] <- "train"
 November #4
 -----------
 - **Mon Nov 21 10:50:10 CET 2016**
-	- 
-- Call Niels:
-	- Explain the condition of time related dataset, says that it is possibly hard to extract social density data.
+	- Working on the slides, all models and validations.
+
+- **Tue Nov 22 10:54:51 CET 2016**
+	- Working on the paper of research internship.
+	- Call Niels:
+		- Explain the condition of time related dataset, says that it is possibly hard to extract social density data.
+	- Patents about counting crowd:
+		- https://worldwide.espacenet.com/publicationDetails/biblio?FT=D&date=20081211&DB=EPODOC&locale=nl_NL&CC=WO&NR=2008150170A2&KC=A2
+		- https://www.google.com/patents/US20160315682
+		
+- **Wed Nov 23 11:04:21 CET 2016**
+	- GLMnet practical documentation:
+		- https://web.stanford.edu/~hastie/glmnet/glmnet_alpha.html
+		- https://cran.r-project.org/web/packages/glmnet/glmnet.pdf (official documentation)
 
 November #5
 -----------
