@@ -98,6 +98,7 @@ November #2
 		- classes, discrete result: classification
 		
 - **Sat Nov 12 13:51:01 CET 2016**
+	- **Writing**: present the scatter data with colors.
 	- creating the graph with color
 		- also plot the timely grotemarkt with the db graphs
 		- add location parameters to the global data dump: just combine the separated dumps.
@@ -224,6 +225,70 @@ November #4
 	- GLMnet practical documentation:
 		- https://web.stanford.edu/~hastie/glmnet/glmnet_alpha.html
 		- https://cran.r-project.org/web/packages/glmnet/glmnet.pdf (official documentation)
+	- Add error bar in `ggplot`:
+		- http://www.cookbook-r.com/Graphs/Plotting_means_and_error_bars_(ggplot2)/
+	- **Writing**: explain how model selection works, from wide scope of parameter grid search (by exponential cost and not so precise epsilon) and then go deeper.
+		- Show every graph
+		- Compare the svm kernel in bar graph
+	- SVM tuning result:
+	
+	```
+	Parameters:
+   SVM-Type:  eps-regression 
+ SVM-Kernel:  radial 
+       cost:  5 
+      gamma:  0.25 
+    epsilon:  0.3
+    > mean(svm.accuracy)
+	[1] 11.86627
+	
+	Parameter tuning of 'svm':
+	sampling method: 10-fold cross validation 
+	best parameters:
+ 	epsilon cost gamma
+    0.02    1   0.4
+	best performance: 173.8295
+	> mean(svm.accuracy)
+	[1] 12.03 
+	```
+	
+	- Difference between `nu-regression` and `eps-regression` (and turns out also summary for SVM):
+		- http://wiki.eigenvector.com/index.php?title=Svm#epsilon-SVR_and_nu-SVR
+		- basically `nu` or `eps` are penalty parameters.
+	- **Writing**: Also mention the starting search value for grid search of SVM.
+	- Make sure the `seed` is always set.
+
+- **Thu Nov 24 09:50:58 CET 2016**
+	- Working on the model.
+	- Got Warning: `WARNING: reaching max number of iterations`.
+	- **Writing**: explain the best parameters for all kernels in svm.
+		- Use notes in the block note.
+		
+- **Fri Nov 25 03:04:17 CET 2016**
+	- Call Niels:
+		- Report that a warning received: `WARNING: reaching max number of iterations`.
+	- Different between nu and eps:
+		- http://www.csie.ntu.edu.tw/~cjlin/papers/newsvr.pdf
+		- https://www.quora.com/What-are-the-advantages-of-choosing-the-v-nu-SVM-formulation-VS-epsilon-SVM
+	- Easy (seems like) explanation of SVM:
+		- http://www.statsoft.com/Textbook/Support-Vector-Machines
+	- **Writing tips**: present the figure with colors, e.g., orange for data dots and line, blue for the vertical bars, with dashed purple color line to mark the best value
+	- Std dev and std error:
+		- https://www.r-bloggers.com/standard-deviation-vs-standard-error/
+
+- **Sat Nov 26 10:38:23 CET 2016**
+	- Preparing for the presentation.
+	- **Writing**: why we extract audio data to RMS, PKLV and Speaker count.
+	- Residual plots:
+		- http://blog.minitab.com/blog/adventures-in-statistics/why-you-need-to-check-your-residual-plots-for-regression-analysis
+	- Errors comparison in regression and model assessment:
+		- https://people.duke.edu/~rnau/compare.htm
+		- http://www.theanalysisfactor.com/assessing-the-fit-of-regression-models/
+		- http://stats.stackexchange.com/questions/56302/what-are-good-rmse-values
+	- The effect of `cost` parameter in SVM:
+		- http://stats.stackexchange.com/questions/31066/what-is-the-influence-of-c-in-svms-with-linear-kernel
 
 November #5
 -----------
+- **Mon**
+	- Meeting with prof Aiello and prof Kas
