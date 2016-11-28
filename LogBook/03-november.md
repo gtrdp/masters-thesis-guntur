@@ -287,8 +287,49 @@ November #4
 		- http://stats.stackexchange.com/questions/56302/what-are-good-rmse-values
 	- The effect of `cost` parameter in SVM:
 		- http://stats.stackexchange.com/questions/31066/what-is-the-influence-of-c-in-svms-with-linear-kernel
+	- A lecture explaining how SVM works:
+		- http://www.robots.ox.ac.uk/~az/lectures/ml/lect2.pdf
+	- **Writing**: explain the effect of noisy data that will decrease the accuracy of the model.
+
+- **Sun Nov 27 16:12:20 CET 2016**
+	- Working on the slides for monday's meeting.
 
 November #5
 -----------
-- **Mon**
-	- Meeting with prof Aiello and prof Kas
+- **Mon Nov 28 22:25:05 CET 2016**
+	- Meeting with prof Aiello and prof Kas:
+		- Now it's time to wrap up.
+		- **Writing **: plot the error graph in each of the simulation (may be in result chapter), i.e., predicted vs actual value.
+		- discussion: explain in what situation this method works well
+			- location problem
+			- timing problem
+			- ambient sound discussion
+		- future work: explain different settings, or using classification instead of regression.
+	- Proposed table of contents:
+	
+	```
+		- Introduction and background
+			- background
+			- research question
+		- Related work and backgorund
+			- wifi based crowd counting
+				- probe request
+			- bluetooth based crowd counting
+			- mac address randomization
+			- other crowd counting method
+		- experimental setup
+			- mac address randomization setuo
+			- wifi experiment setup
+				- measurements
+				- location based				
+				- timely based
+		- modeling and validation
+			- linear model
+			- non linear model
+		- results and discussion
+			- the final result
+			- interpretation and discussion
+		- conclusion and future work
+			- conclusion
+			- future work
+	```
