@@ -129,3 +129,33 @@ gbmFit2
 
 trellis.par.set(caretTheme())
 plot(gbmFit2)
+
+plot(lasso.gt$results$fraction, lasso.gt$results$RMSE,
+     ylim=range(c(lasso.gt$results$RMSE-lasso.gt$results$RMSESD, lasso.gt$results$RMSE+lasso.gt$results$RMSESD)),
+     pch=19, xlab="Measurements", ylab="Mean +/- SD",
+     main="Scatter plot with std.dev error bars"
+)
+arrows(lasso.gt$results$fraction, avg-sdev, x, avg+sdev, length=0.05, angle=90, code=3)
+plot(lasso.gt)
+ggplot(lasso.gt)
+
+plotWithBars <- function(model){
+  library(ggplot2)
+  
+  foo <- model$results
+  colnames(foo)[1] <- "params"
+  ggplot(foo, aes(x=params, y=RMSE), main="Regression of MPG on Weight", 
+         xlab="Weight", ylab="Miles per Gallon") + 
+    geom_errorbar(aes(ymin=RMSE-RMSESD, ymax=RMSE+RMSESD), width=.1) +
+    geom_line() +
+    geom_point()+ expand_limits(y = 0)+ theme_bw()
+}
+plotWithBars(knn.gt)
+
+plot(lasso.gt$results$RMSE, avg,
+     ylim=range(c(avg-sdev, avg+sdev)),
+     pch=19, xlab="Measurements", ylab="Mean +/- SD",
+     main="Scatter plot with std.dev error bars"
+)
+
+testing <- svm(gt~., phone_data_gt, type="nu-regression")

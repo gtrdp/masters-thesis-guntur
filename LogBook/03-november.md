@@ -299,7 +299,7 @@ November #5
 - **Mon Nov 28 22:25:05 CET 2016**
 	- Meeting with prof Aiello and prof Kas:
 		- Now it's time to wrap up.
-		- **Writing **: plot the error graph in each of the simulation (may be in result chapter), i.e., predicted vs actual value.
+		- **Writing**: plot the error graph in each of the simulation (may be in result chapter), i.e., predicted vs actual value.
 		- discussion: explain in what situation this method works well
 			- location problem
 			- timing problem
@@ -333,3 +333,7 @@ November #5
 			- conclusion
 			- future work
 	```
+- **Tue**
+	- **Writing**: Explain that we were intially using panoramic but it did not works, thus we switched to go pro.
+	- Start-off writing **chapter 3: experimental setup**.
+	
