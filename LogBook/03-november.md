@@ -337,3 +337,13 @@ November #5
 	- **Writing**: Explain that we were intially using panoramic but it did not works, thus we switched to go pro.
 	- Start-off writing **chapter 3: experimental setup**.
 	
+- **Wed Nov 30 10:36:03 CET 2016**
+	- Working on thesis chapter 3: experimental setup.
+	
+- **Thu**: Istanbul, Turkey
+
+- **Fri**: Istanbul, Turkey
+
+- **Sat**: Istanbul, Turkey
+
+- **Sun**: Istanbul, Turkey

@@ -1,8 +1,94 @@
 %!TEX root = ../thesis-guntur.tex
 %************************************************
-\chapter{Results and Discussions}
-\label{ch:results-discussions} % $\mathbb{ZNR}$
+\chapter{Regression Model and Discussion}
+\label{ch:model-and-discussion} % $\mathbb{ZNR}$
 %************************************************
+Explain about the previous chapter, begin with a good starting point of a chapter.
+
+Explain the limitations of the thesis. Where and how the method works best.
+
+present the result of each location. and compare within days
+present the result in grotemarkt, and explain the difference between time of scanning.
+
+Explain that using classification might give better accuracy that regression.
+
+Also give graph of MAC address manufacturer.
+
+Explain using bar chard about the comaprison of maximum unique device and head count: average, in each day. Also apply this for timely related 
+
+Use wigle to explain that this could not be generalized. Mention comparison of one place and another place. in other cities or contries.
+
+Mention about VAD and explain why it is not applicable.
+
+Explain that this method does not work in restricted environment, such as university location.
+
+Looking for microphone recording in phone.
+% http://electronics.stackexchange.com/questions/59157/over-what-frequency-range-can-the-microphone-of-smartphone-receive-the-sound
+% http://www.makeuseof.com/tag/great-tips-recording-audio-smartphone-tablet/
+% http://www.scienceprog.com/long-range-directional-microphones-myth-and-reality/
+% http://www.epanorama.net/newepa/2014/09/08/sound-level-measuring-with-android-phone/
+% seems legit http://www.analog.com/library/analogdialogue/archives/46-05/understanding_microphone_sensitivity.html?doc=an-1328.pdf
+
+Possible research using dB (decibels) to identify social density.
+Decibels does not correlate linearly, but rather logaritmically. -> altought it turned out that it is not really good, ie., it does not have a good correlation.
+
+0.3 of correlation means that 30% of the variation is explained.
+
+explain that the IE method is not really 100% correct. prove it by using LG nexus randomized and real probe request.
+
+Argument, writing:
+it is hard to count people inside the bus.
+we rely on an assumption that says everyone brings their own mobilephone with them, thus we can track it, just like what retail companies do.
+To avoid randomized mac, we use discretize the monitoring, instead of doing it continuously for a long time, we did it in separate scanning interval.
+Why dont you use 2 devices for separate purpose? one for probe request and one for access point.
+Limitation: This work is only limited to free neighbourhood, i.e., this does not apply to a wifi restricted location such as university buildings.
+
+Important, writing: also address the microphone sensitivity.
+
+Working on decibels.
+% https://support.biamp.com/General/Audio/Peak_vs_RMS_Meters
+Important, writing: also address the microphone sensitivity.
+% https://support.biamp.com/General/Audio/Microphone_sensitivity
+Sound level decreases by 6dB with each doubling of distance from the source.
+The sound is already using ambient noise reduction.
+Those microphones are attuned to a specific (and rather narrow) range of sound intensity.
+
+cross validation is used to validate the mode, explain a little bit
+
+quantitative, continuous result: regression
+classes, discrete result: classification
+
+Explain that I used R to do data analysis.
+Also mention what packages are used for each model, as a summary, better to draw a table about all classes used.
+
+Explain a little bit about 10 folds cross validation.
+
+Mention eps-regression and nu-regression in SVM
+
+sections:
+- linear model
+- non linear model
+\section{Discussions} % (fold)
+\label{sec:discussions}
+Possible explanation: explain that the number of access point might increase in a crowd because of the ad hoc access point.
+also use % https://wigle.net/ database of public WiFi
+We expect that this affect the ap count, but it turned out that it does not.
+
+Turns out that multiple APs are using the same eduroam as their SSID, however, they have different MAC addresses. -> explain as a fact.
+
+When android is in energy saving mode, the OS prohibits any app for doing WiFi Scan or any other scan.
+
+[Possible problem] A drawback of scanning WiFi probe request: people located in other room (not within the person's eyesight) is still detectable, thus, worsen the results.
+Combine with sound
+Combine with GPS location if there is no sound detected.
+
+Counting people using wifi has an issue: it can detect people through the walls, which people don't see. what do you think?
+
+Explain that this method does not work in restricted environment, such as university location. Writing: explain why we do not do that in school/university, because WiFi is highly restricted in campus, i.e., we are not allowed to have individual access point in school.
+
+We also select daytime as the preferred scanning time because that is the time when most crowd are observable. This implies that our collected data resemble only daytime duration, meaning that conclusion might only be able to deduct for daytime.
+
+% section discussions (end)
 
 %*****************************************
 %*****************************************

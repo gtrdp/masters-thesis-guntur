@@ -1,6 +1,6 @@
 %!TEX root = ../thesis-guntur.tex
 %*****************************************
-\chapter{Related Work and Background}\label{ch:related-work}
+\chapter{Literature review}\label{ch:literature-review}
 %*****************************************
 % This chapter would probably take around 10-20 pages
 
@@ -16,12 +16,62 @@ In this chapter, several works that have been done with regard to estimating soc
 Some researches have been done with regard to estimating social density, especially more are focused on crowd density.
 \marginpar{This is the intro of the chapter.}
 
+It is not possible to do probe request in mobile phone [cite]
+
+A good example: https://www.kismetwireless.net/android-pcap/
+But it requires a USB NIC that supports monitor mode.
+
+Bluetooth is only possible to count crowd, or estimates. Because it is counting only within 10\% of real people count. [cite]
+
 Make sure to give conclusion in each section.
+
+Explain what mac address randomization is [cite, more than one].
+
+Found several research papers and links related to mac address randomization:
+% http://repo.thehackademy.net/depot_madchat/racine/reseau/wireless/IDS/wlan-mac-spoof.pdf
+% http://blogs.cisco.com/wireless/apple-ios-8-and-mac-randomization-what-it-means-for-ciscos-connected-mobile-experiences-cmx-solution
+% http://community.arubanetworks.com/t5/AAA-NAC-Guest-Access-BYOD/iOS-8-amp-MAC-Address-Randomization/td-p/169900
+% http://www.cso.com.au/article/547177/apple_randomises_mac_addresses_ios_8_killing_off_key_ad-tracking_tool/
+% http://www.imore.com/closer-look-ios-8s-mac-randomization
+
+Try to find a correlation between probe request (proxy of people count), which indicates unique device and number of access point [novelty] in a particular area. -> novelty
+
+Keyword used for literature study:
+crowd counting wifi
+crowd counting bluetooth
+wifi probe request
+online database social density
+counting crowd
+android monitor mode
+probe request wifi people
+crowd density wifi bluetooth
+social density online data
+crowd sensing wifi
+objective social density wifi bluetooth
+social density data
+social density objective
+speaker count -> filtered by year, >2012
+
+Explain why bluetooth is not a good candidate for social density estimation.
+
+Explain that we use two proxies for estimating people count. and why do we have to bother with mac address randomization.
+
+Found several research papers and links related to mac address randomization:
+% http://repo.thehackademy.net/depot_madchat/racine/reseau/wireless/IDS/wlan-mac-spoof.pdf
+% http://blogs.cisco.com/wireless/apple-ios-8-and-mac-randomization-what-it-means-for-ciscos-connected-mobile-experiences-cmx-solution
+% http://community.arubanetworks.com/t5/AAA-NAC-Guest-Access-BYOD/iOS-8-amp-MAC-Address-Randomization/td-p/169900
+% http://www.cso.com.au/article/547177/apple_randomises_mac_addresses_ios_8_killing_off_key_ad-tracking_tool/
+% http://www.imore.com/closer-look-ios-8s-mac-randomization
+
+Explain about possible sensors in mobile phone.
+
+It is known that getting the ground truth of crowd count with high precision is difficult in public places.
 
 \section{Video Based Crowd Counting} % (fold)
 \label{sec:video_based_crowd_counting}
 
 % section video_based_crowd_counting (end)
+
 
 
 
@@ -68,6 +118,8 @@ Video processing has limitations such as weather conditions, illumination change
 GSM location has an issue with privacy\cite{thesis017}.
 
 MAC is only a proxy since it does not infer directly to personal information, such as name or contact.
+
+Explain what is the effect of randomized mac address [cite].
 
 % wifi probe-request - main method================
 
