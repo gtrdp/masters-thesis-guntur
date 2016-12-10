@@ -72,7 +72,7 @@ crossval <- function(number){
     # error <- mean(abs(phone_data_gt[folds[[i]],]$gt - predictions))
     svm.accuracies = append(error, svm.accuracies)
   }
-  print(phone_data_gt[folds[[i]],]$gt)
+  print(phone_data_gt[folds[[10]],]$gt)
   print(predictions)
   
   return(svm.accuracies)

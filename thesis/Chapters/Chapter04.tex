@@ -1,8 +1,93 @@
 %!TEX root = ../thesis-guntur.tex
 %************************************************
-\chapter{Modeling and Validation}
-\label{ch:modeling-validation} % $\mathbb{ZNR}$
+\chapter{Results}
+\label{ch:results} % $\mathbb{ZNR}$
 %************************************************
+In the previous chapter, we present the bla bla
+In this chapter
+
+Explain about the data extraction.
+
+Mention all experiment setup.
+- randomization
+- wifi
+	- in days
+	- in time
+
+Display the final result, using table
+
+Remember to explain the randomization result.
+
+Ground truth: show an example of low density and high density crowd, comparing the 4 locations.
+
+Interesting finding: nexus 5x immediately sends out probe request when wake up from sleep.
+
+Randomization results indicate that 1 minute is the preferred time.
+
+Randomization Experiment result:Experiment result:
+The phone immediately sends out probe request with original mac when it wakes up from sleep. Usually 4 or 10. If the phone has woken up from a long sleep, more than 1 minutes. When the screen is locked.
+The phone keeps sending out using the same first 3 byte of address. Brutally changes the last 3 octets.
+The SN is close, but not really sequential.
+iPad: also keeps sending out probe request when the display is on.
+Take note the changes of mac address of LG Nexus 5X.
+Every 10 secs (roughly) sends out 2 probe request, same manufacturer, different last 3 octets. Sequential or close SN.
+But when it is stable, it sends out every roughly 60 secs, with each different mac (but same ). Count of probe beacon: 1 or 2, or even 3.
+To prove it, I turned off the phone and there is no such mac address.
+The mac address SN is close, but not sequential.
+The pattern: original -> 10 sec -> 4 times random -> 60 secs.
+The SN is restarted when the phone is active (not sleeping).
+The randomized MAC address: da:a1:19. And LG is always using that same mac?
+For the next experiment, please make sure that your phone WiFi is switched off.
+When the screen is on, the phone does not send out randomized mac address.
+Also test it using tcpdump.
+When the phone restarted, it firstly sends out real mac address.
+Create flowchart to filter out randomized mac.
+Every burst of probe request, the address changes.
+Even when WiFi is off, LG occasinally sends out probe request with original mac.
+
+Experiment result iPad:
+The iPad keeps sending out randomized mac even tough the screen is on.
+Then the loading ion appears, the burst of probe request also captured.
+Then iPad wakes from sleep, the mac address also changes. But still randomized.
+When the screen is on, it keeps sending out probe request within 3, to 10 secs.
+Take notes the randomized mac addess.
+Take notes the setting of ipad prior and after sim card installation.
+When I switched off the WiFi and on, the mac address changes. The SN is also restarted.
+No difference, when the sim card is installed or not.
+When ipad is connected to an AP (ad hoc, from Nexus), it sends out original mac address.
+But the SN is always restarted. (Chance of solution)
+If the iPad is in sleep mode, it sends out roughly every 2 minutes (135 secs) or even 4 minutes. and the SN is always restarted.
+The SN is always resetted in each burst.
+The pattern, 2x2 minutes, 4 minutes, then change MAC address
+
+Signal strength:
+% http://www.wireless-nets.com/resources/tutorials/define_SNR_values.html
+more than 40dB SNR = Excellent signal (5 bars); always associated; lightening fast.
+25dB to 40dB SNR = Very good signal (3 - 4 bars); always associated; very fast.
+15dB to 25dB SNR = Low signal (2 bars); always associated; usually fast.
+10dB - 15dB SNR = Very low signal (1 bar); mostly associated; mostly slow.
+5dB to 10dB SNR = No signal; not associated; no go.
+
+Explain by conclusion, not using whole data
+effect of day
+effect of location
+effect of scanning time
+put it in a whole picture
+signal strength: WiFi and probe request
+
+Working on decibels.
+% https://support.biamp.com/General/Audio/Peak_vs_RMS_Meters
+Important, writing: also address the microphone sensitivity.
+% https://support.biamp.com/General/Audio/Microphone_sensitivity
+Sound level decreases by 6dB with each doubling of distance from the source.
+The sound is already using ambient noise reduction.
+Those microphones are attuned to a specific (and rather narrow) range of sound intensity.
+
+Writing: present the scatter data with colors.
+
+Presenting: use the graph of prediction error to estimate the error.
+also for cross validation.
+
 Possible graph:
 \begin{itemize}
 	\item Number of removed mac address
@@ -19,6 +104,43 @@ Possible graph:
 \end{itemize}
 
 Question: Does weather affect WiFi performance?
+
+Possible research: generate separate graph that explain one location with different time window: using scatter plot.
+
+Explain the features on the data.
+
+Make the datasets available online.
+
+Devote a section only to show the mac address randomization result.
+
+Explain the result in percentage as well, instead of manual count.
+
+Writing:
+1 minute is selected to minimize the effect of MAC address randomization, as well as according to our experiment, 1 minute is the interval of sending probe request in several manufacturers (it subjects to change)
+assumption when it sees cars or buses
+sound depends when the people speak out or not
+the setting may vary in cities or even countries.
+explain why dont we use channel hopping scanning.
+
+Make sure that the data is available publicly, mention the url.
+
+
+show the graph of Phone manufacturer and the graph of show the graph of scanned device (comparison between laptops, smartphones, and other)
+
+Explain the density of each location in bar chart, comparing both head count and probe request count.
+
+explain the size of data dump (images (MB) and text (lines))
+
+% maybe use this
+Use table of simulation about randomized mac address using different time window.
+
+show the correlation graph per day per location, then combined per day, then combined all location all day
+
+go for detail first, then combine all measurement using correlation graph matrix
+
+an object may appear more than once in the manual camera: we used pattern recognition to avoid multiple counting.
+
+other probe request from other device may be captured during mac address randomization experiment.
 
 %*****************************************
 %*****************************************
