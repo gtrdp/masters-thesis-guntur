@@ -36,6 +36,11 @@ December #1
 
 December #2
 -----------
+- **Mon Dec 12 08:54:42 CET 2016**
+	- US Embassy.
+	- Working on the conference paper.
+- **Tue Dec 13 11:16:25 CET 2016**
+	- Chapter 4: Result
 
 December #3
 -----------

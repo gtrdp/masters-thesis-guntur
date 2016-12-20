@@ -2,10 +2,10 @@
 from lib.SNR import SNR
 from lib.AmbientSound import AmbientSound
 
-snrReader = SNR()
+# snrReader = SNR()
+#
+# snrReader.readProbeSNR()
+# snrReader.readAPSignal()
 
-snrReader.readProbeSNR()
-snrReader.readAPSignal()
-
-# ambient = AmbientSound()
-# ambient.readAmbientSound()
+ambient = AmbientSound()
+ambient.readAmbientSound()

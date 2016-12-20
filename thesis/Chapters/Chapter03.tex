@@ -4,13 +4,20 @@
 \label{ch:experimental-setup} % $\mathbb{ZNR}$
 %************************************************
 
+TODO:
+- separate context, setup
+- add metrics explicitly:
+	- correlation (rho) and p value, explain what it is and what it does
+	- how to validate the model: RMSE, residual error, percentage of total population
+
+
 % The previous chapters present the bla bla.
 % \marginpar{Use this to write down some comments.}
 In this chapter we present the method of the experiments to collect the data. We first start with the investigation of \ac{MAC} address randomization behavior. Then we discuss the main experiment, which is about examining the correlation between the level of social density and smartphone sensor readings. Lastly, we present the method of data extraction from collection of raw log files.
 
 \section{MAC Address Randomization} % (fold)
 \label{sec:mac_address_randomization}
-In this first setup we are interested in seeing the behavior of \ac{MAC} address randomization, observed in both Android and iOS devices~\cite{thesis061}. By using this randomization technique, the devices will randomize its \ac{MAC} address in each particular circumstances to increase the privacy of the user and thus making the current people tracking technology no longer works~\cite{thesis079}. We need to investigate \ac{MAC} address randomization behavior because we will use the \ac{MAC} address counting as a proxy to estimate the level of social density. \ac{MAC} address randomization is a potential threat to this approach. 
+In this first setup we are interested in seeing the behavior of \ac{MAC} address randomization. This phenomenon is observed in both Android and iOS devices~\cite{thesis061}. By using this randomization technique, the devices will randomize its \ac{MAC} address in each particular circumstances to increase the privacy of the user and thus making the current people tracking technology no longer works~\cite{thesis079}. We need to investigate \ac{MAC} address randomization behavior because we will use the \ac{MAC} address counting as a proxy to estimate the level of social density. \ac{MAC} address randomization is a potential threat to this approach. 
 
 In this experiment, we exploit the active scanning mechanism of WiFi, in which each WiFi-enabled device is required to broadcast probe request packets to scan for available WiFi \ac{AP}~\cite{thesis082}. In the probe request, a piece of unique information exists, e.g., the device's \ac{MAC} address and supported WiFi modes, which indicates where the probe request packet comes from. We capture the probe request packets from nearby WiFi-enabled devices and store the captured information to a log file.
 
@@ -199,6 +206,9 @@ GoPro cameras & \verb|.jpg| & head count       & manual counting\\
 The WiFi based data collection result consists of two types of file, namely \verb|.txt| file for \ac{AP} list from AirPort sensing, and \verb|.pcap| file for captured probe request packets from \verb|tcpdump| sensing. As shown in Table~\ref{tab:sensor-parameters}, we extract the number of available \ac{AP} and the mean of \ac{AP}'s signal strength from this file, while the number of unique device is derived from the \verb|.pcap| file. Each cycle produces two individual \verb|.txt| and \verb|.pcap| labeled in its corresponding timestamp.
 
 Figure~\ref{fig:ap-list-example} and~\ref{fig:probe-request-example} display the example of sensed \ac{AP} list and captured probe request respectively. From the \ac{AP} list depicted in Figure~\ref{fig:ap-list-example} we are interested in \ac{BSSID} column and \ac{RSSI} column to count the \ac{AP} and measure the signal strength. From the captured probe request packets, as depicted in Figure~\ref{fig:probe-request-example}, we take note on the \ac{SA}. We develop a text processing program written in Python script to extract preferred elements. We plot the result to scatter plot using \verb|matplotlib| package in Python~\cite{Hunter:2007}.
+
+
+anonymized, explain.
 
 % example of airport scanning result
 \begin{figure}[ht]

@@ -25,7 +25,8 @@
 % ****************************************************************************************************
 \PassOptionsToPackage{eulerchapternumbers,listings,drafting,
 					 pdfspacing,%floatperchapter,%linedheaders,%
-					 subfig,beramono,eulermath,parts,dottedtoc}{classicthesis}                                        
+					 subfig,beramono,eulermath,parts,
+                     ,dottedtoc}{classicthesis}                                        
 % ********************************************************************
 % Available options for classicthesis.sty 
 % (see ClassicThesis.pdf for more information):
@@ -54,7 +55,7 @@
 \newcommand{\myUni}{University of Groningen\xspace}
 \newcommand{\myLocation}{Groningen\xspace}
 \newcommand{\myTime}{January 2017\xspace}
-\newcommand{\myVersion}{version 0.1\xspace}
+\newcommand{\myVersion}{version 0.2.0\xspace}
 
 % ********************************************************************
 % Setup, finetuning, and useful commands
@@ -134,6 +135,14 @@
 \usepackage{subfig}  
 
 \usepackage[inline]{enumitem} % for inline list
+\usepackage{multirow} % for multirow table
+\usepackage{changepage} % to change the margin so that the table is more centered
+\usepackage{float} % for appendix
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}} % for newline within table cells
+\newcommand{\specialcellleft}[2][l]{%
+\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}} % for newline within table cells
 % ****************************************************************************************************
 
 

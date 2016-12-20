@@ -28,5 +28,8 @@ panel.hist <- function(x, ...)
   y <- h$counts; y <- y/max(y)
   rect(breaks[-nB], 0, breaks[-1], y, col="cyan", ...)
 }
+
+global_data <- all_global_data[, -9]
+
 pairs(global_data,
       lower.panel=panel.smooth, upper.panel=panel.cor,diag.panel=panel.hist)

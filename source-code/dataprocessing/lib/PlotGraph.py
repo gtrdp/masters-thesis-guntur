@@ -2,6 +2,7 @@
 # (c) Guntur DP 2016 - guntur.dharma@gmail.com
 
 import pprint
+import matplotlib
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
 from scipy.stats.stats import pearsonr
@@ -42,28 +43,30 @@ class PlotGraph:
 			plt.figure(1)
 			plt.plot(self.access_point[location]['timely'], label='Access Point count')
 			plt.plot(self.probe_request[location]['timely'], label='Device count')
-			if self.audio:
-				plt.plot(self.audio_record[location]['timely'], label='Speaker count')
-			plt.plot(self.ground_truth[location], label='Ground truth')
+			# if self.audio:
+			# 	plt.plot(self.audio_record[location]['timely'], label='Speaker count')
+			# plt.plot(self.ground_truth[location], label='Head count')
 
 			max_x = len(self.access_point[location]['timely']) + 0.2
 			max_y = max(self.probe_request[location]['timely'] + self.access_point[location]['timely'] + self.ground_truth[location])
 			print max_y
-			plt.axis([0, max_x, 0, max_y + int(round(0.25*max_y))])
+			# plt.axis([0, max_x, 0, max_y + int(round(0.25*max_y))])
+			plt.axis([0, max_x, 0, 300])
 			plt.xlabel('# Measurement')
 			plt.ylabel('Count')
 			plt.title(location)
 
 			# annotate the points
-			for idx, value in enumerate(self.access_point[location]['timely']):
-				plt.annotate(str(value), xy=(idx, value))
-			for idx, value in enumerate(self.probe_request[location]['timely']):
-				plt.annotate(str(value), xy=(idx, value))
-			if self.audio:
-				for idx, value in enumerate(self.audio_record[location]['timely']):
-					plt.annotate(str(value), xy=(idx, value))
-			for idx, value in enumerate(self.ground_truth[location]):
-				plt.annotate(str(value), xy=(idx, value))
+			matplotlib.rcParams.update({'font.size': 10})
+			# for idx, value in enumerate(self.access_point[location]['timely']):
+			# 	plt.annotate(str(value), xy=(idx, value))
+			# for idx, value in enumerate(self.probe_request[location]['timely']):
+			# 	plt.annotate(str(value), xy=(idx, value))
+			# if self.audio:
+			# 	for idx, value in enumerate(self.audio_record[location]['timely']):
+			# 		plt.annotate(str(value), xy=(idx, value))
+			# for idx, value in enumerate(self.ground_truth[location]):
+			# 	plt.annotate(str(value), xy=(idx, value))
 
 			lgd = plt.legend(bbox_to_anchor=(1, 1), loc='upper right', ncol=1)
 
@@ -78,7 +81,7 @@ class PlotGraph:
 	# plot scatter and count the correlation
 	def plotScatter(self, ap, pr, au, gt, location, scan_date = None):
 		# prepare the variable for loops
-		xlabel = ['device count', 'ground truth', 'ground truth']
+		xlabel = ['device count', 'head count', 'head count']
 		ylabel = ['access point count', 'device count', 'access point count']
 		x = [pr, gt, gt]
 		y = [ap, pr, ap]
@@ -126,7 +129,7 @@ class PlotGraph:
 					gt[loc].append(int(foo[3].strip()))
 
 		# plot the graph
-		xlabel = ['device count', 'ground truth', 'ground truth']
+		xlabel = ['device count', 'head count', 'head count']
 		ylabel = ['access point count', 'device count', 'access point count']
 		x = [pr, gt, gt]
 		y = [ap, pr, ap]
