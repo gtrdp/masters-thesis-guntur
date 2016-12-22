@@ -3,6 +3,8 @@
 \chapter{Regression Model and Discussion}
 \label{ch:model-and-discussion} % $\mathbb{ZNR}$
 %************************************************
+Discussion: here is where you discuss the results, where you are interpreting the outliers and overall trends in your figures. Here you can dare a bit more and come to conclusions that are compatible with the evidence you found, but not necessarily unique. 
+
 Explain about the previous chapter, begin with a good starting point of a chapter.
 
 Explain the limitations of the thesis. Where and how the method works best.
@@ -122,6 +124,33 @@ mention in the appendix, that we can see the crowd count almost tell us nothing.
 why regression, not classification?
 
 talk about the result of speaker count result. say that it is not accurate and reliable, thus we do not use that.
+
+Although probe request based estimation is promising, some drawbacks are also present. In this method, we are not able to distinguish the type of devices, i.e., whether it is a smartphone, tablets, or computers. Although recently one usually brings a smartphone~\cite{thesis047}, which means we can deduce that a smartphone means a person present, there is also a possibility that one brings more devices or no devices at all.
+
+Compared to the probe request based estimation, this (what this?) method could not detect people through walls or buildings and thus does not really represent the actual condition of the location. However, we consider this (what this) method to be closer to the ground truth.
+
+% residual information
+% http://repo.thehackademy.net/depot_madchat/racine/reseau/wireless/IDS/wlan-mac-spoof.pdf
+% http://blogs.cisco.com/wireless/apple-ios-8-and-mac-randomization-what-it-means-for-ciscos-connected-mobile-experiences-cmx-solution
+% http://community.arubanetworks.com/t5/AAA-NAC-Guest-Access-BYOD/iOS-8-amp-MAC-Address-Randomization/td-p/169900
+% http://www.cso.com.au/article/547177/apple_randomises_mac_addresses_ios_8_killing_off_key_ad-tracking_tool/
+% http://www.imore.com/closer-look-ios-8s-mac-randomization
+% https://en.wikipedia.org/wiki/MAC_address
+
+Crowd++ Using the code from the original version.
+Remove unrelated code block, such as the relation with smartphone things: battery, calibration (because we do not use semisupervised learning based on the owner voice) etc.
+The code also uses Java Speech Toolkit (JSTK) from Speech Group at Informatik 5, Univ. Erlangen-Nuremberg, GERMANY.
+% https://github.com/sikoried/jstk
+Most time spent on debugging the code.
+Crowdpp also uses YIN pitch tracking algorithm:
+% http://recherche.ircam.fr/equipes/pcm/cheveign/ps/2002_JASA_YIN_proof.pdf
+Finally got the code to work, bug found in file format and feature extraction (delete the feature after completed, otherwise the next process will append it which will cause Exception)
+Found SoX, an audio recorder (and even more) for sound recording:
+% http://sox.sourceforge.net/sox.html
+Explain the audio result: what is pklv and rms.
+
+Explain the limitation.
+
 %*****************************************
 %*****************************************
 %*****************************************

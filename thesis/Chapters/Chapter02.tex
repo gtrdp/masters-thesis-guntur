@@ -34,6 +34,14 @@ Found several research papers and links related to mac address randomization:
 % http://www.cso.com.au/article/547177/apple_randomises_mac_addresses_ios_8_killing_off_key_ad-tracking_tool/
 % http://www.imore.com/closer-look-ios-8s-mac-randomization
 
+% residual information
+% http://repo.thehackademy.net/depot_madchat/racine/reseau/wireless/IDS/wlan-mac-spoof.pdf
+% http://blogs.cisco.com/wireless/apple-ios-8-and-mac-randomization-what-it-means-for-ciscos-connected-mobile-experiences-cmx-solution
+% http://community.arubanetworks.com/t5/AAA-NAC-Guest-Access-BYOD/iOS-8-amp-MAC-Address-Randomization/td-p/169900
+% http://www.cso.com.au/article/547177/apple_randomises_mac_addresses_ios_8_killing_off_key_ad-tracking_tool/
+% http://www.imore.com/closer-look-ios-8s-mac-randomization
+% https://en.wikipedia.org/wiki/MAC_address
+
 Try to find a correlation between probe request (proxy of people count), which indicates unique device and number of access point [novelty] in a particular area. -> novelty
 
 Keyword used for literature study:
@@ -229,6 +237,17 @@ Smartphone trajectories are tracked using captured WiFi signals in~\cite{thesis0
 \cite{thesis048}~has showed successfully how to implement WiFi RSSI as a way to track smartphone trajectories. The result showed that it is promising, having only 70 meters error from GPS ground truth.
 
 \cite{thesis046}~presents the method to detect occupancy and count the people using WiFi power only.
+
+
+\cite{thesis061} about the behavior of \ac{MAC} address randomization.
+
+
+By using the randomization technique, the devices will randomize their \ac{MAC} address in each particular circumstance to increase the privacy of the user and thus making the current people tracking technology (refer to what current people technology) no longer work~\cite{thesis079}.
+
+In \ac{MAC} address randomization experiment, we exploit the active scanning mechanism of WiFi, in which each WiFi-enabled device is required to broadcast probe request packets to scan for available WiFi \ac{AP}~\cite{thesis082}. In the probe request, a piece of unique information exists, e.g., the device's \ac{MAC} address and supported WiFi modes, which indicates where the probe request packet comes from. We capture the probe request packets from nearby WiFi-enabled devices and store the captured information to a log file.
+
+The part on background on WiFi, randomization, probe request, belongs to an earlier chapter on background information.
+
 
 % The rest of thesis should be structured as follows:
 % [Methodology]
