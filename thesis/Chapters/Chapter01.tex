@@ -11,90 +11,67 @@
 % - Better to use active voice, avoid passive voice as much as possible.
 % - Good conclusion brings an intro to the next chapter.
 
-% ==============================================================================
-% How the intro should be
-% - explain about the conventional method of personal well being, which 
-%   has a problem in biased result, eg., are you always socializing? the person
-%   answer yes, in fact, he is not.
-%   also explain about socialization, the importance of social density
-%   if possible, cite prof. kas publication on social density
-% - also mention social well being app, which is good for objective measurement,
-%   but no approach on social density, explain their approaches.
-% - here the objective social count comes in, as it can provide an objective
-%   measurement of social density. explain the approaches (including wifi, camera, etc)
-%   that have been proposed
-% - explain what it lacks of, such as it does not applicable to smartphone, must be rooted
-% - explain where we try to come in. and more about randomization and VAD.
-% - explain the research questions
+Social density estimation, or sometimes referred as crowd counting, is the mechanism of estimating the number of people in a particular area (social density) by means of a proxy, which could replace the manual counting method, e.g., counting heads by using tally counter. Social density estimation has many potential implementations. For instance, it can be implemented in mobile health care monitoring systems as a passive behavioral monitoring, in which the system monitors the level of social density that a patient encounters. The mobile health care would replace the conventional method to record a patient's social density investigation, which uses questionnaires, which sometimes causes the results to be biased.
+Other implementations of social density estimation are, for instance, crowd surveillance~\cite{thesis050}, evacuation and rescue~\cite{thesis045}, retail store customer analysis, infrastructure development and evaluation, and queue management~\cite{thesis012}.
 
-% create list of abbreviation!!!
+Several approaches of social density estimation exist. Surveillance camera utilization is one of the method used, although it is limited by high deployment or computational cost. Other than image based estimation, some researches have proposed Radio Frequency RF signals, e.g., WiFi or Bluetooth, mainly to get more low deployment or computational cost. The WiFi and Bluetooth based methods make use of several characteristics present in WiFi or Bluetooth, such as probe-request, MAC address monitoring~\cite{thesis008}, \ac{RSSI}~\cite{thesis046}, and \ac{CSI}~\cite{thesis051}.
 
-Social density estimation, or sometimes referred as crowd counting, is the mechanism of estimating the number of people in certain area by means of a proxy, which could replace the manual counting method. It has broad range of implementation, for instance crowd surveillance~\cite{thesis050}, evacuation and rescue~\cite{thesis045}, retail store customer analysis, infrastructure development and evaluation, queue management~\cite{thesis012}, and even in objective behavioral monitoring, especially to estimate the level of social density a patient experiences in more accurate manner.
+Finding a method which is suitable and implementable as a passive behavioral monitoring is another problem. To the best of our knowledge, there is no approach of this.
+The present study aims to implement social density estimation as a part of a passive behavioral monitoring using consumer smartphone as the measuring instrument. The result would help as to monitor patients . 
+\cite{thesis015} % paul eskes
+\cite{thesis031} % anja
 
-Several method of social density estimation exists. Surveillance camera utilization is one of the method used, although it is limited by high deployment or computational cost. Other than image based estimation, some researches have proposed Radio Frequency RF signals, e.g., WiFi or Bluetooth, mainly to get more low deployment or computational cost.
+To the best of our knowledge, no prior \cite{thesis001}
+To the best of our knowledge, there is no approach that tries to combine or fusion several sensor measurements. Furthermore, no prior investigation of crowd counting using smartphone has been proposed, as mainly approaches are leveraging dedicated sensing devices.
 
-The WiFi and Bluetooth based methods make use of several characteristic present in WiFi or Bluetooth, such as probe-request, MAC address monitoring [cite], Received Signal Strength Indicator \ac{RSSI} [cite], Link State Indicator (LSI) [cite], and Channel State Information (CSI) [cite]. From all of those methods, WiFi probe request seems promising, as it is also proven to be able to give social density estimation with high accuracy~\cite{}
+explain that behapp is already counting available access point also cite
+explain why we do this, say that probe request has a high correlation with the people count, cite the paper that says this
+The result will be useful for BeHapp aplication [cite sociability]
 
-% -> introduction about probe request
-% -> why we dont do it directly on phone, because of permission (rooting)
-% -> explain that it capables to show social density, cite the paper
-% -> explain that behapp is already counting available access point also cite
-% -> explain why we do this, say that probe request has a high correlation with the people count, cite the paper that says this
-However, doing \ac{RSSI} in smartphone directly is impossible, as it requires root permission nad rooting is illegal according to most countries' law. As extension of research BeHapp.
 
-% -> explanation about mac address randomization, which begins from iOS 8 or android 7 remember to cite!
+also mention social well being app, which is good for objective measurement, but no approach on social density, explain their approaches.
+
+the present study tries to figure out a solution that will work best especially for passive behavioral monitoring, where special requirements are present.
+
+-> summary of this work
+
+here the objective social count comes in, as it can provide an objective
+measurement of social density. explain the approaches (including wifi, camera, etc) that have been proposed
+explain what it lacks of, such as it does not applicable to smartphone, must be rooted
 
 \section{Research Questions} % (fold)
 \label{sec:research_questions}
+This present study serves as an extension of BeHapp application. The present study focuses on the passive behavioral monitoring on smartphone.
+BeHapp\footnote{\url{https://play.google.com/store/apps/details?id=org.behapp&hl=nl}}
 
-
-define what social density is.
-
-% -> summary of this work
-% -> how do we would like to achieve this
-% -> how long is the project
-This study serves as 
-
-% any relation of unique device and access point count?
-To uncover the relation between the number of unique devices and available access points, I formulated the first research question:
+This leads to the main research question:
 \begin{displayquote}\textit{
-Is there any correlation between number of unique devices and number of available Access Points in a certain area?}
+How can we estimate the level of social density of the surroundings using smartphone as a passive behavioral monitoring scheme?}
 \end{displayquote}
 
-% how do the parameters affect?
-% parameters:
-% - duration of scanning (per 1, 5, or 10 minutes)
-% - time of scanning (rush hour, morning, afternoon, etc)
-% - Location of scanning
-% - relation with number of visitors
-When the data is captured, several parameters are also used, such as location, time of scanning, duration of scanning, MAC address filter, and so on. Here comes the second:
-\begin{displayquote}\textit{
-How do the parameters affect the correlation result?}
-\end{displayquote}
+In order to answer this question the following sub-questions are formulated:
+\begin{enumerate}
+	\item \textit{What sensors are available at consumer smartphone and which of those are favorable for the social density estimation method?}\\
+	Modern smartphones are equipped with several sensors to help users in their works, e.g., cameras, proximity sensor, finger print sensor, etc. In spite of the sensors have their own actual function, some sensors must be capable of giving such information for social density estimation. We are interested in investigating the sensors which are useful to achieve social density estimation.
 
-% how to resolve the randomization issue?
-As mentioned previously, MAC address randomization is one of the challenges of estimating nearby unique device using probe-request. The third research question is somewhat related to that:
-\begin{displayquote}\textit{
-Is there any method to overcome the MAC address randomization issue? Which affecting number of unique devices.}
-\end{displayquote}
+	\item \textit{How can we validate the method, meaning, to get the ground truth or the approximation of the ground truth?}\\
+	To validate whether the smartphone sensor data really does something related to the social density, we have to compare the smartphone sensor data with the actual social density level, or the ground truth. We look a method to obtain such ground truth or at least a strong estimation of the ground truth.
 
-% is VAD useful?
-Furthermore, the validation using sound is also used and the last research question is asking about the effect of it.
-\begin{displayquote}\textit{
-How does validation using Voice Activity Detection help to achieve better result?}
-\end{displayquote}
+	\item \textit{How to overcome or minimize the challenges of this technique?}\\
+	Knowing the approach to estimate the social density level using smartphone, some challenges or limitations may emerge. We also figure out the solutions of these problems so that at least the side effect can be minimized.
 
-% is access point suitable as a reliable proxy for social density estimation?
-\begin{displayquote}
-	\textit{is access point suitable as a reliable proxy for social density estimation?}
-\end{displayquote}
+	\item \textit{Can this method work everywhere? What is the scope of this method?}\\
+	We aim to devise a method that would work almost anywhere. Although this may be too ambitious, there must be a certain limit of the present study. We formally portray the scope of the final result.
+\end{enumerate}
 
-\begin{displayquote}
-	\textit{what is the accuracy and limitation of this method?}
-\end{displayquote}
 
-The rest of this thesis is structured as follows. Chapter \ref{ch:related-work} describes the related works, which are closely related to the social density estimation.
 
+
+
+\section{Thesis Structure Overview} % (fold)
+\label{sec:thesis_overview}
+The rest of this thesis contains the following.
+\autoref{ch:literature-review} summarizes the relevant works that correlated with the present study. The experimental setup and the its implementation regarding the social density estimation in consumer smartphone is described in~\autoref{ch:experimental-setup}, while the result of the experiments are depicted in~\autoref{ch:results}. \autoref{ch:regression-and-discussion}~presents the analysis of collected datasets to estimate or predict social density level based on smartphone sensors reading. The conclusion of this thesis and the corresponding future works are described in~\autoref{ch:conclusion-future-work}.
 
 %*****************************************
 %*****************************************

@@ -1,0 +1,101 @@
+%!TEX root = ../thesis-guntur.tex
+%********************************************************************
+% Appendix - R code
+%*******************************************************
+% If problems with the headers: get headings in appendix etc. right
+%\markboth{\spacedlowsmallcaps{Appendix}}{\spacedlowsmallcaps{Appendix}}
+\chapter{R Code Listings}
+\label{ch:R-code-listings}
+
+\begin{table}[h]
+\centering
+\caption{Summary of R libraries in regression analysis}
+\label{tab:r-library-summary}
+\begin{tabular}{ll}
+\toprule
+Regression Algorithm                      & R libraries \\ \midrule
+Linear regression with stepwise selection & leaps       \\
+k-Nearest Neighbors                       & caret       \\
+Support Vector Machine                    & e1071      \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{lstlisting}[language=R, caption=Tuning linear regression with stepwise selection. Number of predictor \texttt{nvmax} is the tuning parameter. , label=r-code-linear-regr]
+# linear stepwise selection
+library(caret)
+tuning_params <- expand.grid(nvmax=seq(1,4,1))
+set.seed(100)
+linear.hc.stepwise <- train(hc~., data=phone_data_hc, method="leapSeq", trControl=fit_control, tuneGrid = tuning_params)
+plot(linear.hc.stepwise)
+lm(hc~., data = phone_data_hc)
+
+tuning_params <- expand.grid(nvmax=seq(1,4,1))
+set.seed(100)
+linear.dc.stepwise <- train(dc~., data=phone_data_dc, method="leapSeq", trControl=fit_control, tuneGrid = tuning_params)
+plot(linear.dc.stepwise)
+lm(dc~., data = phone_data_dc)
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{lstlisting}[language=R, caption=Tuning k-Nearest Neighbors regression. Number of neighbors ($k$) is the tuning parameter., label=r-code-knn]
+#kNN
+library(caret)
+fit_control <- trainControl(method = "repeatedcv", number = 10, repeats = 10)
+tuning_params <- expand.grid(k=seq(1,30,1))
+set.seed(100)
+knn.hc <- train(hc~., data=phone_data_hc, method="knn", trControl=fit_control, tuneGrid = tuning_params)
+plot(knn.hc)
+
+fit_control <- trainControl(method = "repeatedcv", number = 10, repeats = 10)
+tuning_params <- expand.grid(k=seq(1,30,1))
+set.seed(100)
+knn.dc <- train(dc~., data=phone_data_dc, method="knn", trControl=fit_control, tuneGrid = tuning_params)
+plotWithBars(knn.dc)
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{lstlisting}[language=R, caption=Tuning Support Vector Machine regression. Epsilon ($\epsilon$) and \texttt{cost} are the tuning parameters. , label=r-code-svm]
+# SVM for head count
+library(e1071)
+set.seed(100)
+tuneResult <- tune(svm, hc~.,  data=phone_data_hc, ranges = list(epsilon = seq(0,1,0.1), cost = (1:10)))
+plot(tuneResult)
+
+# SVM for device count
+library(e1071)
+set.seed(100)
+tuneResult <- tune(svm, dc~.,  data=phone_data_dc, ranges = list(epsilon = seq(0,1,0.1), cost = (1:10)))
+plot(tuneResult)
+\end{lstlisting}
+
+
+% Cross validation function
+
+% Plot graph function
+
