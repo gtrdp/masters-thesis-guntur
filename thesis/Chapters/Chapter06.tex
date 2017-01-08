@@ -3,48 +3,36 @@
 \chapter{Conclusion and Future Work}
 \label{ch:conclusion-future-work} % $\mathbb{ZNR}$
 %************************************************
-In this thesis, we present that it is possible to infer the level of social density in the surroundings. The main research question is:
-mention the important message, that wifi could be use topredict roughly social density. but to generalize we must get more data.
-
-recall the chapters to draw conclusion.
+In this thesis, we study how consumer smartphone can be utilized as an instrument to estimate the level of social density in the surroundings. We collect data at several locations to see the trend of sensor readings and social density level. We also try to construct a model to predict upcoming social density level based on sensor readings. To conclude this thesis, we go through the research questions and answer the question based on our findings. As posed in~\autoref{ch:introduction}, the main research question is
 
 \begin{displayquote}\textit{
 How can we estimate the level of social density of the surroundings using smartphone as a passive behavioral monitoring scheme?}
 \end{displayquote}
 
+As presented in~\autoref{ch:literature-review}, literatures say that smartphone sensors are exploitable to be used as instruments to estimate the social density level. We also conducted experiments, described in~\autoref{ch:experimental-setup} to inspect the hypothesis. The results, presented in~\autoref{ch:results}, show that there is a trend that follows the relation of sensor readings and social density level. We also discuss the findings and develop a regression model to predict the social density level in the future in~\autoref{ch:regression-and-discussion}.
+
+The sub-questions are defined to help answering and validating the main research question. Those are formulated as follows:
 \begin{enumerate}
 	\item \textit{What sensors are available at consumer smartphone and which of those are favorable for the social density estimation method?}\\
-	
+	We present a summary of available sensors in smartphone in~\autoref{tab:smartphone-sensor-summary}. In this thesis, we make use of WiFi and microphone to record data for estimating social density level. We select these sensors as those are usable no mater how the smartphone is operated and positioned.
 
-	\item \textit{How can we validate the method, meaning, to get the ground truth or the approximation of the ground truth?}\\
-	
+	\item \textit{How can we validate the sensor readings, meaning, to get the ground truth or the approximation of the ground truth?}\\
+	We use manual head counting in time-lapse images and unique \ac{MAC} address counting in captured WiFi probe request packets as first approximation of ground truth. We select these techniques as those are demonstrated to have a correlation with social density in the surroundings.
 
-	\item \textit{How to overcome or minimize the challenges of this technique?}\\
+	% \item \textit{How to overcome or minimize the challenges of this technique?}\\
 	
 
 	\item \textit{Can this method work everywhere? What is the scope of this method?}\\
-	Explain the limitation of the study.
-	Explain that this method does not work in restricted environment, such as university location.
-	An the other limitation.
+	Our proposed method works best at the selected locations in the experiment, as presented in~\autoref{tab:location-summary}. Our method is applicable in locations where WiFi \ac{AP} use is not restricted, i.e., people are free to set up their own WiFi \ac{AP} in anyway they prefer. Furthermore, our method is bound to time constraint, which limits to daytime implementation when the social density level reaches its peak. Generalization of this method requires further data collection.
 \end{enumerate}
-
-explain about this method could works as a localization method, could be useful especially if GPS signal is not available
 
 \section{Future Works} % (fold)
 \label{sec:future_works}
-In the future work, we are interested in working more closely with estimating social density. Regression model based on the data to get the count of people. Machine learning method is also interesting to be implemented.
+In the future work, we are interested in collecting more data so that we can generalize the proposed method. The data collection includes more locations with several scanning time to see the variance of social density in time, adding more features for analysis. Furthermore, we are also interested in doing classification analysis to see whether we can achieve better performance of social density estimation. However, classification analysis means that the result will be classified into several classes instead of continuous numbers.
 
-Future work, examine the correlation between ap count and location.
-future work, examine the solutino of mac address randomization using probe request data.
+Moreover, including more sensors in smartphone or other monitoring instruments could also be an option. Several options of smartphone sensor could be camera or Bluetooth. Other resources or instruments may refer to using dedicated device to monitor the social density level or other data coming from third party stakeholders such as cellular operators.
 
-add more feature, eg, time, for future works
-add more data, eg, more locations with wider condition
-
-devise more accurate modeling.
-
-investigate other sensors to increase the accuracy of the method.
-
-take care of outliers.
+% explain about this method could works as a localization method, could be useful especially if GPS signal is not available
 
 %*****************************************
 %*****************************************

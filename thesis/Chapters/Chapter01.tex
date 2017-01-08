@@ -10,58 +10,42 @@
 % 	- explaining how to achieve the aim.
 % - Better to use active voice, avoid passive voice as much as possible.
 % - Good conclusion brings an intro to the next chapter.
+People who suffer from neuropsychiatric disorders usually withdraw from society~\cite{thesis084,thesis083}. They often visit places that tends to be quite and there are no so many people. Current treatments of neuropsychiatric disorders include oral questionnaires that record a patient's social interaction on a daily basis. However, the questionnaire method often leads to biased and subjective result, making an objective monitoring is needed to obtain reliable results.
+% Or to  differentiate between healthy and non-healthy individuals.
+This is where social density estimation comes into play.
 
-Social density estimation, or sometimes referred as crowd counting, is the mechanism of estimating the number of people in a particular area (social density) by means of a proxy, which could replace the manual counting method, e.g., counting heads by using tally counter. Social density estimation has many potential implementations. For instance, it can be implemented in mobile health care monitoring systems as a passive behavioral monitoring, in which the system monitors the level of social density that a patient encounters. The mobile health care would replace the conventional method to record a patient's social density investigation, which uses questionnaires, which sometimes causes the results to be biased.
-Other implementations of social density estimation are, for instance, crowd surveillance~\cite{thesis050}, evacuation and rescue~\cite{thesis045}, retail store customer analysis, infrastructure development and evaluation, and queue management~\cite{thesis012}.
+Social density estimation, or sometimes referred as crowd counting, is the mechanism of estimating the number of people (social density) in a certain area by using automated method, which could replace the manual counting technique, e.g., counting heads by using tally counter. Besides its implementation in monitoring neuropsychiatric patients, social density estimation has many potential implementations, for instance, crowd surveillance~\cite{thesis050}, evacuation and rescue~\cite{thesis045}, retail store customer analysis, infrastructure development and evaluation, and queue management~\cite{thesis012}.
 
-Several approaches of social density estimation exist. Surveillance camera utilization is one of the method used, although it is limited by high deployment or computational cost. Other than image based estimation, some researches have proposed Radio Frequency RF signals, e.g., WiFi or Bluetooth, mainly to get more low deployment or computational cost. The WiFi and Bluetooth based methods make use of several characteristics present in WiFi or Bluetooth, such as probe-request, MAC address monitoring~\cite{thesis008}, \ac{RSSI}~\cite{thesis046}, and \ac{CSI}~\cite{thesis051}.
+Several approaches of social density estimation exist. Surveillance camera utilization is one of the method used, although it is limited by high deployment and computational cost. As opposed to video-based technique, some researches have proposed Radio Frequency RF signals, e.g., WiFi or Bluetooth, to get lower deployment or computational cost. The WiFi and Bluetooth based methods make use of several characteristics present in WiFi or Bluetooth, such as probe-request, MAC address monitoring~\cite{thesis008}, \ac{RSSI}~\cite{thesis046}, and \ac{CSI}~\cite{thesis051}.
 
-Finding a method which is suitable and implementable as a passive behavioral monitoring is another problem. To the best of our knowledge, there is no approach of this.
-The present study aims to implement social density estimation as a part of a passive behavioral monitoring using consumer smartphone as the measuring instrument. The result would help as to monitor patients . 
-\cite{thesis015} % paul eskes
-\cite{thesis031} % anja
+However, to the best of our knowledge, the available social density estimation techniques require pre-installed dedicated infrastructures that make the techniques not implementable for patient monitoring. Patient monitoring requires device that can run almost everywhere to monitor patients condition.
 
-To the best of our knowledge, no prior \cite{thesis001}
-To the best of our knowledge, there is no approach that tries to combine or fusion several sensor measurements. Furthermore, no prior investigation of crowd counting using smartphone has been proposed, as mainly approaches are leveraging dedicated sensing devices.
+Speaking of patient monitoring, some researchers have proposed smartphone-based technique to gain flexibility of implementation and monitoring, as proposed by Bachmann~\cite{thesis031} and Eskes, et al.~\cite{thesis015}. The method aims to achieve passive behavioral monitoring that works seamlessly under the hood, so that patients do not know that they are monitored. The proposed method monitors almost every aspects that are required to monitor depressive patients or patients with neuropsychiatric disorders.
 
-explain that behapp is already counting available access point also cite
-explain why we do this, say that probe request has a high correlation with the people count, cite the paper that says this
-The result will be useful for BeHapp aplication [cite sociability]
-
-
-also mention social well being app, which is good for objective measurement, but no approach on social density, explain their approaches.
-
-the present study tries to figure out a solution that will work best especially for passive behavioral monitoring, where special requirements are present.
-
--> summary of this work
-
-here the objective social count comes in, as it can provide an objective
-measurement of social density. explain the approaches (including wifi, camera, etc) that have been proposed
-explain what it lacks of, such as it does not applicable to smartphone, must be rooted
+Although the proposed methods collects patients daily activity, such as social interaction in messaging applications and daily phone calls, the methods do not address social density estimation explicitly. Further study is required to investigate whether the collected data can give potential information about the level of social density that a patient encounters. 
 
 \section{Research Questions} % (fold)
 \label{sec:research_questions}
-This present study serves as an extension of BeHapp application. The present study focuses on the passive behavioral monitoring on smartphone.
-BeHapp\footnote{\url{https://play.google.com/store/apps/details?id=org.behapp&hl=nl}}
-
+This present study mainly investigates the possible combination of sensory data collected by smartphone sensors to estimate the level of social density in the surroundings. 
+% The result will be useful for BeHapp application\footnote{\url{https://play.google.com/store/apps/details?id=org.behapp&hl=nl}}.
 This leads to the main research question:
 \begin{displayquote}\textit{
 How can we estimate the level of social density of the surroundings using smartphone as a passive behavioral monitoring scheme?}
 \end{displayquote}
 
-In order to answer this question the following sub-questions are formulated:
+In order to answer and validate the main research question the following sub-questions are formulated:
 \begin{enumerate}
 	\item \textit{What sensors are available at consumer smartphone and which of those are favorable for the social density estimation method?}\\
-	Modern smartphones are equipped with several sensors to help users in their works, e.g., cameras, proximity sensor, finger print sensor, etc. In spite of the sensors have their own actual function, some sensors must be capable of giving such information for social density estimation. We are interested in investigating the sensors which are useful to achieve social density estimation.
+	Modern smartphones are equipped with several sensors to help users in their works, e.g., cameras, proximity sensor, finger print sensor, etc. In spite of the sensors actual functionality, some sensors must be capable of giving such information for social density estimation. We are interested in investigating the sensors which are useful to achieve social density estimation.
 
-	\item \textit{How can we validate the method, meaning, to get the ground truth or the approximation of the ground truth?}\\
-	To validate whether the smartphone sensor data really does something related to the social density, we have to compare the smartphone sensor data with the actual social density level, or the ground truth. We look a method to obtain such ground truth or at least a strong estimation of the ground truth.
+	\item \textit{How can we validate the sensor readings, meaning, to get the ground truth or the approximation of the ground truth?}\\
+	To validate whether the smartphone sensor data does something related to the social density, we have to compare the smartphone sensor data with the actual social density level, or the ground truth. We look a method to obtain such ground truth or at least a strong estimation of the ground truth.
 
-	\item \textit{How to overcome or minimize the challenges of this technique?}\\
-	Knowing the approach to estimate the social density level using smartphone, some challenges or limitations may emerge. We also figure out the solutions of these problems so that at least the side effect can be minimized.
+	% \item \textit{How to overcome or minimize the challenges of this technique?}\\
+	% Knowing the approach to estimate the social density level using smartphone, some challenges or limitations may emerge. We also figure out the solutions of these problems so that at least the side effect can be minimized.
 
 	\item \textit{Can this method work everywhere? What is the scope of this method?}\\
-	We aim to devise a method that would work almost anywhere. Although this may be too ambitious, there must be a certain limit of the present study. We formally portray the scope of the final result.
+	We aim to devise a method that would work almost anywhere. Although this may seem too ambitious, there must be a certain limit of the present study. We formally portray the scope of the final result.
 \end{enumerate}
 
 
