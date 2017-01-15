@@ -139,6 +139,22 @@
 \usepackage{changepage} % to change the margin so that the table is more centered
 \usepackage{float} % for appendix
 
+
+\usepackage[color]{changebar} % for noting document changes
+\newcommand{\deleted}[1]{%
+  \cbcolor{red}
+  \begin{changebar}
+    #1
+  \end{changebar}%
+  }%
+
+\newcommand{\added}[1]{%
+  \cbcolor{green}
+  \begin{changebar}
+    #1
+  \end{changebar}%
+  }%
+
 \newcommand{\specialcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}} % for newline within table cells
 \newcommand{\specialcellleft}[2][l]{%
