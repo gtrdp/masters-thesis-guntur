@@ -14,7 +14,13 @@ phone_data_pr <- all_global_data[c("pr", "ap", "rms", "pklv", "rssi")]
 library(caret)
 fit_control <- trainControl(method = "repeatedcv", number = 10, repeats = 10)
 
+<<<<<<< HEAD
 
+=======
+##############################################################################
+# For Head Count (Ground truth)
+##############################################################################
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
 # Linear forward selection
 library(caret)
 tuning_params <- expand.grid(nvmax=seq(1,4,1))
@@ -50,15 +56,22 @@ set.seed(100)
 linear.gt.stepwise <- train(gt~., data=phone_data_gt, method="leapSeq",
                    trControl=fit_control, tuneGrid = tuning_params)
 plotWithBars(linear.gt.stepwise)
+<<<<<<< HEAD
 lm(gt~., data = phone_data_gt)
+=======
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
 
 tuning_params <- expand.grid(nvmax=seq(1,4,1))
 set.seed(100)
 linear.pr.stepwise <- train(pr~., data=phone_data_pr, method="leapSeq",
                    trControl=fit_control, tuneGrid = tuning_params)
+<<<<<<< HEAD
 plotWithBars(linear.pr.stepwise)
 lm(pr~., data = phone_data_pr)
 
+=======
+plotWithBars(linear.pr.forward)
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
 
 #kNN
 library(caret)
@@ -142,9 +155,13 @@ plotWithBars <- function(model){
   
   ggplot(foo, aes(x=params, y=RMSE)) + 
     geom_errorbar(aes(ymin=RMSE-RMSESD, ymax=RMSE+RMSESD), width=.1) +
+<<<<<<< HEAD
     geom_line() + geom_point() +
     # expand_limits(y = 0)+
     theme_bw()+
+=======
+    geom_line() + geom_point()+ expand_limits(y = 0)+ theme_bw()+
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
     xlab(model$modelInfo$parameters$label) +
     ylab("RMSE (Repeated Cross-Validation)") +
     ggtitle(title)

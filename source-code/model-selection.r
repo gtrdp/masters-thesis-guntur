@@ -22,16 +22,26 @@ crossval.svm.gt <- function(number, epsilon, cost){
   svm.accuracies <- c()
   for (i in 1:number) {
     model <- svm(gt~., phone_data_gt[-folds[[i]],], epsilon=epsilon, cost=cost)
+<<<<<<< HEAD
     predictions <- predict(model, phone_data_gt[folds[[i]],])
     
     # rmse <- sqrt(mean((phone_data_gt[-folds[[i]],]$gt - predictions)^2))
     error <- mean(abs(phone_data_gt[folds[[i]],]$gt - predictions))
     svm.accuracies = append(error, svm.accuracies)
+=======
+    predictions <- predict(model, phone_data_gt[-folds[[i]],])
+    
+    rmse <- sqrt(mean((phone_data_gt[-folds[[i]],]$gt - predictions)^2))
+    svm.accuracies = append(rmse, svm.accuracies)
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
   }
   
   return(svm.accuracies)
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
 crossval.svm.pr <- function(number, epsilon, cost){
   library(caret)
   library(e1071)
@@ -40,12 +50,20 @@ crossval.svm.pr <- function(number, epsilon, cost){
   svm.accuracies <- c()
   for (i in 1:number) {
     model <- svm(pr~., phone_data_pr[-folds[[i]],], epsilon=epsilon, cost=cost)
+<<<<<<< HEAD
     # print(model)
     predictions <- predict(model, phone_data_pr[-folds[[i]],])
     
     # rmse <- sqrt(mean((phone_data_pr[-folds[[i]],]$pr - predictions)^2))
     error <- mean(abs(phone_data_pr[-folds[[i]],]$pr - predictions))
     svm.accuracies = append(error, svm.accuracies)
+=======
+    print(model)
+    predictions <- predict(model, phone_data_pr[-folds[[i]],])
+    
+    rmse <- sqrt(mean((phone_data_pr[-folds[[i]],]$pr - predictions)^2))
+    svm.accuracies = append(rmse, svm.accuracies)
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
   }
   
   return(svm.accuracies)
@@ -155,6 +173,7 @@ knn.gt <- train(gt~., data=phone_data_gt, method="knn",
 # SVM
 library(e1071)
 set.seed(100)
+<<<<<<< HEAD
 # tuneResult <- tune(svm, gt~.,  data=phone_data_gt,
 #                    ranges = list(epsilon = seq(0,0.4,0.01), cost = 2^(0:9)))
 tuneResult <- tune(svm, gt~.,  data=phone_data_gt,
@@ -164,6 +183,12 @@ tuneResult$best.parameters$epsilon
 tuneResult$best.parameters$cost
 svm.accuracy <- crossval.svm.gt(10, tuneResult$best.parameters$epsilon,
                                 tuneResult$best.parameters$cost)
+=======
+tuneResult <- tune(svm, gt~.,  data=phone_data_gt,
+                   ranges = list(epsilon = seq(0,0.4,0.01), cost = 2^(0:9)))
+svm.gt <- svm(gt~., phone_data_gt, epsilon=0.08, cost=2)
+svm.accuracy <- crossval.svm.gt(10, 0.08, 2)
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
 mean(svm.accuracy)
 
 ##############################################################################
@@ -205,9 +230,15 @@ library(e1071)
 set.seed(100)
 tuneResult <- tune(svm, pr~.,  data=phone_data_pr,
                    ranges = list(epsilon = seq(0,1,0.1), cost = (1:10)))
+<<<<<<< HEAD
 # svm.pr <- svm(pr~., phone_data_pr, epsilon=0, cost=4)
 tuneResult$best.parameters$epsilon
 tuneResult$best.parameters$cost
 svm.accuracy <- crossval.svm.pr(10, tuneResult$best.parameters$epsilon,
                                 tuneResult$best.parameters$cost)
 mean(svm.accuracy)
+=======
+svm.pr <- svm(pr~., phone_data_pr, epsilon=0, cost=4)
+svm.accuracy <- crossval.svm.pr(10, 0, 4)
+mean(svm.accuracy)
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237

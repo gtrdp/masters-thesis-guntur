@@ -10,6 +10,7 @@
 % 	- explaining how to achieve the aim.
 % - Better to use active voice, avoid passive voice as much as possible.
 % - Good conclusion brings an intro to the next chapter.
+<<<<<<< HEAD
 People who suffer from neuropsychiatric disorders usually withdraw from society~\cite{thesis084,thesis083}. They often visit places that tend to be quite and tend to have less crowd. The current method to monitor neuropsychiatric patients involve oral questionnaires that record a patient's social interaction on a daily basis. However, the questionnaire method often leads to biased and subjective results, making an objective monitoring is needed to obtain reliable results.
 \added{
 The objective monitoring of social withdrawal requires a longitudinal assessment of individual movement patterns in the context of social density.
@@ -70,6 +71,85 @@ In order to answer and validate the main research question the following sub-que
 \label{sec:thesis_overview}
 The rest of this thesis contains the following.
 \autoref{ch:literature-review} summarizes the relevant works that correlated with the present study. The experimental setup and the its implementation regarding the social density estimation in consumer smartphone is described in~\autoref{ch:experimental-setup}, while the result of the experiments are depicted in~\autoref{ch:results}. \autoref{ch:regression-and-discussion}~presents the analysis of collected datasets to estimate or predict social density level based on smartphone sensors reading. The conclusion of this thesis and the corresponding future work are described in~\autoref{ch:conclusion-future-work}.
+=======
+
+% ==============================================================================
+% How the intro should be
+% - explain about the conventional method of personal well being, which 
+%   has a problem in biased result, eg., are you always socializing? the person
+%   answer yes, in fact, he is not.
+%   also explain about socialization, the importance of social density
+%   if possible, cite prof. kas publication on social density
+% - also mention social well being app, which is good for objective measurement,
+%   but no approach on social density, explain their approaches.
+% - here the objective social count comes in, as it can provide an objective
+%   measurement of social density. explain the approaches (including wifi, camera, etc)
+%   that have been proposed
+% - explain what it lacks of, such as it does not applicable to smartphone, must be rooted
+% - explain where we try to come in. and more about randomization and VAD.
+% - explain the research questions
+
+% create list of abbreviation!!!
+
+Social density estimation, or sometimes referred as crowd counting, is the mechanism of estimating the number of people in certain area by means of a proxy, which could replace the manual counting method. It has broad range of implementation, for instance crowd surveillance~\cite{thesis050}, evacuation and rescue~\cite{thesis045}, retail store customer analysis, infrastructure development and evaluation, queue management~\cite{thesis012}, and even in objective behavioral monitoring, especially to estimate the level of social density a patient experiences in more accurate manner.
+
+Several method of social density estimation exists. Surveillance camera utilization is one of the method used, although it is limited by high deployment or computational cost. Other than image based estimation, some researches have proposed Radio Frequency RF signals, e.g., WiFi or Bluetooth, mainly to get more low deployment or computational cost.
+
+The WiFi and Bluetooth based methods make use of several characteristic present in WiFi or Bluetooth, such as probe-request, MAC address monitoring [cite], Received Signal Strength Indicator \ac{RSSI} [cite], Link State Indicator (LSI) [cite], and Channel State Information (CSI) [cite]. From all of those methods, WiFi probe request seems promising, as it is also proven to be able to give social density estimation with high accuracy~\cite{}
+
+% -> introduction about probe request
+% -> why we dont do it directly on phone, because of permission (rooting)
+% -> explain that it capables to show social density, cite the paper
+% -> explain that behapp is already counting available access point also cite
+% -> explain why we do this, say that probe request has a high correlation with the people count, cite the paper that says this
+However, doing \ac{RSSI} in smartphone directly is impossible, as it requires root permission nad rooting is illegal according to most countries' law. As extension of research BeHapp.
+
+% -> explanation about mac address randomization, which begins from iOS 8 or android 7 remember to cite!
+
+define what social density is.
+
+% -> summary of this work
+% -> how do we would like to achieve this
+% -> how long is the project
+This study serves as 
+
+% any relation of unique device and access point count?
+To uncover the relation between the number of unique devices and available access points, I formulated the first research question:
+\begin{displayquote}\textit{
+Is there any correlation between number of unique devices and number of available Access Points in a certain area?}
+\end{displayquote}
+
+% how do the parameters affect?
+% parameters:
+% - duration of scanning (per 1, 5, or 10 minutes)
+% - time of scanning (rush hour, morning, afternoon, etc)
+% - Location of scanning
+% - relation with number of visitors
+When the data is captured, several parameters are also used, such as location, time of scanning, duration of scanning, MAC address filter, and so on. Here comes the second:
+\begin{displayquote}\textit{
+How do the parameters affect the correlation result?}
+\end{displayquote}
+
+% how to resolve the randomization issue?
+As mentioned previously, MAC address randomization is one of the challenges of estimating nearby unique device using probe-request. The third research question is somewhat related to that:
+\begin{displayquote}\textit{
+Is there any method to overcome the MAC address randomization issue? Which affecting number of unique devices.}
+\end{displayquote}
+
+% is VAD useful?
+Furthermore, the validation using sound is also used and the last research question is asking about the effect of it.
+\begin{displayquote}\textit{
+How does validation using Voice Activity Detection help to achieve better result?}
+\end{displayquote}
+
+% is access point suitable as a reliable proxy for social density estimation?
+\begin{displayquote}
+	\textit{is access point suitable as a reliable proxy for social density estimation?}
+\end{displayquote}
+
+The rest of this thesis is structured as follows. Chapter \ref{ch:related-work} describes the related works, which are closely related to the social density estimation.
+
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
 
 %*****************************************
 %*****************************************

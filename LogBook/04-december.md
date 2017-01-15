@@ -36,11 +36,14 @@ December #1
 
 December #2
 -----------
+<<<<<<< HEAD
 - **Mon Dec 12 08:54:42 CET 2016**
 	- US Embassy.
 	- Working on the conference paper.
 - **Tue Dec 13 11:16:25 CET 2016**
 	- Chapter 4: Result
+=======
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
 
 December #3
 -----------

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 AP	DC	SC	HC	RMS	PKLV	RSSI	SNR	LOC
+=======
+AP	PR	Au	GT	RMS	PKLV	RSSI	SNR	LOC
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
 3	5	0	1	-12.9	-40.78	-78	39	r
 3	5	0	1	-11.77	-42.1	-78	1	r
 4	10	0	0	-26.58	-48.03	-82	2	r

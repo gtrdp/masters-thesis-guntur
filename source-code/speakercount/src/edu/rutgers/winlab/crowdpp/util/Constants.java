@@ -67,11 +67,19 @@ public class Constants {
     /**
      * The parameters for speaker counting
      */
+<<<<<<< HEAD
     public static double mfcc_dist_same_semi = 15.6;
     public static double mfcc_dist_diff_semi = 21.6;
 
     public static double mfcc_dist_same_un = 15.6;
     public static double mfcc_dist_diff_un = 21.6;
+=======
+    public static double mfcc_dist_same_semi;
+    public static double mfcc_dist_diff_semi;
+
+    public static double mfcc_dist_same_un;
+    public static double mfcc_dist_diff_un;
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
 
     public static double pitch_male_upper = 160;
     public static double pitch_female_lower = 190;
@@ -138,6 +146,13 @@ public class Constants {
 //            editor.putString("mfcc_dist_diff_un", "21.6");
 //            Toast.makeText(this, "Your device is not recognized and the result might not be accurate...", Toast.LENGTH_SHORT).show();
 //        }
+<<<<<<< HEAD
+=======
+        mfcc_dist_same_semi = 14;
+        mfcc_dist_diff_semi = 24;
+        mfcc_dist_same_un = 14;
+        mfcc_dist_diff_un = 24;
+>>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
     }
 
     /**
