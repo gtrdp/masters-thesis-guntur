@@ -1,542 +1,103 @@
 %!TEX root = ../thesis-guntur.tex
 %************************************************
-<<<<<<< HEAD
-\chapter{Regression Analysis and Discussion}
-\label{ch:regression-and-discussion} % $\mathbb{ZNR}$
+\chapter{Discussion}
+\label{ch:discussion} % $\mathbb{ZNR}$
 %************************************************
-In this chapter, we firstly present regression analysis to construct a data model for social density estimation in the future. Then we discuss and interpret the result of the experiments.
 % In this chapter we look at to what extend these questions have been answered, what problems arose from answering them and what future directions this work can go in.
+We discuss our findings of the experiments in the following topics, ambient noise recording, ground truth approximation, scanning time effect, sensor readings correlations, the implications of the data modeling, and the limitation of the present study.
 
-\section{Regression Analysis} % (fold)
-\label{sec:regression_analysis}
-We perform regression analysis to the dataset so that we can establish a data model that enables us to predict the level of social density using sensor readings. We decide to use regression analysis as this analysis gives quantitative result, i.e., numbers. On the other hand, another statistical analysis, named classification, yields discrete result, i.e., classes, which is not preferable.
+\section{Ambient Noise Recording} % (fold)
+\label{sec:ambient_noise_recording}
+We recorded the ambient noise and extracted the peak-level (\ac{PKLV}) and root-mean-square (\ac{RMS}) of the recordings, which are highly correlated, with $\rho=0.77$ (see~\autoref{fig:scatterplot-matrix}). Initially, we expected to see a strong correlation of ambient noise and the level of social density, i.e., the location which has high level of social density also has high value of ambient noise, but the result says otherwise. We can see in the scatter plot matrix of the dataset, \autoref{fig:scatterplot-matrix}, that only the correlation of head count and peak level which is more than $0.5$ ($\rho=0.58$). The other correlations of social density levels (head count or device count) and ambient noise (peak level or root-mean-square) are below $0.5$.
 
-We predict the level of social density by means of proxies, namely the head count and device count. We predict the head count or device count from \ac{AP} count, \ac{RMS}, \ac{PKLV}, and \ac{RSSI} value. Our dataset contains 459 records.
+In the scatter plot of~\autoref{fig:scatterplot-matrix}, we can see that some of the low social density values (less than 20) have high ambient noise value as well (more than -20dB), which means we also observed more noise in the area where less crowd was observable. However, we can also see in~\autoref{fig:scatterplot-matrix} that no high social density values (more than 50 for device count and 20 for head count) are below -30dB, which means high social density areas have high amount of noise. We conclude that high values of ambient noise mostly indicate a high level of social density. The line charts showing the peak level and root-mean-square of the ambient noise of all locations (\autoref{fig:audio-result-day1}, \autoref{fig:audio-result-day2}, \autoref{fig:audio-result-day3}, and \autoref{fig:audio-result-day4}) also support our conclusion. The graphs show that more crowded locations (Grote Markt and Paddepoel) have higher peak level or root-mean-square value than (Home and remote area) less crowded locations although some overlaps exist.
 
-We use linear and non-linear regression analysis, which are validated using 10-folds cross-validation. Cross-validation is a method to assess how the regression analysis results will vary across different datasets. Cross-validation technique involves dataset partition into complementary subsets, namely training and testing sets, in which training subsets are for performing the analysis, while testing subsets are for the validation of the resulting model. 10-folds cross-validation divides the dataset to 10 complementary subsets, in which one subset will be the testing set and the other nine subsets are the training set, interchangeably in 10 times.
+Furthermore, microphone sensitivity also affects the result of ambient noise recording. We used laptop's built-in microphone to record the ambient noise. These microphones (and ones installed in smartphones) are attuned to a specific (and rather narrow) range of sound intensity.
 
-We use \ac{RMSE} as the metric for cross-validation. In this metrics, optimal model has lower \ac{RMSE} value. The formula of \ac{RMSE} is as follows,
+% see the trend, maybe use more locations, more data
 
-\begin{equation} \label{eq:rmse}
- RMSE=\sqrt { \frac { \sum _{ i=1 }^{ n }{ { \left( { p }_{ i }-{ a }_{ i } \right)  }^{ 2 } }  }{ n }  } 
-\end{equation}
-
-where ${ p }_{ i }$ is the predicted value and ${ a }_{ i }$ is the actual value. We implement the analysis using R~\cite{r-team}, presented in \autoref{ch:R-code-listings}.
-
-% \begin{figure}[h]
-% 	\centering
-% 	\includegraphics[width=0.7\textwidth]{./img/sensor-readings}
-% 	\caption{Example of sensor readings.}
-% 	\label{fig:scatterplot-matrix}
-% \end{figure}
-
-	\subsection{Linear Method for Regression} % (fold)
-	\label{sub:linear_estimator}
-	Linear regression is a method of modeling the relationship between a dependent variable and an explanatory (or predicting) variable by fitting a straight line across the data. A condition where there is only one explanatory variable is called simple linear regression, while multiple linear regression involves more than one explanatory variable. The result of linear regression is a linear function (or a model) with the explanatory variables as the parameters.
-
-	To obtain a model with minimal error, we perform an exhaustive search for the best subsets of the predictors for predicting the dependent variable (head or device count) in linear regression. We use \ac{RMSE} of 10-folds cross-validation to select the optimal model using the smallest value. \autoref{r-code-linear-regr}~displays the implementation of linear regression analysis. We implement linear regression using stepwise selection in R using \verb|caret|\footnote{\url{http://topepo.github.io/caret/index.html}} library.
-	
-	\begin{figure}[h]
-		\begin{adjustwidth}{-1cm}{}
-		\centering
-		\subfloat[head count]{
-			\label{fig:tuning-linear-headcount}{
-				\includegraphics[width=0.65\textwidth]{./img/modeling/linear-regr-hc-small}
-			}
-		}
-		\subfloat[device count]{
-			\label{fig:tuning-linear-devicecount}{
-				\includegraphics[width=0.65\textwidth]{./img/modeling/linear-regr-dc-small}
-			}
-		}
-		\end{adjustwidth}
-		\caption{Tuning linear regression using best subsets combination for head count (\ref{fig:tuning-linear-headcount}) and device count (\ref{fig:tuning-linear-devicecount}). The result indicates that using all predictors gives the best result, although in head count prediction using two predictors results in nearly the same error.}
-		\label{fig:tuning-linear}
-	\end{figure}
-
-	\autoref{fig:tuning-linear}~presents the tuning result. For both head count and device count, using all four predictors results in optimal model. In head count prediction, using two predictors ($ap$ and $pklv$) yields in nearly identical \ac{RMSE} as using four predictors. Based on the tuning, we develop a linear model to predict the head count and device count. The linear model for head count prediction is 
-	\begin{equation}
-		hc=54.6750+0.6530ap-0.1091rms+0.7603pklv+0.3288rssi
-	\end{equation}
-	while the linear model for device count is 
-	\begin{equation}
-		dc=-367.901+2.021ap+1.138rms-1.880pklv-3.656rssi
-	\end{equation}
-	where $ap$, $rms$, $pklv$, and $rssi$ represent \ac{AP} count, \ac{RMS} and \ac{PKLV} of ambient noise recording, and \ac{RSSI} of scanned \ac{AP} respectively.
-	% , using an efficient branch-and-bound algorithm. 
-
-	% predictions and real result, show the graph as well, better using line graph
-	% mention what is the training and what is the testing (better using 10 fold cross validation)
-	
-
-	% hc ==========================
-	% Subset selection object
-	% 4 Variables  (and intercept)
-	%      Forced in Forced out
-	% ap       FALSE      FALSE
-	% rms      FALSE      FALSE
-	% pklv     FALSE      FALSE
-	% rssi     FALSE      FALSE
-	% 1 subsets of each size up to 4
-	% Selection Algorithm: forward
-	%          ap  rms pklv rssi
-	% 1  ( 1 ) "*" " " " "  " " 
-	% 2  ( 1 ) "*" " " "*"  " " 
-	% 3  ( 1 ) "*" " " "*"  "*" 
-	% 4  ( 1 ) "*" "*" "*"  "*" 
-
-	% Linear Regression with Stepwise Selection 
-
-	% 459 samples
-	%   4 predictor
-
-	% No pre-processing
-	% Resampling: Cross-Validated (10 fold, repeated 10 times) 
-	% Summary of sample sizes: 414, 413, 412, 412, 412, 413, ... 
-	% Resampling results across tuning parameters:
-
-	%   nvmax  RMSE      Rsquared 
-	%   1      15.11505  0.7320710
-	%   2      14.67019  0.7467084
-	%   3      14.70598  0.7455704
-	%   4      14.66907  0.7467488
-
-	% RMSE was used to select the optimal model using  the smallest value.
-	% The final value used for the model was nvmax = 4. 
-
-	% Call:
-	% lm(formula = gt ~ ., data = phone_data_gt)
-
-	% Coefficients:
-	% (Intercept)           ap          rms         pklv         rssi  
-	%     54.6750       0.6530      -0.1091       0.7603       0.3288 
-
-	% \begin{figure}[h]
-	% 	\centering
-	% 	\includegraphics[width=0.9\textwidth]{./img/modeling/linear-regr-hc}
-	% 	\caption{Tuning for linear regression.}
-	% 	\label{fig:tuning-linear-hc}
-	% \end{figure}
-
-	% dc =========================
-	% Subset selection object
-	% 4 Variables  (and intercept)
-	%      Forced in Forced out
-	% ap       FALSE      FALSE
-	% rms      FALSE      FALSE
-	% pklv     FALSE      FALSE
-	% rssi     FALSE      FALSE
-	% 1 subsets of each size up to 4
-	% Selection Algorithm: 'sequential replacement'
-	%          ap  rms pklv rssi
-	% 1  ( 1 ) "*" " " " "  " " 
-	% 2  ( 1 ) "*" " " " "  "*" 
-	% 3  ( 1 ) "*" " " "*"  "*" 
-	% 4  ( 1 ) "*" "*" "*"  "*" 
-
-	% Linear Regression with Stepwise Selection 
-
-	% 459 samples
-	%   4 predictor
-
-	% No pre-processing
-	% Resampling: Cross-Validated (10 fold, repeated 10 times) 
-	% Summary of sample sizes: 414, 414, 413, 411, 414, 413, ... 
-	% Resampling results across tuning parameters:
-
-	%   nvmax  RMSE      Rsquared 
-	%   1      33.32081  0.7752300
-	%   2      31.74120  0.7979257
-	%   3      31.70418  0.7990889
-	%   4      30.84697  0.8103420
-
-	% RMSE was used to select the optimal model using  the smallest value.
-	% The final value used for the model was nvmax = 4.
-
-	% Call:
-	% lm(formula = pr ~ ., data = phone_data_pr)
-
-	% Coefficients:
-	% (Intercept)           ap          rms         pklv         rssi  
-	%    -367.901        2.021        1.138       -1.880       -3.656 
-	% \begin{figure}[h]
-	% 	\centering
-	% 	\includegraphics[width=0.9\textwidth]{./img/modeling/linear-regr-dc}
-	% 	\caption{Tuning for linear regression.}
-	% 	\label{fig:tuning-linear-dc}
-	% \end{figure}
-
-	\subsection{Non-Linear Method for Regression} % (fold)
-	\label{sub:non_linear_estimator}
-	We use \ac{k-NN} and \ac{SVM} as non-linear methods for regression. We tune the parameters of non-linear regression method to obtain the optimal model as well.
-
-	% =====================knn===================================
-	\ac{k-NN} is an algorithm that predicts numerical value based on similarity measure using distance function, e.g., euclidean, manhattan, or minkowski, of k-nearest neighbors of the predicted value. Generally, a large $k$ value is more accurate as it uses more neighbors to predict a new value. \ac{k-NN} is applicable for both classification and regression analysis.
-
-	\begin{figure}[h]
-		\begin{adjustwidth}{-1cm}{}
-		\centering
-		\subfloat[head count]{
-			\label{fig:tuning-knn-hc}{
-				\includegraphics[width=0.65\textwidth]{./img/modeling/knn-hc-small}
-			}
-		}
-		\subfloat[device count]{
-			\label{fig:tuning-knn-dc}{
-				\includegraphics[width=0.65\textwidth]{./img/modeling/knn-dc-small}
-			}
-		}
-		\end{adjustwidth}
-		\caption{Tuning \ac{k-NN} using $1 \le k \le 30$ as the tuning parameter (\#Neighbors) for head count (\ref{fig:tuning-knn-hc}) and device count (\ref{fig:tuning-knn-dc}). For both estimation, optimal result is obtained when $5 \le k \le 10$. The optimal result is chosen at $k=7$ (head count) and $k=8$ (device count).}
-		\label{fig:tuning-knn}
-	\end{figure}
-
-	We train and test \ac{k-NN} regression using $1 \le k \le 30$ as the tuning parameter in R using \verb|caret|\footnote{\url{http://topepo.github.io/caret/index.html}} library. Like the linear regression analysis, we evaluate the model using 10-folds cross-validation and we use \ac{RMSE} to select the optimal model with lowest error. \autoref{r-code-knn}~displays the implementation of \ac{k-NN} regression.
-
-	\autoref{fig:tuning-knn}~presents the tuning result. As we can see, the optimal models are obtained when $5 \le k \le 10$. According to~\autoref{fig:tuning-knn}, the highest error of both estimation is when $k=1$ and there is a increasing trend of error as $k$ goes up. We select the optimal model for head count and device count estimation when $k=7$ ($RMSE=12.49515$) and $k=8$ ($RMSE=22.83321$), respectively.
-	% hc ========================================================
-	% k-Nearest Neighbors 
-
-	% 459 samples
-	%   4 predictor
-
-	% No pre-processing
-	% Resampling: Cross-Validated (10 fold, repeated 10 times) 
-	% Summary of sample sizes: 414, 413, 412, 412, 412, 413, ... 
-	% Resampling results across tuning parameters:
-
-	%   k   RMSE      Rsquared 
-	%    1  14.32195  0.7651252
-	%    2  13.68100  0.7813994
-	%    3  13.20218  0.7946098
-	%    4  13.16852  0.7956532
-	%    5  12.78561  0.8064473
-	%    6  12.49908  0.8149187
-	%    7  12.49515  0.8156143
-	%    8  12.53433  0.8148571
-	%    9  12.50869  0.8159582
-	%    ...
-	%   30  13.07611  0.7998607
-
-	% RMSE was used to select the optimal model using  the smallest value.
-	% The final value used for the model was k = 7. 
-
-	%             Length Class      Mode     
-	% learn       2      -none-     list     
-	% k           1      -none-     numeric  
-	% theDots     0      -none-     list     
-	% xNames      4      -none-     character
-	% problemType 1      -none-     character
-	% tuneValue   1      data.frame list     
-	% obsLevels   1      -none-     logical  
-
-	% dc ========================================================
-	% k-Nearest Neighbors 
-
-	% 459 samples
-	%   4 predictor
-
-	% No pre-processing
-	% Resampling: Cross-Validated (10 fold, repeated 10 times) 
-	% Summary of sample sizes: 414, 414, 413, 411, 414, 413, ... 
-	% Resampling results across tuning parameters:
-
-	%   k   RMSE      Rsquared 
-	%    1  25.70729  0.8686436
-	%    2  25.12761  0.8746131
-	%    3  24.19895  0.8823375
-	%    4  23.63810  0.8880587
-	%    5  23.50962  0.8894205
-	%    6  22.89128  0.8950484
-	%    7  22.87820  0.8953308
-	%    8  22.83321  0.8958578
-	%    9  22.90468  0.8955070
-	%   10  22.90716  0.8953828
-	%   ...
-	%   30  24.42160  0.8851021
-
-	% RMSE was used to select the optimal model using  the smallest value.
-	% The final value used for the model was k = 8. 
-
-	%             Length Class      Mode     
-	% learn       2      -none-     list     
-	% k           1      -none-     numeric  
-	% theDots     0      -none-     list     
-	% xNames      4      -none-     character
-	% problemType 1      -none-     character
-	% tuneValue   1      data.frame list     
-	% obsLevels   1      -none-     logical 
-
-
-	% =======================svm=============================================
-	\ac{SVM} is an estimator that works by constructing support vectors (hyperplanes) that separate data according to a certain threshold. Most of the time, kernels, a set of mathematical functions, are used to remap the input data so that the data can be separated using a straight line instead of a complex curve. \ac{SVM} is also implementable for both classification and regression analysis.
-
-	We implement \ac{SVM} regression using radial kernel along with $cost$ and $\epsilon$ as the tuning parameters. $cost$ and $\epsilon$ are used to apply a penalty to a prediction where the data are not correctly predicted. As used in \ac{k-NN}, we validate the model using 10-folds cross-validation. We implement the analysis in R with \verb|e1071| library\footnote{\url{https://cran.r-project.org/web/packages/e1071/index.html}}. \autoref{r-code-svm}~displays the implementation of \ac{SVM} regression.
-
-	\begin{figure}[h]
-		\begin{adjustwidth}{-1cm}{}
-		\centering
-		\subfloat[head count]{
-			\label{fig:tuning-svm-hc}{
-				\includegraphics[width=0.65\textwidth]{./img/modeling/svm-hc}
-			}
-		}
-		\subfloat[device count]{
-			\label{fig:tuning-svm-dc}{
-				\includegraphics[width=0.65\textwidth]{./img/modeling/svm-dc}
-			}
-		}
-		\end{adjustwidth}
-		\caption{Tuning \ac{SVM} using $cost$ and $epsilon$ as the tuning parameters for head count (\ref{fig:tuning-svm-hc}) and device count (\ref{fig:tuning-svm-dc}) in R with \texttt{e1071} library. The performance is measured using \ac{MSE}. More optimal model is indicated by darker color, i.e., lower \ac{MSE}.}
-		\label{fig:tuning-svm}
-	\end{figure}
-
-	We present the result of \ac{SVM} regression tuning in~\autoref{fig:tuning-svm}. We measure the performance of the \ac{SVM} using mean squared error (\ac{MSE}), in which best result has lower \ac{MSE}. The best performance for head count prediction is at 171.1065 with $\epsilon=0$ and $cost=3$, while for device count prediction is at 514.226 with $\epsilon=0$ and $cost=1$. We can also see a trend of increasing \ac{MSE} as the $epsilon$ increases.
-	% hc============
-	% Parameter tuning of 'svm':
-
-	% - sampling method: 10-folds cross validation 
-
-	% - best parameters:
-	%  epsilon cost
-	%        0    3
-
-	% - best performance: 171.1065 
-
-
-	% dc============
-	% Parameter tuning of 'svm':
-
-	% - sampling method: 10-folds cross validation 
-
-	% - best parameters:
-	%  epsilon cost
-	%        0    1
-
-	% - best performance: 514.226 
-
-To summarize the regression analysis and to interpret the result, we use another approach to calculate the error, which has more intuitive interpretation. We use residual error, which can be formulated as
-\begin{equation}\label{eq:residual-error}
-	\bar { error } =\frac { 1 }{ n } \left( \sum _{ i=1 }^{ n }{ \left| { p }_{ i }-{ a }_{ i } \right|  }  \right) 
-\end{equation}
-where ${ p }_{ i }$ is the predicted value and ${ a }_{ i }$ is the actual value. As formulated in the equation, residual error shows mean of the difference between predicted and actual value. Using the optimum model of each regression technique, we perform another 10-fold cross validation to obtain residual error measurement. The optimal model has a residual error closer to zero.
-
-\begin{table}[h]
-\centering
-\caption{Summary of regression analysis showing the range of the data and the residual error of each regression method.}
-\label{tab:regression-summary}
-\begin{tabular}{llllll}
-\toprule
-                   & \multicolumn{2}{c}{Value Range}                         & \multicolumn{3}{c}{Residual Error}                                                        \\
-                   & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} & \multicolumn{1}{c}{Linear} & \multicolumn{1}{c}{k-NN} & \multicolumn{1}{c}{SVM} \\ \midrule
-Head count estimation   & 0                       & 115                     & 9.89                                  & 7.05                    & 7.06                    \\
-Device count estimation & 0                       & 288                     & 23.81                                 & 13.14                   & 13.34                  \\ \bottomrule
-\end{tabular}
-\end{table}
-
-\autoref{tab:regression-summary}~presents the summary of the regression analysis. Non-linear regression has better performance than the linear regression. \ac{k-NN} and \ac{SVM} do not have much difference of error for both head count and device count estimation. Device count estimation has wider value range and error compared to head count estimation.
-
-% Plot the prediction graph in each cross validation round, then combined.
-% Explain the result in percentage as well, instead of manual count. -> for the error in the modeling.
-% plot the graph of head count (real vs predicted) vs parameters (ap count, or anything else)
-% present the evaluation in people count and also percentage
-
-
-
-
-
-
-
-
-
-\section{Discussion} % (fold)
-\label{sec:discussion}
-We discuss our findings of the experiments in the following topics, ambient noise recording, ground truth approximation, scanning time effect, sensor readings correlations, and the limitation of the present study.
-
-	\subsection{Ambient Noise Recording} % (fold)
-	\label{sub:ambient_noise_recording}
-	We recorded ambient noise and extracted the peak-level (\ac{PKLV}) and root-mean-square (\ac{RMS}) of the recordings, which are highly correlated each other, with $\rho=0.77$ (see~\autoref{fig:scatterplot-matrix}). Initially, we expect to see a strong correlation of ambient noise and the level of social density, i.e., the location which has high level of social density also has high value of ambient noise, but the result says otherwise. We can see in scatter plot matrix of the dataset, \autoref{fig:scatterplot-matrix}, that only the correlation of head count and peak level which is more than $0.5$ ($\rho=0.58$). The other correlations of social density level (head count or device count) and ambient noise (peak level or root-mean-square) are below $0.5$.
-
-	In the scatter plot of~\autoref{fig:scatterplot-matrix}, we can see that some of the low social density values (less than 20) have high ambient noise value as well (more than -20dB), which means we also observed more noise in the area where less crowd was observable. However, we can also see in~\autoref{fig:scatterplot-matrix} that no high social density values (more than 50 for device count and 20 for head count) are below -30dB, which means high social density areas have high amount of noise. We can conclude that high values of ambient noise mostly indicate a high level of social density. The line charts showing the peak level and root-mean-square of the ambient noise of all locations (\autoref{fig:audio-result-day1}, \autoref{fig:audio-result-day2}, \autoref{fig:audio-result-day3}, and \autoref{fig:audio-result-day4}) also support our conclusion. The graphs show that more crowded locations (Grote Markt and Paddepoel) have higher peak level or root-mean-square value than (Home and remote area) less crowded locations although some overlaps exist.
-
-	Furthremore, microphone sensitivity also affects the result of ambient noise recording. We used laptop's built-in microphone to record the ambient noise. These microphones (and ones installed in smartphones) are attuned to a specific (and rather narrow) range of sound intensity.
-
-	% https://support.biamp.com/General/Audio/Microphone_sensitivity
-	% http://electronics.stackexchange.com/questions/59157/over-what-frequency-range-can-the-microphone-of-smartphone-receive-the-sound
-	% http://www.makeuseof.com/tag/great-tips-recording-audio-smartphone-tablet/
-	% http://www.scienceprog.com/long-range-directional-microphones-myth-and-reality/
-	% http://www.epanorama.net/newepa/2014/09/08/sound-level-measuring-with-android-phone/
-	% seems legit http://www.analog.com/library/analogdialogue/archives/46-05/understanding_microphone_sensitivity.html?doc=an-1328.pdf
-
-
-	\subsection{Ground Truth Approximation} % (fold)
-	\label{sub:ground_truth_approximation}
-	We estimate the crowd count as a first approximation of the ground truth because it is known that getting the ground truth of crowd density in public spaces is difficult~\cite{thesis041}. We used time-lapse image based, which works by manually counting heads in the images, and WiFi's probe request based technique, works by counting unique \ac{MAC} addresses.
-	% Both methods rely on predefined assumptions, which say .
-
-	Although probe request based estimation is promising, some drawbacks are also present. In this method, we are not able to distinguish the type of devices, i.e., whether it is a smartphone, tablets, or computers. Although one mostly brings a smartphone~\cite{thesis047}, which means we can deduce that a smartphone means a person present, there is also a possibility that one brings more devices or no devices at all.
-
-	Furthermore, WiFi based technique is able to detect object through walls, which could be good or bad depending on the perspective. In indoor social density estimation, this is a bad approximation because WiFi might detect some people but in fact there are way less or no people at all inside a room, as they are located in another room nearby. This is a potential threat, for instance, if our method detects some people but actually no one is present in the room. However, in outdoor social density estimation, WiFi based technique performs better than image based technique, as WiFi can see people through an obstacle, while image-based cannot. To sum up, we have to be more careful in doing indoor monitoring. As an option, we can also combine the social density estimation with ambient recording to see whether there is a noise inside a room, as empty room is mostly quite. 
-	
-	Compared to the probe request based estimation, time-lapse image based technique cannot detect people through walls or buildings. This may be the reason why the image based technique detects less people than the WiFi based technique (see~\autoref{fig:total-population}). Furthermore, image based technique relies heavily on assumptions when vehicles, e.g., buses or cars, are captured in the image, as vehicles have very limited visual appearance of the people inside. We assume that there are a person in a car and five people in a bus. This assumptions may slightly bias the result.
-
-	\subsection{Scanning Time Effect} % (fold)
-	\label{sub:scanning_time_effect}
-	We tested the effect of scanning time to investigate whether scanning time can potentially affect the outcomes. An interesting findings about the scanning time are shown in~\autoref{fig:time-effect}. We can see that the device count in each scanning time has different outcome, while the \ac{AP} count remains stable no matter when the scanning was performed. When we scanned the surroundings in the morning (09:00h), the device count was less than the \ac{AP} count, as there were not so many people present. However, the trend changed when we performed the scanning at 12:00h, as the device count surpassed the \ac{AP} count. We can also see an increasing trend at scanning time performed at 15:00h and decreasing trend at 18:00h.
-	If the trend continues, there might be lower device count than \ac{AP} count at night.
-
-	The findings presented in~\autoref{fig:time-effect} indicates that we also have to note the scanning time of the surroundings when the present study is implemented because different scanning time might have a very different outcome.
-
-	\subsection{Correlation Between Sensor Readings and Social Density} % (fold)
-	\label{sub:correlation_between_sensor_readings_and_social_density}
-	The parameter which has a strong correlation with head count or device count is the \ac{AP} count, as shown in the top right of~\autoref{fig:scatterplot-matrix}. The correlation coefficients of \ac{AP} count vs device count, \ac{AP} count vs head count, and device count vs head count are 0.87, 0.85, and 0.86, respectively. We present in detail the correlation of head count, device count, and \ac{AP} count in~\autoref{sub:ap_and_social_density_correlation}.
-
-	As we can see in the scatter plots of the correlation of \ac{AP}, \ac{DC}, and \ac{HC}, presented in~\autoref{fig:ap-dc-scatterplot}, \autoref{fig:ap-hc-scatterplot}, and \autoref{fig:hc-dc-scatterplot}, the lower social density data, as at home or remote area, seems to be more concentrated than higher social density data, as at Paddepoel or Grote Markt, and the higher social density data is widely spread. However, this does not mean that the frequency of high social density values is bigger than the low social density value. In fact, we have more data for lower social density than higher social density, as shown in the histograms of \ac{AP}, \ac{DC}, and \ac{HC} in~\autoref{fig:scatterplot-matrix}.
-
-	If we look at~\autoref{fig:ap-dc-scatterplot}, \autoref{fig:ap-hc-scatterplot}, and \autoref{fig:hc-dc-scatterplot}, the data may also be used to perform a sort of localization, as each location shows different pattern. We can say that the \ac{AP} count is bound to an area, where each area has different social density level. Thus, this method is somewhat telling where the smartphone actually is and what the average of social density level in that area is. In the other way, we could possibly infer where the location of the smartphone is using our proposed technique, although further study may be required to support this opinion.
-
-	% present the result of each location. and compare within days
-	In the beginning, we expect that the number of \ac{AP} follows the fluctuation of the number of people in a certain location, as people might bring their own portable WiFi transmitter to assemble an ad-hoc \ac{AP}, which will add up the number of \ac{AP} available in the location. However, this turned out to be a rare situation, as we do not see any trend between number of people and \ac{AP} count, as shown in line chart of the experiment presented in~\autoref{ch:appendix-sensor-readings}.
-
-	Moreover, if we see at the line chart, there is a fluctuation of \ac{AP} count, although actually available \ac{AP} count should be the same or stable across the time. This fluctuation might be caused by the instability of radio transmission that may affect the signal strength of the WiFi \ac{AP} and thus making some \ac{AP}s some not detected.
-	
-	Another interesting finding is that, it turned out that several \ac{AP}s are using the same \ac{SSID}, e.g., eduroam. This makes user only see one \ac{AP} available, in fact, those \ac{AP} are using different \ac{MAC} address.
-
-	\subsection{Limitation of the Present Study}
-	\label{sub:limitation_of_the_present_study}
-	The proposed method has some limitations that limit its implementation.
-	% #1: location: range, indoor outdoor
-	The first limitation is the location. The proposed method only works at places where WiFi \ac{AP} use is not restricted, i.e., people are free to set up their own WiFi AP. Some locations where the use of WiFi is restricted exist, for instance, University of Groningen complex, where eduroam is the only the available AP and the occupants are discouraged to install their own AP. If we collect data from this location, we will possibly get uncorrelated \ac{AP} count and social density.
-
-	Furthermore, our dataset consists of data collected from four different location. This dataset represents the situation of selected locations but possibly not for other locations, as other locations may have different characteristics. For instance, in developing countries or other locations where the use of WiFi are not common, the number of \ac{AP} in a public area may be much lower than what we have in our dataset.
-
-	As we mainly work with WiFi, the range of the proposed social density follows the maximum WiFi coverage of the smartphone, which extends roughly from 20 to 50 meters. This range may be good or bad depending on the context. For outdoor situation, this range gives a good approximation as it is considerably broad enough to count social density. However, this range may be too broad for indoor implementation. For instance, we may get a result that says there are 20 people in total, but in fact there is only five or even less people in the room. This is because WiFi also detects people outside the room. However, we can also combine the result with ambient noise recording, as empty room are usually more quite.
-
-	% Use wigle to explain that this could not be generalized. Mention comparison of one place and another place. in other cities or contries.
-
-	% #2: time
-	The other limitation is the time. Our dataset consists of data collected in daytime, ranging from 08:15h to 14:45h. Using this dataset, we are only able to approximate the level of social density if the new data is captured during the same time frame. If the new data is taken outside the time frame, our dataset is unable to tell the level of social density. This fact is based on the time of scanning investigation described in~\autoref{ssub:effect_of_scanning_time} and \autoref{sub:effect_of_scanning_time}.
-	
-
-	
-
-% conclusion
-In conclusion, the results indicate that locations with high level of social density tend to have more access points. WiFi \ac{AP} shows the strongest correlation with the social density level, followed by \ac{RMS} that reveals a weaker correlation with social density level. Thus, we can say that it is possible to infer social density level from smartphone sensor readings. To achieve better accuracy, we may implement classification analysis instead of regression. However, regression analysis yields class-based result instead of continuous numerical result.
-
-Furthermore, generalization of this method requires further investigation in more locations and time, as other location may reveal different patterns.
-% Although the data say that there are minor variation in days, other locations may have higher variation.
-Scanning time result also says that scanning time affects the social density level. Moreover, the settings may vary in cities or even countries.
-
-% We can also see the result explain about this method could works as a localization method, could be useful especially if GPS signal is not available
-% also use % https://wigle.net/ database of public WiFi
-% We also select daytime as the preferred scanning time because that is the time when most crowd are observable. This implies that our collected data resemble only daytime duration, meaning that conclusion might only be able to deduct for daytime.
-
-% Question: Does weather affect WiFi performance?
-=======
-\chapter{Regression Model and Discussion}
-\label{ch:model-and-discussion} % $\mathbb{ZNR}$
-%************************************************
-Explain about the previous chapter, begin with a good starting point of a chapter.
-
-Explain the limitations of the thesis. Where and how the method works best.
-
-present the result of each location. and compare within days
-present the result in grotemarkt, and explain the difference between time of scanning.
-
-Explain that using classification might give better accuracy that regression.
-
-Also give graph of MAC address manufacturer.
-
-Explain using bar chard about the comaprison of maximum unique device and head count: average, in each day. Also apply this for timely related 
-
-Use wigle to explain that this could not be generalized. Mention comparison of one place and another place. in other cities or contries.
-
-Mention about VAD and explain why it is not applicable.
-
-Explain that this method does not work in restricted environment, such as university location.
-
-Looking for microphone recording in phone.
+% https://support.biamp.com/General/Audio/Microphone_sensitivity
 % http://electronics.stackexchange.com/questions/59157/over-what-frequency-range-can-the-microphone-of-smartphone-receive-the-sound
 % http://www.makeuseof.com/tag/great-tips-recording-audio-smartphone-tablet/
 % http://www.scienceprog.com/long-range-directional-microphones-myth-and-reality/
 % http://www.epanorama.net/newepa/2014/09/08/sound-level-measuring-with-android-phone/
 % seems legit http://www.analog.com/library/analogdialogue/archives/46-05/understanding_microphone_sensitivity.html?doc=an-1328.pdf
 
-Possible research using dB (decibels) to identify social density.
-Decibels does not correlate linearly, but rather logaritmically. -> altought it turned out that it is not really good, ie., it does not have a good correlation.
 
-0.3 of correlation means that 30% of the variation is explained.
+\section{Ground Truth Approximation} % (fold)
+\label{sec:ground_truth_approximation}
+We estimate the crowd count as a first approximation of the ground truth because it is known that getting the ground truth of crowd density in public spaces is difficult~\cite{thesis041}. We used time-lapse image based, which works by manually counting heads in the images, and WiFi's probe request based technique, works by counting unique \ac{MAC} addresses.
+% Both methods rely on predefined assumptions, which say .
 
-explain that the IE method is not really 100% correct. prove it by using LG nexus randomized and real probe request.
+Although probe request based estimation is promising, some drawbacks are also present. In this method, we are not able to distinguish the type of devices, i.e., whether it is a smartphone, tablets, or computers. Although one mostly brings a smartphone in crowded public areas~\cite{thesis047}, which means we can deduce that a smartphone means a person present, there is also a possibility that one brings more devices or no devices at all.
 
-Argument, writing:
-it is hard to count people inside the bus.
-we rely on an assumption that says everyone brings their own mobilephone with them, thus we can track it, just like what retail companies do.
-To avoid randomized mac, we use discretize the monitoring, instead of doing it continuously for a long time, we did it in separate scanning interval.
-Why dont you use 2 devices for separate purpose? one for probe request and one for access point.
-Limitation: This work is only limited to free neighbourhood, i.e., this does not apply to a wifi restricted location such as university buildings.
+Furthermore, the WiFi based technique is able to detect devices through walls, which is good or bad depending on the definition of social density. In indoor social density estimation, this is a bad approximation because WiFi might detect some people but in fact there are way less or no people at all inside a room, as they are located in another room nearby. This is a potential threat, for instance, if our method detects some people but actually no one is present in the room. However, in outdoor social density estimation, WiFi based technique performs better than image based technique, as WiFi can see people through an obstacle, while image-based cannot. To sum up, we have to be careful in doing indoor monitoring. As an option, we can also combine the social density estimation with ambient recording to see whether there is a noise inside a room, as empty room is mostly quite. 
 
-Important, writing: also address the microphone sensitivity.
+Compared to the probe request based estimation, time-lapse image based technique cannot detect people through walls or buildings. This may be the reason why the image based technique detects less people than the WiFi based technique (see~\autoref{fig:total-population}). Furthermore, image based technique relies heavily on assumptions when vehicles, e.g., buses or cars, are captured in the image, as vehicles have very limited visual appearance of the people inside. We assume that there are a person in a car and five people in a bus. This assumptions may slightly bias the result.
 
-Working on decibels.
-% https://support.biamp.com/General/Audio/Peak_vs_RMS_Meters
-Important, writing: also address the microphone sensitivity.
-% https://support.biamp.com/General/Audio/Microphone_sensitivity
-Sound level decreases by 6dB with each doubling of distance from the source.
-The sound is already using ambient noise reduction.
-Those microphones are attuned to a specific (and rather narrow) range of sound intensity.
+\section{Scanning Time Effect} % (fold)
+\label{sec:scanning_time_effect}
+We tested the effect of scanning time to investigate whether scanning time can potentially affect the outcomes. Interesting findings about the scanning time are shown in~\autoref{fig:time-effect}. We see that the device count in each scanning time has different outcome, while the \ac{AP} count remains stable no matter when the scanning was performed. When we scanned the surroundings in the morning (09:00h), the device count was less than the \ac{AP} count, as there were not so many people present. However, the trend changed when we performed the scanning at 12:00h, as the device count surpassed the \ac{AP} count. We can also see an increasing trend at scanning time performed at 15:00h and decreasing trend at 18:00h.
+If the trend continues, there might be lower device count than \ac{AP} count at night.
 
-cross validation is used to validate the mode, explain a little bit
+The findings presented in~\autoref{fig:time-effect} indicate that we also have to consider the scanning time.
+% of the surroundings when the present study is implemented because different scanning time might have a very different outcome.
 
-quantitative, continuous result: regression
-classes, discrete result: classification
+\section{Correlation Between Sensor Readings and Social Density} % (fold)
+\label{sec:correlation_between_sensor_readings_and_social_density}
+The parameter which has a strong correlation with head count or device count is the \ac{AP} count, as shown in the top right of~\autoref{fig:scatterplot-matrix}. The correlation coefficients of \ac{AP} count vs device count, \ac{AP} count vs head count, and device count vs head count are 0.87, 0.85, and 0.86, respectively. We present in detail the correlation of head count, device count, and \ac{AP} count in~\autoref{sub:ap_and_social_density_correlation}.
 
-Explain that I used R to do data analysis.
-Also mention what packages are used for each model, as a summary, better to draw a table about all classes used.
+As we can see in the scatter plots of the correlation of \ac{AP}, \ac{DC}, and \ac{HC}, presented in~\autoref{fig:ap-dc-scatterplot}, \autoref{fig:ap-hc-scatterplot}, and \autoref{fig:hc-dc-scatterplot}, the lower social density data, as at home or remote area, seems to be more concentrated than higher social density data, as at Paddepoel or Grote Markt, and the higher social density data is widely spread. However, this does not mean that the frequency of high social density values is bigger than the low social density value. In fact, we have more data for lower social density than higher social density, as shown in the histograms of \ac{AP}, \ac{DC}, and \ac{HC} in~\autoref{fig:scatterplot-matrix}.
 
-Explain a little bit about 10 folds cross validation.
+If we look at~\autoref{fig:ap-hc-scatterplot}, \autoref{fig:ap-dc-scatterplot}, and \autoref{fig:hc-dc-scatterplot}, the data may also be used to perform a sort of localization, as each location shows different patterns. We can say that the \ac{AP} count is bound to an area, where each area has different social density levels. Thus, this method is somewhat telling where the smartphone actually is and what the average of social density level in that area is. On the other hand, we could infer where the location of the smartphone is using our proposed technique.
+% although further study may be required to support this opinion.
 
-Mention eps-regression and nu-regression in SVM
+% present the result of each location. and compare within days
+In the beginning, we expect that the number of \ac{AP} follows the fluctuation of the number of people in a certain location, as people might bring their own portable WiFi transmitter to assemble an ad-hoc \ac{AP}, which will add up the number of \ac{AP} available in the location. However, this turned out to be a rare situation, as we do not see any trend between number of people and \ac{AP} count, as shown in line chart of the experiment presented in~\autoref{ch:appendix-sensor-readings}.
 
-sections:
-- linear model
-- non linear model
-\section{Discussions} % (fold)
-\label{sec:discussions}
-Possible explanation: explain that the number of access point might increase in a crowd because of the ad hoc access point.
-also use % https://wigle.net/ database of public WiFi
-We expect that this affect the ap count, but it turned out that it does not.
+Moreover, if we see at the line chart, there is a fluctuation of \ac{AP} count, although actually available \ac{AP} count should be the same or stable across the time. This fluctuation might be caused by the instability of radio transmission that may affect the signal strength of the WiFi \ac{AP} and thus making some \ac{AP}s some not detected.
 
-Turns out that multiple APs are using the same eduroam as their SSID, however, they have different MAC addresses. -> explain as a fact.
+% Another interesting finding is that several \ac{AP}s are using the same \ac{SSID}, e.g., eduroam. This makes users only see one \ac{AP} available, while in fact, those \ac{AP} are using different \ac{MAC} address.
 
-When android is in energy saving mode, the OS prohibits any app for doing WiFi Scan or any other scan.
+\added{
+\section{Social Density Prediction} % (fold)
+\label{sec:social_density_prediction}
+We have created several models to predict the social density using new data. The optimal model was achieved using \ac{k-NN} predictors, although it actually performs equally well compared to \ac{SVM} method. However, as opposed to linear model, \ac{k-NN} works better because \ac{k-NN} works by measuring the similarity of k-nearest neighbors of the predicted value, while linear model only fitting a straight line across the data. In fact, the correlation is not always perfectly linear.
 
-[Possible problem] A drawback of scanning WiFi probe request: people located in other room (not within the person's eyesight) is still detectable, thus, worsen the results.
-Combine with sound
-Combine with GPS location if there is no sound detected.
+The optimal model gives an residual error equals to 7.05 for head count and 13.14 for device count. The error means that, when the model is used to predict new head count data, the predicted value may be 7.05 higher or lower than the actual value, or 13.14 for new device count data. For instance, if our model predict 50 head count, it may be actually 57.05 or 42.95.
+% implication on the future or the implementation in be happ
 
-Counting people using wifi has an issue: it can detect people through the walls, which people don't see. what do you think?
+Moreover, compared to the value range of the head count or device count, which range from zero to 155 (head count) and zero to 288 (device count), the errors count 6.1\% for head count and 4.6\% for device count. In summary, the model is able to determine if the subject is currently in a considerably low or high social density area.
+% device count: 0,04652777778
+% head count: 0,06130434783
+}
 
-Explain that this method does not work in restricted environment, such as university location. Writing: explain why we do not do that in school/university, because WiFi is highly restricted in campus, i.e., we are not allowed to have individual access point in school.
+\section{Limitations of the Present Study}
+\label{sec:limitation_of_the_present_study}
+The proposed method has some limitations.
+% that limit its implementation.
+% #1: location: range, indoor outdoor
+The first limitation is the location. The proposed method only works at places where WiFi \ac{AP} use is not restricted, i.e., people are free to set up their own WiFi AP. Some locations where the use of WiFi is restricted exist, for instance, University of Groningen complex, where eduroam is the only the available AP and the occupants are not allowed to install their own AP. If we collect data from this location, we will possibly get uncorrelated \ac{AP} count and social density.
 
-We also select daytime as the preferred scanning time because that is the time when most crowd are observable. This implies that our collected data resemble only daytime duration, meaning that conclusion might only be able to deduct for daytime.
+Furthermore, our dataset consists of data collected from four different location. This dataset represents the situation of selected locations but possibly not for other locations, as other locations may have different characteristics. For instance, in developing countries or other locations where the use of WiFi are not common, the number of \ac{AP} in a public area may be much lower than what we have in our dataset.
 
-% section discussions (end)
->>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
+As we mainly work with WiFi, the range of the proposed social density follows the maximum WiFi coverage for smartphones, which extends roughly from 20 to 50 meters. This range may be good or bad depending on the context. For outdoor situations, this range gives a good approximation as it is considerably broad enough to count social density. However, this range may be too broad for indoors. For instance, we may get a result that says there are 20 people in total, but in fact there is only five or even less people in the room. This is because WiFi also detects people outside the room. However, we can also combine the result with ambient noise recording, as empty room are usually more quite.
+
+% Use wigle to explain that this could not be generalized. Mention comparison of one place and another place. in other cities or contries.
+
+% #2: time
+The other limitation is time. Our dataset consists of data collected in daytime, ranging from 08:15h to 14:45h. Using this dataset, we are only able to approximate the level of social density if the new data is captured during the same time frame. If the new data is taken outside the time frame, our dataset is unable to tell the level of social density. This fact is based on the time of scanning investigation described in~\autoref{ssub:effect_of_scanning_time} and \autoref{sub:effect_of_scanning_time}.
+
+
+% conclusion
+In conclusion, the results indicate that locations with high level of social density tend to have more access points. WiFi \ac{AP} shows the strongest correlation with the social density level, followed by \ac{RMS} that reveals a weaker correlation with social density level. Thus, we can say that it is possible to infer social density level from smartphone sensor readings. To achieve better accuracy, we may implement classification analysis instead of regression. However, regression analysis yields class-based result instead of continuous numerical result.
+
+Furthermore, generalization of this method requires further investigation in more locations and time, as other location may reveal different patterns.
+% Although the data say that there are minor variation in days, other locations may have higher variation.
+Scanning time result also says that scanning time affects the social density level. Moreover, the settings and results will vary in different cities and even more in different countries.
 
 %*****************************************
 %*****************************************
 %*****************************************
 %*****************************************
 %*****************************************
-<<<<<<< HEAD
-% mac address randomization
-% mention about the randomization as well, that that might not a solution, mention the paper that comprehensively discuss about the randomization
-% explain that the IE (information elements on probe request) method is not really 100\% correct.
-% prove it by using LG nexus randomized and real probe request.
-% To avoid randomized mac, we use discretized monitoring, instead of doing it continuously for a long time, we did it in separate scanning interval.
-% Why dont you use 2 devices for separate purpose? one for probe request and one for access point.
-% When android is in energy saving mode, the OS prohibits any app for doing WiFi Scan or any other scan.
-% why the some SN disappear.
-=======
->>>>>>> deb4eee798046ff3050e2fdc49aff179daa28237
