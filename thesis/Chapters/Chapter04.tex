@@ -16,7 +16,8 @@ We performed investigations of \ac{MAC} address randomization in iPad mini and N
 
 \begin{table}[ht]
 \centering
-\caption{Summarized result of \ac{MAC} address randomization behavior for both Android and iOS.}
+\caption[Summarized MAC address randomization behavior]
+{Summarized result of \ac{MAC} address randomization behavior for both Android and iOS.}
 \label{tab:mac-address-randomization-summary}
 \begin{tabularx}{\textwidth}{lXX}
 \toprule
@@ -102,7 +103,7 @@ In manual head counting, an object may appear more than once, i.e., the object w
 		}
 	}
 	\end{adjustwidth}
-	\caption{A box plot showing the population of estimated social density in each location by head count (\ref{fig:population-head-count}) and device count (\ref{fig:population-device-count}).}
+	\caption[A box plot of the population]{A box plot showing the population of estimated social density in each location by head count (\ref{fig:population-head-count}) and device count (\ref{fig:population-device-count}).}
 	\label{fig:total-population}
 \end{figure}
 
@@ -142,7 +143,8 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 
 	\begin{table}[H]
 	\centering
-	\caption{The average of root-mean-square and peak level of ambient noise recording in day 4.}
+	\caption[]
+	{The average of RMS and PKLV of ambient noise recording in day 4.}
 	\label{tab:ambient-noise-average-day4}
 	\begin{tabular}{lll}
 	\toprule
@@ -166,7 +168,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 				\includegraphics[width=0.8\textwidth]{./img/result/sound/rms-level-comparison20161029}
 			}
 		}
-		\caption{Line chart showing the peak level (\ref{fig:peak-level-day4}) and root-mean-square (\ref{fig:rms-day4}) of the ambient noise recording in each cycle at day 4.}
+		\caption[Line chart of ambient noise at day 4]{Line chart showing the peak level (\ref{fig:peak-level-day4}) and root-mean-square (\ref{fig:rms-day4}) of the ambient noise recording in each cycle at day 4.}
 	\label{fig:audio-result-day4}
 	\end{figure}
 
@@ -224,7 +226,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.8\textwidth]{./img/result/global-pr-vs-ap}
-		\caption[Scatter plot showing the correlation of device count and \ac{AP} count.]
+		\caption[Scatter plot of device and \ac{AP} count.]
 		{Scatter plot showing the correlation between \textit{device count} and \textit{\ac{AP} count} of all collected data. The locations are marked in different color. The correlation coefficient is $\rho=0.877$.}
 		\label{fig:scatter-dc-ap}
 	\end{figure}
@@ -237,7 +239,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.8\textwidth]{./img/result/global-gt-vs-ap}
-		\caption[Scatter plot showing the correlation of head count and \ac{AP} count.]
+		\caption[Scatter plot of head and \ac{AP} count.]
 		{Scatter plot showing the correlation between \textit{head count} and \textit{\ac{AP} count} of all collected data. The locations are marked in different color. The correlation coefficient is $\rho=0.849$.}
 		\label{fig:scatter-hc-ap}
 	\end{figure}
@@ -248,7 +250,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth]{./img/result/global-gt-vs-pr}
-		\caption[Scatter plot showing the correlation of head count and device count.]
+		\caption[Scatter plot of head and device count.]
 		{Scatter plot showing the correlation between \textit{head count} and \textit{device count} of all collected data. The locations are marked in different color. The correlation coefficient is $\rho=0.857$.}
 		\label{fig:scatter-hc-dc}
 	\end{figure}
@@ -295,7 +297,8 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 		    \includegraphics[width=0.7\textwidth]{./img/result/time/grotemarkt-1800}
 		  }
 		}
-		\caption{Line charts showing the \ac{AP} count (blue) and device count (green) in different data collection time at Grote Markt, Groningen, at October 30, 2016.}
+		\caption[Line charts of ambient noise on October 30, 2016.]
+		{Line charts showing the \ac{AP} count (blue) and device count (green) in different data collection time at Grote Markt, Groningen, on October 30, 2016.}
 		\label{fig:time-effect}
 		\end{adjustwidth}
 	\end{figure}
@@ -330,7 +333,8 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 				\includegraphics[width=0.6\textwidth]{./img/result/time/rms-level-comparison}
 			}
 		}
-		\caption{Line charts showing the peak level (\ref{fig:peak-level-timely}) and root-mean-square (\ref{fig:rms-timely}) of the ambient noise recording in four diffent scanning time.}
+		\caption[Ambient noise in different scanning time.]
+		{Line charts showing the peak level (\ref{fig:peak-level-timely}) and root-mean-square (\ref{fig:rms-timely}) of the ambient noise recording in four diffent scanning time.}
 		\label{fig:audio-result-timely}
 		\end{adjustwidth}
 	\end{figure}
@@ -349,7 +353,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 		\centering
 		\includegraphics[width=1.3\textwidth]{./img/result/all-result}
 		\end{adjustwidth}
-		\caption[Scatter plot matrix showing all parameters correlation.]
+		\caption[Scatter plot matrix of all parameters.]
 		{Scatter plot matrix showing all parameters correlation of all collected data. The top right shows the correlation coefficient $r$ and the p-value. Along the diagonal are the histograms of each parameter.}
 		\label{fig:scatterplot-matrix}
 	\end{figure}
@@ -399,7 +403,8 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 			}
 		}
 		\end{adjustwidth}
-		\caption{Tuning linear regression using best subsets combination for head count (\ref{fig:tuning-linear-headcount}) and device count (\ref{fig:tuning-linear-devicecount}). The result indicates that using all predictors gives the best result, although in head count prediction using two predictors results in nearly the same error.}
+		\caption[Tuning linear regression.]
+		{Tuning linear regression using best subsets combination for head count (\ref{fig:tuning-linear-headcount}) and device count (\ref{fig:tuning-linear-devicecount}). The result indicates that using all predictors gives the best result, although in head count prediction using two predictors results in nearly the same error.}
 		\label{fig:tuning-linear}
 	\end{figure}
 
@@ -408,7 +413,8 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 	
 		\begin{table}[h]
 		\centering
-		\caption{Linear model fit to the dataset with corresponding coefficient for head count and device count model.}
+		\caption[Linear model fit to the dataset]
+		{Linear model fit to the dataset with corresponding coefficient for head count and device count model.}
 		\label{tab:linear-model-hc-dc}
 		\begin{tabular}{rrr}
 		\toprule
@@ -547,7 +553,8 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 			}
 		}
 		\end{adjustwidth}
-		\caption{Tuning \ac{k-NN} using $1 \le k \le 30$ as the tuning parameter (\#Neighbors) for head count (\ref{fig:tuning-knn-hc}) and device count (\ref{fig:tuning-knn-dc}). For both estimation, optimal result is obtained when $5 \le k \le 10$. The optimal result is chosen at $k=7$ (head count) and $k=8$ (device count).}
+		\caption[Tuning \ac{k-NN}.]
+		{Tuning \ac{k-NN} using $1 \le k \le 30$ as the tuning parameter (\#Neighbors) for head count (\ref{fig:tuning-knn-hc}) and device count (\ref{fig:tuning-knn-dc}). For both estimation, optimal result is obtained when $5 \le k \le 10$. The optimal result is chosen at $k=7$ (head count) and $k=8$ (device count).}
 		\label{fig:tuning-knn}
 	\end{figure}
 
@@ -660,7 +667,8 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 			}
 		}
 		\end{adjustwidth}
-		\caption{Tuning \ac{SVM} using grid search technique. Two tuning parameters $\epsilon$ and $cost$ are represented in $x$ and $y$ axis, while the performance (measured using \ac{MSE}) is represented in color. More optimal model is indicated by darker color, i.e., lower \ac{MSE} (see color bar).}
+		\caption[Tuning \ac{SVM}.]
+		{Tuning \ac{SVM} using grid search technique. Two tuning parameters $\epsilon$ and $cost$ are represented in $x$ and $y$ axis, while the performance (measured using \ac{MSE}) is represented in color. More optimal model is indicated by darker color, i.e., lower \ac{MSE} (see color bar).}
 		\label{fig:tuning-svm}
 	\end{figure}
 
@@ -703,7 +711,8 @@ As formulated in the equation, residual error shows the mean of the difference b
 
 \begin{table}[h]
 \centering
-\caption{Summary of regression analysis showing the range of the data and the residual error of each regression method.}
+\caption[Summary of regression analysis]
+{Summary of regression analysis showing the range of the data and the residual error of each regression method.}
 \label{tab:regression-summary}
 \begin{tabular}{llllll}
 \toprule
