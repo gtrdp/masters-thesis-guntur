@@ -70,9 +70,9 @@ Variation & address changed in every 4 minutes & address changed in each probe r
 
 	\subsection{Review} % (fold)
 	\label{sub:review}
-	\added{
+	% \added{
 		Based on our findings in \ac{MAC} address randomization investigation, we can minimize the side-effect of \ac{MAC} address randomization by using one minute cycle length in data collection.
-	}
+	% }
 	This means we record the ambient noise and capture time-lapse images within 1 minute time interval, while we capture probe request packets in 52 seconds followed by two times of \ac{AP} scanning (see~\autoref{sub:scanning}).
 
 
@@ -217,9 +217,9 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 	\autoref{fig:scatter-dc-ap} depicts the correlation of device count and \ac{AP} count. The data plotted in~\autoref{fig:scatter-dc-ap} comes from all data combined from four days experiment. The location is coded in color so that we can distinguish which data comes from which location. The plots of the correlation separately in each day are also available in~\autoref{ch:appendix-sensor-readings}, shown in~\autoref{fig:ap-dc-scatterplot}.
 	
 	As we can see in~\autoref{fig:scatter-dc-ap} there is a positive trend that indicates both variable has a positive correlation. This means when the access point count increases, the device count, which points to social density level, increases as well. The correlation coefficient $\rho$ is 0.877, indicating a strong correlation, and the p-value is below 0.05, indicating that the result is significant.
-	\added{
+	% \added{
 		Each location forms a distinguishable cluster, although some overlaps are present.
-	}
+	% }
 	The cluster of home and remote are close and the cluster of Paddepoel and Grote Markt are adjacent. However, there is a gap that separates home-remote cluster and Paddepoel-Grote markt cluster.
 
 	% all result - device count
@@ -303,7 +303,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 		\end{adjustwidth}
 	\end{figure}
 
-	\added{
+	% \added{
 	Moreover, we present the ambient noise recording of the Sunday, October 30\textsuperscript{th} 2016 experiment in~\autoref{tab:ambient-noise-timely} and \autoref{fig:audio-result-timely}. If we look at the line charts (\autoref{fig:audio-result-timely}), the lines are mostly overlapping each other, making it difficult to distinguish the noise characteristics of each scanning time. However, the ambient noise summary in~\autoref{tab:ambient-noise-timely} presents more understandable characteristics. We see that, in \ac{PKLV}, the the noise is increasing from 09:00h, peaking at 15:00h, and going back down at 18:00h. The ambient noise recordings are correlated with the WiFi scanning results presented in~\autoref{fig:time-effect}.
 
 	\begin{table}[h]
@@ -338,7 +338,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 		\label{fig:audio-result-timely}
 		\end{adjustwidth}
 	\end{figure}
-	}
+	% }
 
 
 
@@ -366,7 +366,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 	% Make sure that the data is available publicly, mention the url.
 
 % regression
-\added{
+% \added{
 \section{Social Density Prediction} % (fold)
 \label{sec:social-density-prediction}
 We construct data models so that we are able to predict the level of social density from new data. We use supervised learning techniques using three predictors, namely linear regression, k-Nearest Neighbor (\ac{k-NN}), and Support Vector Machine (\ac{SVM}), so that we can compare which predictor gives optimal model.
@@ -374,7 +374,7 @@ We construct data models so that we are able to predict the level of social dens
 We predict the head count or device count from other parameters, e.g., \ac{AP}, \ac{RMS}, \ac{PKLV}, and \ac{RSSI}. We do not use \ac{SC} as a predicting variable because speaker count value is almost at zero, which does not give us any meaningful insight, and we do not use \ac{SNR} parameter as well, because we derive signal to noise ratio from probe request packet capture in a laptop, which smartphone cannot capture. Our dataset contains 459 records.
 
 We validate our model using 10-folds cross-validation. Cross-validation is a method to assess the performance of a prediction model. The cross-validation technique involves dataset partition into complementary subsets, namely training and testing sets, in which training subsets are for performing the analysis, while testing subsets are for the validation of the resulting model. 10-folds cross-validation divides the dataset to 10 complementary subsets, in which one subset will be the testing set and the other nine subsets are the training set, interchangeably in 10 times.
-}
+% }
 
 We use \ac{RMSE} as the metric for cross-validation. In this metric, the optimal model has lower \ac{RMSE} value. The formula of \ac{RMSE} is as follows,
 \begin{equation} \label{eq:rmse}
@@ -563,9 +563,9 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 	\autoref{fig:tuning-knn}~presents the tuning result.
 	% As we can see, the optimal models are obtained when $5 \le k \le 10$.
 	According to~\autoref{fig:tuning-knn}, the highest error of both estimation is when $k=1$ and there is a increasing trend of error as $k$ goes up.
-	\added{
+	% \added{
 		The tuning results indicate that the optimal model for head count estimation is achieved when $k=7$ ($RMSE=12.49515$), while the optimal model for device count estimation is when $k=8$ ($RMSE=22.83321$).
-	}
+	% }
 	% hc ========================================================
 	% k-Nearest Neighbors 
 
@@ -673,9 +673,9 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 	\end{figure}
 
 	We present the result of \ac{SVM} regression tuning in~\autoref{fig:tuning-svm}.
-	\added{
+	% \added{
 	We focus the grid search within $0 \le cost \le 10$ and $0 \le \epsilon \le 1$ to reduce the computational time. Moreover, our previous grid search, which involves wider area, indicates that \ac{SVM} performs better within that area.
-	}
+	% }
 
 	We measure the performance of the \ac{SVM} using mean squared error (\ac{MSE}), in which best result has lower \ac{MSE}. The best performance for head count prediction is at 171.1065 with $\epsilon=0$ and $cost=3$, while for device count prediction is at 514.226 with $\epsilon=0$ and $cost=1$. We can also see a trend of increasing \ac{MSE} as the $epsilon$ increases.
 	% hc============

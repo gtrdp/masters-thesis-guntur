@@ -11,19 +11,23 @@
 % - Better to use active voice, avoid passive voice as much as possible.
 % - Good conclusion brings an intro to the next chapter.
 People who suffer from neuropsychiatric disorders usually withdraw from society~\cite{thesis084,thesis083}. They often visit places that tend to be quite and tend to have less crowd. The current method to monitor neuropsychiatric patients involve oral questionnaires that record a patient's social interaction on a daily basis. However, the questionnaire method often leads to biased and subjective results, making an objective monitoring is needed to obtain reliable results.
-\added{
+% \added{
 The objective monitoring of social withdrawal requires a longitudinal assessment of individual movement patterns in the context of social density.
-}
+% }
 % Or to  differentiate between healthy and non-healthy individuals.
 This is where \textit{social density estimation} comes into play.
 
 Social density estimation, or sometimes referred as crowd counting, is the mechanism of estimating the number of people (social density) in a certain area by using automated methods, which could replace the manual counting technique, e.g., counting heads by using tally counter. Besides its implementation in monitoring neuropsychiatric patients, social density estimation has many potential implementations, for instance, crowd surveillance~\cite{thesis050}, evacuation and rescue~\cite{thesis045}, retail store customer analysis, infrastructure development and evaluation, and queue management~\cite{thesis012}.
 
 Several approaches of social density estimation exist. Surveillance camera utilization is one of the methods used, although it is limited by high deployment and computational cost. As opposed to video-based techniques, some researches have proposed \ac{RF} signals, e.g., WiFi or Bluetooth, to get lower deployment and computational cost. The WiFi and Bluetooth based methods make use of several characteristics present in WiFi or Bluetooth, such as probe-request, \ac{MAC} address monitoring~\cite{thesis008}, \ac{RSSI}~\cite{thesis046}, and \ac{CSI}~\cite{thesis051}. 
-\added{Furthermore, some of the WiFi and Bluetooth based methods are based on an assumption that says a unique \ac{MAC} address refers to a different individual.}
+% \added{
+Furthermore, some of the WiFi and Bluetooth based methods are based on an assumption that says a unique \ac{MAC} address refers to a different individual.
+% }
 
 However, to the best of our knowledge, the available social density estimation techniques require pre-installed dedicated infrastructures that make the techniques not implementable for patient monitoring and
-\added{for longitudinal and objective behavioral monitoring of humans in general.}
+% \added{
+for longitudinal and objective behavioral monitoring of humans in general.
+% }
 The preferred monitoring technique requires device that can run almost everywhere to monitor patients condition.
 
 Speaking of patient monitoring, some researchers have proposed smartphone-based technique to gain flexibility of implementation and monitoring, as proposed by Bachmann~\cite{thesis031} and Eskes, et al.~\cite{thesis015}. The method aims to achieve passive behavioral monitoring that works seamlessly under the hood, so that patients do not know that they are monitored. The proposed method monitors almost every aspects that are required to monitor depressive patients or patients with neuropsychiatric disorders.
@@ -55,15 +59,15 @@ In order to answer and validate the main research question the following sub-que
 \end{enumerate}
 
 
-\added{
+% \added{
 	\section{Method and Approach} % (fold)
 	\label{sec:method_and_approach}
-	To answer the research questions, we first start with a literature study to discover the state of the art of objective social density estimation techniques. Moreover, we discover potential sensors or network interfaces, which are useful for social density estimation. We also look for possible ground truth estimation as a comparison of real condition of the surrounding.
+	To answer the research questions, we first start with a literature study to discover the state of the art of objective social density estimation techniques. Moreover, we discover potential sensors and network interfaces, which are useful for social density estimation. We also look for possible ground truth estimation as a comparison of real condition of the surrounding.
 
-	Then, we start collecting the data using preferred sensors and network interfaces in a certain timing and location to infer the trends of the correlation between sensor readings and the actual social density level. We plan to perform the data collection for several days in several locations, ranging from low to high level of social density.
+	Then, we collect data using the preferred sensors and network interfaces in a certain timing and location to infer the trends of the correlation between sensor readings and the actual social density level. We plan to perform the data collection for several days in several locations, ranging from low to high level of social density.
 
 	Lastly, we investigate the result to see whether a correlation between smartphone sensor readings and social density level exists. If there is a considerably strong correlation, then we develop data models to predict the level of social density based on smartphone sensor readings.
-}
+% }
 
 
 \section{Thesis Structure Overview} % (fold)

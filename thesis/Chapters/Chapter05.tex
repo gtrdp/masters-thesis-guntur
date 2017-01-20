@@ -59,7 +59,7 @@ Moreover, if we see at the line chart, there is a fluctuation of \ac{AP} count, 
 
 % Another interesting finding is that several \ac{AP}s are using the same \ac{SSID}, e.g., eduroam. This makes users only see one \ac{AP} available, while in fact, those \ac{AP} are using different \ac{MAC} address.
 
-\added{
+% \added{
 \section{Social Density Prediction} % (fold)
 \label{sec:social_density_prediction}
 We have created several models to predict the social density using new data. The optimal model was achieved using \ac{k-NN} predictors, although it actually performs equally well compared to \ac{SVM} method. However, as opposed to linear model, \ac{k-NN} works better because \ac{k-NN} works by measuring the similarity of k-nearest neighbors of the predicted value, while linear model only fitting a straight line across the data. In fact, the correlation is not always perfectly linear.
@@ -70,7 +70,7 @@ The optimal model gives an residual error equals to 7.05 for head count and 13.1
 Moreover, compared to the value range of the head count or device count, which range from zero to 155 (head count) and zero to 288 (device count), the errors count 6.1\% for head count and 4.6\% for device count. In summary, the model is able to determine if the subject is currently in a considerably low or high social density area.
 % device count: 0,04652777778
 % head count: 0,06130434783
-}
+% }
 
 \section{Limitations of the Present Study}
 \label{sec:limitation_of_the_present_study}
