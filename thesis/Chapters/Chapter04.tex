@@ -3,11 +3,11 @@
 \chapter{Results}
 \label{ch:results} % $\mathbb{ZNR}$
 %************************************************
-In this chapter, we report and summarize the result of the experiments presented in~\autoref{ch:experimental-setup}, which try to investigate the correlation of social density level and smartphone sensor readings. We also investigate the behavior of \ac{MAC} address randomization that can potentially disrupt the data collection results. This chapter contains only important findings, as we present the detailed findings in the Appendices.
+In this chapter, we report and summarize the result of the experiments, which try to investigate the correlation of social density level and smartphone sensor readings. We also investigate the behavior of \ac{MAC} address randomization that can potentially disrupt the data collection results. This chapter contains only important findings and we present the detailed findings in the Appendices.
 
-We performed the experiment in October 2016. The results that we collected contain a total of 17,280 time-lapse images, 660 audio recording files, and 1,320 text-based log files. The sum of total file size is approximately 41,7 Gigabytes.
+We performed the experiments in October 2016. The results contain a total of 17,280 time-lapse images, 660 audio recording files, and 1,320 text-based log files. The sum of the total file size is approximately 41.7 Gigabytes.
 
-Furthermore, we present analyses about social level density estimation using all data from four days experiment so that we can establish a data model that enables us to predict the level of social density using sensor readings.
+Furthermore, we present analyses about social level density estimation using all data from four days experiment so that we can establish a data model that enables us to predict the level of social density using new sensor readings.
 % The regression analysis tries to estimate the social density estimation using consumer smartphone sensor readings.
 
 \section{MAC Address Randomization} % (fold)
@@ -16,8 +16,8 @@ We performed investigations of \ac{MAC} address randomization in iPad mini and N
 
 \begin{table}[ht]
 \centering
-\caption[Summarized MAC address randomization behavior]
-{Summarized result of \ac{MAC} address randomization behavior for both Android and iOS.}
+\caption[Summarized MAC address randomization behavior.]
+{Summarized results of \ac{MAC} address randomization behavior for both Android and iOS.}
 \label{tab:mac-address-randomization-summary}
 \begin{tabularx}{\textwidth}{lXX}
 \toprule
@@ -32,9 +32,9 @@ Variation & address changed in every 4 minutes & address changed in each probe r
 	\subsection{iPad mini} % (fold)
 	\label{sub:ipad_mini}
 	% when does the random mac appear?
-	The iPad mini always transmitted randomized \ac{MAC} address when the screen is on and off (standby). However, the iPad broadcast the probe request packets more actively while the screen is on, as we noticed that the iPad mini was sending out probe request packets within 3 to 10 seconds when the screen is on. If the screen is off, the iPad mini sent out probe request packets approximately in every 2 minutes, or even 4 minutes. Interestingly, when the iPad was connected to an \ac{AP} that we set up using Nexus 5X WiFi tethering, we observed the iPad mini's real \ac{MAC} address in the probe request.
+	The iPad mini always transmitted randomized \ac{MAC} addresses when the screen was on and off (standby). However, the iPad broadcast the probe request packets more actively while the screen was on, as we noticed that the iPad mini was sending out probe request packets within 3 to 10 seconds when the screen was on. If the screen was off, the iPad mini sent out the probe request packets approximately in every 2 minutes, or even 4 minutes. Interestingly, when the iPad was connected to an \ac{AP} that we set up using Nexus 5X WiFi tethering, we observed the iPad mini's real \ac{MAC} address in the probe request.
 
-	The randomized address was changed to completely different random address, i.e., all octets of the address, when the iPad mini woke up from standby mode. The address was also changed after roughly 4 minutes from the first random address transmitted. We also observed \ac{MAC} address change when we toggled the WiFi on and off. The iPad behaved in the same manner regardless of \ac{SIM} card installation. 
+	The randomized address was changed to completely different random address, i.e., all octets of the address, when the iPad mini woke up from standby mode. The address was also changed after roughly 4 minutes since the first random address transmitted. We also observed \ac{MAC} address change when we toggled the WiFi on and off. The iPad behaved in the same manner regardless of \ac{SIM} card installation. 
 
 	\begin{table}[h]
 		\caption[Some examples of captured probe requests from iPad mini.]{An example of captured probe requests from iPad mini in Wireshark. The colors mark out different bursts of probe request packets, while the red boxes indicate \ac{SN} reset.}
@@ -52,7 +52,7 @@ Variation & address changed in every 4 minutes & address changed in each probe r
 	\subsection{Nexus 5X} % (fold)
 	\label{sub:lg_nexus_5x}
 	% when does the random mac appear?
-	As opposed to iPad mini, Nexus 5X only sent out randomized \ac{MAC} address when the screen is off. If Nexus 5X woke up from sleep, it would immediately send out 4 or 10 probe request packets with real \ac{MAC} address. When Nexus 5X screen went off, Nexus 5X firstly sent out random \ac{MAC} address in every 2 to 10 seconds. Normally Nexus 5X broadcast a burst of probe request packets roughly in each 60 seconds.
+	As opposed to iPad mini, Nexus 5X only sent out randomized \ac{MAC} address when the screen was off. When Nexus 5X woke up from sleep, it would immediately send out 4 or 10 probe request packets with real \ac{MAC} address. When Nexus 5X screen went off, Nexus 5X firstly sent out random \ac{MAC} address in every 2 to 10 seconds. Normally, Nexus 5X broadcast a burst of probe request packets roughly in each 60 seconds.
 
 	Unlike iPad mini, Nexus 5X changed the \ac{MAC} address in each burst of probe request packets, as depicted in~\autoref{fig:nexus-random}. However, the first three octets were always the same and only the last three octets were changed. We can see that \verb|da:a1:19| appears in multiple bursts in~\autoref{fig:nexus-random} with different last three octets, \verb|ce:47:5f|, \verb|00:3f:25|, and \verb|b5:51:2c|, respectively.
 	
@@ -64,9 +64,9 @@ Variation & address changed in every 4 minutes & address changed in each probe r
 	\end{table}	
 
 	% the SN
-	\autoref{fig:nexus-random}~depicts example of captured probe request packets from Nexus 5X in the same format as~\autoref{fig:ipad-random}. There are four bursts of probe request packets marked in different colors. Three of the bursts are random \ac{MAC} address, while the last burst, marked in blue color, is the Nexus 5X original \ac{MAC} address.
+	\autoref{fig:nexus-random}~depicts an example of captured probe request packets from Nexus 5X in the same format as~\autoref{fig:ipad-random}. There are four bursts of probe request packets marked in different colors. Three of the bursts are random \ac{MAC} address, while the last burst, marked in blue color, is the Nexus 5X original \ac{MAC} address.
 
-	As we can see from~\autoref{fig:nexus-random}, the last probe request packet of a burst has a close \ac{SN} to the first packet of the next burst, although it is not sequential. We observed no pattern in \ac{SN} change during the experiment.
+	As we can see from~\autoref{fig:nexus-random}, the last probe request packet of a burst has a close \ac{SN} to the first packet of the next burst, although it is not sequential. We observed no obvious pattern in \ac{SN} change during the experiment.
 
 	\subsection{Review} % (fold)
 	\label{sub:review}
@@ -81,13 +81,13 @@ Variation & address changed in every 4 minutes & address changed in each probe r
 
 \section{Correlation between Crowd Count and Sensor Readings} % (fold)
 \label{sec:crowd_count_correlation-result}
-In this section, we present the result of data collection using 1 minute cycle length, which consist of probe request packet capture, \ac{AP} scan, ambient noise recording, and time-lapse images capture (see~\autoref{fig:sensor-measurement}). As for the ground truth estimation, we used head count of time-lapse images and device count in unique \ac{MAC} address in probe request. The result can indicate whether smartphone sensor readings can be an approach to estimate the level of social density or crowd count.
+In this section, we present the result of data collection using 1 minute cycle length, which consist of probe request packet capture, \ac{AP} scan, ambient noise recording, and time-lapse images capture (see~\autoref{fig:sensor-measurement}). As for the ground truth estimation, we used head count of time-lapse images and device count in unique \ac{MAC} address in probe request. The results indicate whether smartphone sensor readings can be an approach to estimate the level of social density or crowd count.
 
 % when
-We collected the data from Wednesday, October 26\textsuperscript{th} 2016, to Saturday, October 29\textsuperscript{th} 2016. The timing of data collection is shown in~\autoref{tab:location-summary}. During the data collection, we saw no special events where the social density level are more crowded than usual condition, especially in public places, such as Grote Markt and Paddepoel shopping center.
+We collected the data from Wednesday, October 26\textsuperscript{th} 2016, to Saturday, October 29\textsuperscript{th} 2016. The timing of data collection is shown in~\autoref{tab:location-summary}. During the data collection, we observed no special events in which the social density level are much higher than the normal condition, especially in public places, such as Grote Markt and Paddepoel shopping center.
 
 % assumption
-In manual head counting, an object may appear more than once, i.e., the object was captured in multiple GoPro cameras, because we took time-lapse images and some people were actively moving. We make sure that an object which appears more than once is counted only once. Furthermore, sometimes we captured vehicles in the images with very limited visual appearance of the people inside. Thus we assume that there are a person in a car and five people in a bus. We present some examples of time-lapse images in~\autoref{ch:appendix-time-lapse-images}.
+In manual head counting, a person might appear more than once, i.e., the person was captured in multiple GoPro cameras, because we took time-lapse images and some people were actively moving. We make sure that the people who appear several times in different images are counted exactly once. Furthermore, sometimes we captured vehicles with very limited visual appearance of the people inside. We assume that there are a person in a car and five people in a bus. We present some examples of time-lapse images in~\autoref{ch:appendix-time-lapse-images}.
 
 \begin{figure}[h]
 	\begin{adjustwidth}{-2cm}{}
@@ -109,9 +109,9 @@ In manual head counting, an object may appear more than once, i.e., the object w
 
 We present the important results of the experiment, such as the variation of the social density level, example of ambient noise recording, correlation of \ac{AP} count and sensor readings, the effect of scanning time, and all parameters used for analysis. The appendices present the detailed results, such as the sensor readings both in scatter plot and line chart (\autoref{ch:appendix-sensor-readings}), example of time-lapse images for each location (\autoref{ch:appendix-time-lapse-images}), and ambient noise recording (\autoref{ch:appendix-ambient-noise}).
 
-\autoref{fig:total-population}~depicts the variation of estimated social density level in each location, e.g., the lowest value, the first quartile, the median, the upper quartile, and the maximum value. The value are estimated by two approximation, namely head count and device count.
+\autoref{fig:total-population}~depicts the variation of the estimated social density level in each location, e.g., the lowest value, the first quartile, the median, the upper quartile, and the maximum value. The value are estimated by two approximation, namely head count (\ref{fig:population-head-count}) and device count (\ref{fig:population-device-count}).
 
-As we can see in~\autoref{fig:total-population}, the maximum value of device count based estimation is higher than head count based estimation. For instance, in Grote Markt, the maximum value of device count is 288, while the maximum value of head count is 115. However, both estimations are showing the same trend, which says that Grote Markt has the highest social density level and remote area has the lowest social density level.
+As we can see in~\autoref{fig:total-population}, the maximum value of the device count based estimation is higher than the head count based estimation. For instance, in Grote Markt, the maximum value of device count is 288, while the maximum value of head count is 115. However, both estimations are showing the same trend, which says that Grote Markt has the highest social density level and remote area has the lowest social density level.
 
 % device count
 %    LOC Min  Q1 Med  Q3 Max
@@ -139,7 +139,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 
 	\subsection{Ambient Noise Recordings} % (fold)
 	\label{sub:ambient_noise_recordings}
-	As an example of ambient noise recording, \autoref{tab:ambient-noise-average-day4} and \autoref{fig:audio-result-day4} show the result of ambient noise recording in day 4, when more crowds were present than any other days. We measure the ambient noise in decibels (dB). In this unit, the closer the value to zero the louder the sound (noise). We take two measures of ambient noise to characterize the surrounding, namely the Peak Level (\ac{PKLV}), which is the highest value of a total waveform, and Root Mean Square (\ac{RMS}), which is the effective value or the mean of an audio recording. The \ac{PKLV} and \ac{RMS} are positively correlated but \ac{RMS} is more stable than \ac{PKLV}.
+	As an example of ambient noise recording, \autoref{tab:ambient-noise-average-day4} and \autoref{fig:audio-result-day4} show the result of ambient noise recording in day 4, when more crowds were present than any other days. We measure the ambient noise in decibels (dB). In this unit, the closer the value to zero, the louder the sound (noise). We take two measures of ambient noise to characterize the surrounding, namely Peak Level (\ac{PKLV}), which is the highest value of a total waveform, and Root Mean Square (\ac{RMS}), which is the effective value or the mean of an audio recording. \ac{PKLV} and \ac{RMS} are positively correlated but \ac{RMS} is more stable than \ac{PKLV}.
 
 	\begin{table}[H]
 	\centering
@@ -172,7 +172,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 	\label{fig:audio-result-day4}
 	\end{figure}
 
-	As we can see in the average value (\autoref{tab:ambient-noise-average-day4}) or line chart (\autoref{fig:audio-result-day4}), more crowded place has higher ambient noise value. We see that remote area is the quietest location, with -47.74 dB of average \ac{RMS}, while Paddepoel is the noisiest location, with -26.54 dB of average \ac{RMS}. As for the line chart, we can see more overlaps in \ac{PKLV} (\autoref{fig:peak-level-day4}) than in \ac{RMS} (\autoref{fig:rms-day4}). The \ac{RMS} of remote area is stable near -50.00 dB. We can also see the same trend for the rest of the ambient noise recordings although some overlaps are present, as shown in~\autoref{ch:appendix-ambient-noise}.
+	As we can see in the average value (\autoref{tab:ambient-noise-average-day4}) or line chart (\autoref{fig:audio-result-day4}), more crowded place has higher ambient noise value. We see that remote area is the quietest location, with -47.74 dB of average \ac{RMS}, while Paddepoel is the noisiest location, with -26.54 dB of average \ac{RMS}. As for the line chart, we can see more overlaps in \ac{PKLV} (\autoref{fig:peak-level-day4}) than in \ac{RMS} (\autoref{fig:rms-day4}). The \ac{RMS} of remote area is stable near -50.00 dB. We can also see the same trends for the rest of the ambient noise recordings, although some overlaps are present, as shown in~\autoref{ch:appendix-ambient-noise}.
 
 
 	% \subsubsection{Speaker Count Extraction} % (fold)
@@ -214,9 +214,9 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 	\label{sub:ap_and_social_density_correlation}
 	We are particularly interested in seeing the trend and correlation of WiFi \ac{AP} count and social density level, estimated by head count and device count. We draw a scatter plot of \ac{AP} count vs device count and \ac{AP} count vs head count separately, as well as device count vs head count to see the correlation of the two social density estimation. The plots are shown in~\autoref{fig:scatter-dc-ap}, \autoref{fig:scatter-hc-ap}, and \autoref{fig:scatter-hc-dc}. We also present the line chart of the readings in~\autoref{ch:appendix-sensor-readings}.
 
-	\autoref{fig:scatter-dc-ap} depicts the correlation of device count and \ac{AP} count. The data plotted in~\autoref{fig:scatter-dc-ap} comes from all data combined from four days experiment. The location is coded in color so that we can distinguish which data comes from which location. The plots of the correlation separately in each day are also available in~\autoref{ch:appendix-sensor-readings}, shown in~\autoref{fig:ap-dc-scatterplot}.
+	\autoref{fig:scatter-dc-ap} depicts the correlation of device count and \ac{AP} count. The data plotted in~\autoref{fig:scatter-dc-ap} come from all data from four days of experiments. The location is coded in color so that we can distinguish which data come from which location. The plots of the correlation separately in each day are also available in~\autoref{ch:appendix-sensor-readings}, shown in~\autoref{fig:ap-dc-scatterplot}.
 	
-	As we can see in~\autoref{fig:scatter-dc-ap} there is a positive trend that indicates both variable has a positive correlation. This means when the access point count increases, the device count, which points to social density level, increases as well. The correlation coefficient $\rho$ is 0.877, indicating a strong correlation, and the p-value is below 0.05, indicating that the result is significant.
+	As we can see in~\autoref{fig:scatter-dc-ap} there is a positive trend that indicates both variables have a positive correlation. This means when the \ac{AP} count increases, the device count, which points to social density level, increases as well. The correlation coefficient $\rho$ is 0.877, indicating a strong correlation, and the $p$-value is below 0.05, indicating that the result is significant.
 	% \added{
 		Each location forms a distinguishable cluster, although some overlaps are present.
 	% }
@@ -233,10 +233,10 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 
 	\autoref{fig:scatter-hc-ap} portrays the correlation between head count and \ac{AP} count of data collected in four days of all location. \autoref{fig:scatter-hc-ap} uses the same color coding as~\autoref{fig:scatter-dc-ap} to distinguish the location. The plots showing the correlation in separate days are available in~\autoref{ch:appendix-sensor-readings}, shown in~\autoref{fig:ap-hc-scatterplot}.
 	
-	We can see similar trend in~\autoref{fig:scatter-hc-ap}. The correlation is strong, indicated by correlation coefficient $\rho = 0.877$, and significant, indicated by p-value which is below 0.05. However, Grote Markt and Paddepoel clusters are overlapping. A gap between remote-home cluster and Grote Markt-Paddepoel cluster is also present.
+	We can see similar trend in~\autoref{fig:scatter-hc-ap}. The correlation is strong, indicated by correlation coefficient $\rho = 0.877$, and significant, indicated by p-value which is below 0.05. However, the Grote Markt and Paddepoel clusters are overlapping each other. A gap between remote-home cluster and Grote Markt-Paddepoel cluster is also present.
 
 	% all result - head count
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth]{./img/result/global-gt-vs-ap}
 		\caption[Scatter plot of head and \ac{AP} count.]
@@ -244,7 +244,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 		\label{fig:scatter-hc-ap}
 	\end{figure}
 
-	\autoref{fig:scatter-hc-dc} shows the correlation of head count and device count of all collected data. The locations are coded in color as well. Head count and device count have a strong correlation, marked by the correlation coefficient $\rho$, which is 0.857. A gap between remote-home cluster and Grote Markt-Paddepoel cluster is also present, although it is narrower than the gap in \autoref{fig:scatter-dc-ap} and \autoref{fig:scatter-hc-ap}. \autoref{fig:hc-dc-scatterplot} in \autoref{ch:appendix-sensor-readings} presents the scatter plots showing the correlation of head count and device count in each day of experiment.
+	\autoref{fig:scatter-hc-dc} shows the correlation of head count and device count of all collected data. The locations are coded in color as well. Head count and device count have a strong correlation, marked by the correlation coefficient $\rho$, which is 0.857. A gap between remote-home cluster and Grote Markt-Paddepoel cluster is also present, although it is narrower than the gap in \autoref{fig:scatter-dc-ap} and \autoref{fig:scatter-hc-ap}. \autoref{fig:hc-dc-scatterplot} in \autoref{ch:appendix-sensor-readings} presents the scatter plots showing the correlation of head count and device count in each day of the experiment.
 
 	% all result - device count vs head count
 	\begin{figure}[H]
@@ -272,7 +272,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 	  \item and 18:00
 	\end{enumerate*}.
 	
-	\autoref{fig:time-effect} shows the WiFi scanning result in four separate line charts. Each chart depicts the result of a particular scanning time. The blue line, which depicts the \ac{AP} count, fluctuates stably around 100, while the green line, which represents device count, has a big variance. As we can see in~\autoref{fig:grotemarkt-0900}, the green line is fluctuating below the blue line, indicating there were less device than available \ac{AP} count. However, in~\autoref{fig:grotemarkt-1200}, \autoref{fig:grotemarkt-1500}, and \autoref{fig:grotemarkt-1800}, the condition changes. The green line surpasses the blue line, which indicates the number of device was increased. \autoref{fig:grotemarkt-1500} shows an increasing trend of device count, while \autoref{fig:grotemarkt-1800} shows a decreasing trend.
+	\autoref{fig:time-effect} shows the WiFi scanning result in four separate line charts. Each chart depicts the result of a certain scanning time. The blue lines, which depict the \ac{AP} count, fluctuate stably around 100, while the green lines, which represent the device count, have a big variance. As we can see in~\autoref{fig:grotemarkt-0900}, the green line is fluctuating below the blue line, indicating there were less device than available \ac{AP} count. However, in~\autoref{fig:grotemarkt-1200}, \autoref{fig:grotemarkt-1500}, and \autoref{fig:grotemarkt-1800}, the condition changes. The green lines surpass the blue lines, which indicates that the number of device was increased. \autoref{fig:grotemarkt-1500} shows an increasing trend of device count, while \autoref{fig:grotemarkt-1800} shows a decreasing trend.
 
 	\begin{figure}[H]
 		\centering
@@ -304,11 +304,12 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 	\end{figure}
 
 	% \added{
-	Moreover, we present the ambient noise recording of the Sunday, October 30\textsuperscript{th} 2016 experiment in~\autoref{tab:ambient-noise-timely} and \autoref{fig:audio-result-timely}. If we look at the line charts (\autoref{fig:audio-result-timely}), the lines are mostly overlapping each other, making it difficult to distinguish the noise characteristics of each scanning time. However, the ambient noise summary in~\autoref{tab:ambient-noise-timely} presents more understandable characteristics. We see that, in \ac{PKLV}, the the noise is increasing from 09:00h, peaking at 15:00h, and going back down at 18:00h. The ambient noise recordings are correlated with the WiFi scanning results presented in~\autoref{fig:time-effect}.
+	Moreover, we present the ambient noise recording of the Sunday, October 30\textsuperscript{th} 2016 experiment in~\autoref{tab:ambient-noise-timely} and \autoref{fig:audio-result-timely}. If we look at the line charts (\autoref{fig:audio-result-timely}), the lines are mostly overlapping each other, making it difficult to distinguish the noise characteristics of each scanning time. However, the ambient noise summary in~\autoref{tab:ambient-noise-timely} presents more understandable characteristics. We see that, in \ac{PKLV}, the noise is increasing from 09:00h, peaking at 15:00h, and going back down at 18:00h. The ambient noise recordings are correlated with the WiFi scanning results presented in~\autoref{fig:time-effect}.
 
 	\begin{table}[h]
 	\centering
-	\caption{The average of root-mean-square and peak level of ambient noise recording in four different scanning time.}
+	\caption[The average of RMS and PKLV of ambient noise in four scanning time.]
+	{The average of root-mean-square and peak level of ambient noise recording in four different scanning time.}
 	\label{tab:ambient-noise-timely}
 	\begin{tabular}{lll}
 	\toprule
@@ -344,9 +345,9 @@ As we can see in~\autoref{fig:total-population}, the maximum value of device cou
 
 	\subsection{All Result} % (fold)
 	\label{sub:all_result}
-	\autoref{fig:scatterplot-matrix} shows all data collected in four days of experiment in a scatter plot matrix. In the lower left part are the scatter plots of each parameter correlation along with the Lowess curve fitted to the data. In the upper part are the correlation coefficient and the p-value. Along the diagonal are the histograms and the labels of each parameter.
+	\autoref{fig:scatterplot-matrix} shows all data collected in four days of experiments in a scatter plot matrix. In the lower left part are the scatter plots of each parameter correlation along with the Lowess curve fitted to the data. In the upper part are the correlation coefficient and the p-value. Along the diagonal are the histograms and the labels of each parameter.
 
-	There are eight parameters extracted from all datasets of four days experiment. \ac{AP}, \ac{RSSI}, \ac{DC}, and \ac{SNR} parameters are from WiFi based readings. \ac{AP} is the count of available \ac{AP} that a smartphone can get, while \ac{RSSI} is the average of the signal strength of the \ac{AP}. \ac{DC} is the device count, based on unique \ac{MAC} address, and \ac{SNR} is the average of signal-to-noise ratio of the captured probe request packets. \ac{SC}, \ac{RMS}, and \ac{PKLV} are from recorded ambient noise, while \ac{HC} is from manual head counting of time-lapse images.
+	There are eight parameters extracted from all datasets of four days experiment. The \ac{AP}, \ac{RSSI}, \ac{DC}, and \ac{SNR} parameters are from WiFi based readings. \ac{AP} is the count of available \ac{AP} that a smartphone can get, while \ac{RSSI} is the average of the signal strength of the \ac{AP}. \ac{DC} is the device count, based on unique \ac{MAC} address, and \ac{SNR} is the average of signal-to-noise ratio of the captured probe request packets. \ac{SC}, \ac{RMS}, and \ac{PKLV} are from recorded ambient noise, while \ac{HC} is from manual head counting of time-lapse images.
 
 	\begin{figure}[h]
 		\begin{adjustwidth}{-3cm}{}
@@ -373,7 +374,7 @@ We construct data models so that we are able to predict the level of social dens
 
 We predict the head count or device count from other parameters, e.g., \ac{AP}, \ac{RMS}, \ac{PKLV}, and \ac{RSSI}. We do not use \ac{SC} as a predicting variable because speaker count value is almost at zero, which does not give us any meaningful insight, and we do not use \ac{SNR} parameter as well, because we derive signal to noise ratio from probe request packet capture in a laptop, which smartphone cannot capture. Our dataset contains 459 records.
 
-We validate our model using 10-folds cross-validation. Cross-validation is a method to assess the performance of a prediction model. The cross-validation technique involves dataset partition into complementary subsets, namely training and testing sets, in which training subsets are for performing the analysis, while testing subsets are for the validation of the resulting model. 10-folds cross-validation divides the dataset to 10 complementary subsets, in which one subset will be the testing set and the other nine subsets are the training set, interchangeably in 10 times.
+We validate our model using 10-folds cross-validation, which is a method to assess the performance of a prediction model. The cross-validation technique involves dataset partition into complementary subsets, namely training and testing sets, in which training subsets are for performing the analysis, while testing subsets are for the validation of the resulting model. 10-folds cross-validation divides the dataset to 10 complementary subsets, in which one subset will be the testing set and the other nine subsets are the training set, interchangeably in 10 times.
 % }
 
 We use \ac{RMSE} as the metric for cross-validation. In this metric, the optimal model has lower \ac{RMSE} value. The formula of \ac{RMSE} is as follows,
@@ -408,7 +409,7 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 		\label{fig:tuning-linear}
 	\end{figure}
 
-	\autoref{fig:tuning-linear}~presents the tuning result. For both head count and device count, using all four predictors results in optimal model. In head count prediction, using two predictors ($ap$ and $pklv$) yields in nearly identical \ac{RMSE} as using four predictors. Based on the tuning, we develop a linear model to predict the head count and device count. The linear fit to the dataset is depicted in~\autoref{tab:linear-model-hc-dc}.
+	\autoref{fig:tuning-linear}~presents the tuning result. For both head count and device count, using all four predictors results in optimal model. In head count prediction, using two predictors ($ap$ and $pklv$) yields in nearly identical \ac{RMSE} as using four predictors. Based on the tuning, we develop a linear model to predict the head count and device count. The linear regression fit to the dataset is depicted in~\autoref{tab:linear-model-hc-dc}.
 
 	
 		\begin{table}[h]
@@ -558,11 +559,11 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 		\label{fig:tuning-knn}
 	\end{figure}
 
-	We train and test \ac{k-NN} regression using $1 \le k \le 30$ as the tuning parameter in R using \verb|caret| library~\cite{caret}. Like the linear regression analysis, we evaluate the model using 10-folds cross-validation and we use \ac{RMSE} to select the optimal model with lowest error. \autoref{r-code-knn}~displays the implementation of \ac{k-NN} regression.
+	We train and test \ac{k-NN} regression using $1 \le k \le 30$ as the tuning parameter in R using \verb|caret| library~\cite{caret}. Similar in the linear regression analysis, we evaluate the model using 10-folds cross-validation and we use \ac{RMSE} to select the optimal model with lowest error. \autoref{r-code-knn}~displays the implementation of \ac{k-NN} regression.
 
 	\autoref{fig:tuning-knn}~presents the tuning result.
 	% As we can see, the optimal models are obtained when $5 \le k \le 10$.
-	According to~\autoref{fig:tuning-knn}, the highest error of both estimation is when $k=1$ and there is a increasing trend of error as $k$ goes up.
+	According to~\autoref{fig:tuning-knn}, the highest error of both estimation is when $k=1$ and there is an increasing trend of error as $k$ goes up.
 	% \added{
 		The tuning results indicate that the optimal model for head count estimation is achieved when $k=7$ ($RMSE=12.49515$), while the optimal model for device count estimation is when $k=8$ ($RMSE=22.83321$).
 	% }
@@ -644,14 +645,15 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 	\label{sub:support_vector_machine}
 	% subsection support_vector_machine (end)
 	% =======================svm=============================================
-	Support Vector Machine (\ac{SVM}) is an estimator that works by constructing support vectors (hyperplanes) that separate data according to a certain threshold. Most of the time, kernels, a set of mathematical functions, are used to
-	define the decision boundary. \ac{SVM} is also implementable for both classification and regression analysis.
+	Support Vector Machine (\ac{SVM}) is an estimator that works by constructing support vectors (hyperplanes) that separate the data according to a certain threshold. Most of the time, a kernel, a set of mathematical functions, is used to
+	define the decision boundary.
+	% \ac{SVM} is also implementable for both classification and regression analysis.
 
-	We implement \ac{SVM} regression using radial kernel along with $cost$ and $\epsilon$ as the tuning parameters.
+	We implement \ac{SVM} to predict quantities using radial kernel with $cost$ and $\epsilon$ as the tuning parameters.
 	$cost$ parameter is used to define the width of the hyperplane, while $\epsilon$ is used to determine how non-linear the decision boundary is.
 	As used in \ac{k-NN}, we validate the model using 10-folds cross-validation.
 	We use grid search method to tune the optimal parameters. It tries to find the best combination of the two parameters in certain range of search.
-	We implement the analysis in R with \verb|e1071| library~\cite{e1071}. \autoref{r-code-svm}~displays the implementation of \ac{SVM} regression.
+	We implement the analysis in R with \verb|e1071| library~\cite{e1071}. \autoref{r-code-svm}~displays the implementation of \ac{SVM} prediction.
 
 	\begin{figure}[H]
 		\begin{adjustwidth}{-3cm}{}
@@ -707,6 +709,7 @@ To summarize the regression analysis and to interpret the result, we use another
 	\overline { error } =\frac { 1 }{ n } \left( \sum _{ i=1 }^{ n }{ \left| { p }_{ i }-{ a }_{ i } \right|  }  \right) 
 \end{equation}
 
+\noindent
 As formulated in the equation, residual error shows the mean of the difference between predicted and actual value. Using the optimum model of each regression technique, we perform another 10-fold cross validation to obtain residual error measurement. The optimal model has a residual error closer to zero.
 
 \begin{table}[h]
