@@ -142,7 +142,9 @@ We select four different locations that represent low and high crowd densities a
 
 To save GoPro battery, we select 30 minutes as the scanning duration in each location. As we are picking four different locations, this would sum up to two hours of image capture. We also select daytime as the preferred scanning time because that is the time when most crowd are observable.
 
+
 \begin{table}[]
+\begin{adjustwidth}{-1cm}{}
 \centering
 \caption[Summary of location selection]
 {Summary of location selection for the experiment. We plan to run the experiment from Wednesday to Saturday, October 26\textsuperscript{th} to 29\textsuperscript{th}, 2016.}
@@ -154,7 +156,9 @@ Home                      & indoor  & low--medium  & 08:15-08:45   \\
 Paddepoel shopping center & indoor  & medium--high & 14:45-15:15   \\
 Grote markt               & outdoor & high        & 12:00-12:30  \\ \bottomrule
 \end{tabular}
+\end{adjustwidth}
 \end{table}
+
 
 % where is it, the maximum visitor [cite] where the scanner sit, is it indoor or outdoor.
 
@@ -201,7 +205,7 @@ As depicted in~\autoref{fig:sensor-measurement}, we work with WiFi to capture th
 % technical, both hardware and software
 We use Apple MacBook Air, with built-in WiFi card and microphone, as a WiFi scanning and audio recording device. To capture probe request, we use \verb|tcpdump|\footnote{\url{http://www.tcpdump.org}}, a free packet analyzer that runs under the command line, and we use console based Apple's AirPort utility, a software designed by Apple to manage WiFi network, to count available access point. The output of probe request capture is \verb|.pcap| file, a standard file for capturing network traffic. \ac{AP} counting results in plain text files. We work with console based audio editing software, Sound Exchange\footnote{\url{http://sox.sourceforge.net}}, to record the ambient noise to \verb|.wav| file format.
 
-To automate the WiFi scanning and audio recording process, we write a bash script\footnote{Bash script is a list of Bash commands that run on console based application to execute particular tasks.}. We label the resulting log files in the corresponding timestamp and location. Our code is publicly available online\footnote{\url{https://github.com/gtrdp/masters-thesis-guntur}}.
+To automate the WiFi scanning and audio recording process, we write a bash script\footnote{Bash script is a list of Bash commands that runs on a console based application to execute some particular tasks.}. We label the resulting log files in the corresponding timestamp and location. Our code is publicly available online\footnote{\url{https://github.com/gtrdp/masters-thesis-guntur}}.
 
 
 
@@ -220,6 +224,7 @@ To automate the WiFi scanning and audio recording process, we write a bash scrip
 In each cycle of data collection, we obtain approximately 1,170 raw files in several formats. The files are, namely, \verb|.txt| for \ac{AP} list, \verb|.pcap| for captured probe request packets, \verb|.wav| for recorded ambient noise, and \verb|.jpeg| for time-lapse images. Each file format needs different treatment to extract the data. \autoref{tab:sensor-parameters} summarizes all sensor readings and the extracted parameters.
 
 \begin{table}[]
+\begin{adjustwidth}{-1cm}{}
 \centering
 \caption{Smartphone sensor readings and the extracted parameters.}
 \label{tab:sensor-parameters}
@@ -234,6 +239,7 @@ Sensor     & File format & Extracted parameter & Extraction method\\ \midrule
 GoPro cameras				& .jpeg 				& head count       & manual counting\\
 \bottomrule
 \end{tabular}
+\end{adjustwidth}
 \end{table}
 
 \subsection{WiFi Raw Data Extraction} % (fold)

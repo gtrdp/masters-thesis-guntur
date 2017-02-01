@@ -90,7 +90,7 @@ We collected the data from Wednesday, October 26\textsuperscript{th} 2016, to Sa
 In manual head counting, a person might appear more than once, i.e., the person was captured in multiple GoPro cameras, because we took time-lapse images and some people were actively moving. We make sure that the people who appear several times in different images are counted exactly once. Furthermore, sometimes we captured vehicles with very limited visual appearance of the people inside. We assume that there are a person in a car and five people in a bus. We present some examples of time-lapse images in~\autoref{ch:appendix-time-lapse-images}.
 
 \begin{figure}[h]
-	\begin{adjustwidth}{-2cm}{}
+	\begin{adjustwidth}{-1cm}{}
 	\centering
 	\subfloat[head count]{
 		\label{fig:population-head-count}{
@@ -276,7 +276,7 @@ As we can see in~\autoref{fig:total-population}, the maximum value of the device
 
 	\begin{figure}[H]
 		\centering
-		\begin{adjustwidth}{-3cm}{}
+		\begin{adjustwidth}{-4cm}{}
 		\subfloat[09:00h]{
 		  \label{fig:grotemarkt-0900}{
 		    \includegraphics[width=0.7\textwidth]{./img/result/time/grotemarkt-0900}
@@ -297,10 +297,11 @@ As we can see in~\autoref{fig:total-population}, the maximum value of the device
 		    \includegraphics[width=0.7\textwidth]{./img/result/time/grotemarkt-1800}
 		  }
 		}
+		\end{adjustwidth}
 		\caption[Line charts of ambient noise on October 30, 2016.]
 		{Line charts showing the \ac{AP} count (blue) and device count (green) in different data collection time at Grote Markt, Groningen, on October 30, 2016.}
 		\label{fig:time-effect}
-		\end{adjustwidth}
+		
 	\end{figure}
 
 	% \added{
@@ -334,10 +335,10 @@ As we can see in~\autoref{fig:total-population}, the maximum value of the device
 				\includegraphics[width=0.6\textwidth]{./img/result/time/rms-level-comparison}
 			}
 		}
+		\end{adjustwidth}
 		\caption[Ambient noise in different scanning time.]
 		{Line charts showing the peak level (\ref{fig:peak-level-timely}) and root-mean-square (\ref{fig:rms-timely}) of the ambient noise recording in four diffent scanning time.}
 		\label{fig:audio-result-timely}
-		\end{adjustwidth}
 	\end{figure}
 	% }
 
@@ -391,7 +392,7 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 	To obtain a model with minimal error, we perform an exhaustive search for the best subsets of the predictors for predicting the dependent variable (head or device count) in linear regression. We use \ac{RMSE} of 10-folds cross-validation to select the optimal model using the smallest value. \autoref{r-code-linear-regr}~displays the implementation of linear regression analysis. We implement linear regression in R using \verb|caret| library~\cite{caret}. 
 	
 	\begin{figure}[H]
-		\begin{adjustwidth}{-1cm}{}
+		\begin{adjustwidth}{-3cm}{}
 		\centering
 		\subfloat[head count]{
 			\label{fig:tuning-linear-headcount}{
@@ -541,7 +542,7 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 	% Generally, a large $k$ value is more accurate as it uses more neighbors to predict a new value. \ac{k-NN} is applicable for both classification and regression analysis.
 
 	\begin{figure}[H]
-		\begin{adjustwidth}{-1cm}{}
+		\begin{adjustwidth}{-0.5cm}{}
 		\centering
 		\subfloat[head count]{
 			\label{fig:tuning-knn-hc}{
@@ -656,7 +657,7 @@ where ${ p }_{ i }$ is the predicted value, ${ a }_{ i }$ is the actual value, a
 	We implement the analysis in R with \verb|e1071| library~\cite{e1071}. \autoref{r-code-svm}~displays the implementation of \ac{SVM} prediction.
 
 	\begin{figure}[H]
-		\begin{adjustwidth}{-3cm}{}
+		\begin{adjustwidth}{-3.5cm}{}
 		\centering
 		\subfloat[head count]{
 			\label{fig:tuning-svm-hc}{
